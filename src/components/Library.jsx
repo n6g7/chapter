@@ -5,8 +5,9 @@ import BookList from './BookList';
 export default React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
-    const stock = this.props.library.books.filter(book => book.state === 'stock');
-    const read = this.props.library.books.filter(book => book.state === 'read');
+    const books = this.props.library.books;
+    const stock = books.filter(book => book.state === 'stock');
+    const read = books.filter(book => book.state === 'read');
 
     return <div>
       <h1>Stock</h1>
