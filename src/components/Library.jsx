@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import ActionBar from './ActionBar';
 import BookList from './BookList';
 
 export default React.createClass({
@@ -14,6 +15,7 @@ export default React.createClass({
     const read = books.filter(book => book.state === 'read');
 
     return <div>
+      <ActionBar/>
       <h1>Stock</h1>
       <BookList books={stock} />
       <h1>Read</h1>

@@ -7,6 +7,7 @@ import {Router, Route, hashHistory} from 'react-router';
 import {setState} from './action-creators';
 import App from './containers/App';
 import Library from './containers/Library';
+import NewBook from './containers/NewBook';
 import reducer from './reducer';
 
 import './style.styl';
@@ -21,6 +22,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route component={App}>
         <Route path="/" component={Library}></Route>
+        <Route path="/new" component={NewBook}></Route>
       </Route>
     </Router>
   </Provider>,
