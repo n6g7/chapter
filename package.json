@@ -1,14 +1,17 @@
 {
-  "name": "mybooks",
-  "version": "1.0.0",
-  "description": "",
+  "name": "library",
+  "version": "0.0.1",
+  "description": "Digital library for physical books",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "book",
+    "library"
+  ],
+  "author": "Nathan G <n6g7@gnab.fr>",
+  "license": "MIT",
   "dependencies": {
     "immutable": "^3.8.1",
     "react": "^15.0.1",
