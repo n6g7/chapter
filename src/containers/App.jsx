@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 import * as actionCreators from '../action-creators';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = () => ({});
 
 const AppContainer = connect(
   mapStateToProps,

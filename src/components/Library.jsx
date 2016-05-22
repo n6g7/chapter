@@ -3,7 +3,11 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import BookList from './BookList';
 
 export default React.createClass({
+  displayName: 'Library',
   mixins: [PureRenderMixin],
+  propTypes: {
+    library: React.PropTypes.object
+  },
   render: function() {
     const books = this.props.library.books;
     const stock = books.filter(book => book.state === 'stock');
