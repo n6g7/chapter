@@ -4,3 +4,10 @@ export function setState(state) {
     state
   };
 }
+
+export function addBook(book) {
+  return {
+    type: 'ADD_BOOK',
+    book
+  };
+}

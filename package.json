@@ -4,7 +4,8 @@
   "description": "Digital library for physical books",
   "main": "index.js",
   "scripts": {
-    "test": "eslint src --ext js,jsx"
+    "pretest": "eslint src --ext js,jsx",
+    "test": "mocha --compilers js:babel-core/register --require ./test/helper.js --recursive"
   },
   "keywords": [
     "book",
