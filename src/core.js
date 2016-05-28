@@ -1,6 +1,10 @@
-import {List, Map} from 'immutable';
+import {List, fromJS} from 'immutable';
 
-export const INITIAL_STATE = Map();
+export const INITIAL_STATE = fromJS({
+  library: {
+    books: []
+  }
+});
 
 export function setState(state, newState) {
   return state.merge(newState);

@@ -4,9 +4,9 @@ import {compose, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {Router, Route, hashHistory} from 'react-router';
 import persistState from 'redux-localstorage';
-import {Map, fromJS} from 'immutable';
+import {fromJS} from 'immutable';
 
-import {setState} from './action-creators';
+import {INITIAL_STATE} from './core';
 import App from './containers/App';
 import Library from './containers/Library';
 import NewBook from './containers/NewBook';
@@ -17,7 +17,7 @@ import './style.styl';
 const createPersistentStore = compose(
   persistState('', {
     merge: (initialState, persistedState) => {
-      initialState = initialState || Map();
+      initialState = initialState || INITIAL_STATE;
       persistedState = fromJS(persistedState);
       return initialState.merge(persistedState);
     }
