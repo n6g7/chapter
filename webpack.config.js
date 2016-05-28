@@ -1,10 +1,11 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const baseConfig = require('./webpack.prod.config.js');
 
-module.exports = {
+module.exports = Object.assign({}, baseConfig, {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './src/index.jsx'
+    baseConfig.entry
   ],
   module: {
     loaders: [
@@ -25,14 +26,6 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
   devServer: {
     contentBase: './dist',
     hot: true
@@ -40,4 +33,4 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ]
-}
+});
