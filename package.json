@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.prod.config.js",
     "dev": "webpack-dev-server",
     "pretest": "eslint src test --ext js,jsx",
-    "test": "mocha --compilers js:babel-core/register --require ./test/helper.js --recursive"
+    "test": "snyk test && mocha --compilers js:babel-core/register --require ./test/helper.js --recursive"
   },
   "keywords": [
     "book",
@@ -43,7 +43,8 @@
     "stylus": "^0.54.2",
     "stylus-loader": "^2.0.0",
     "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "snyk": "^1.14.3"
   },
   "babel": {
     "presets": [
