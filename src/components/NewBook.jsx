@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
+import {Link} from 'react-router'
 import BookForm from './BookForm';
 
 export default React.createClass({
@@ -19,6 +20,9 @@ export default React.createClass({
       this.context.router.push('/');
     };
 
-    return <BookForm book={book} label="Create" onSubmit={create}></BookForm>;
+    return <div>
+      <BookForm book={book} label="Create" onSubmit={create}></BookForm>
+      <Link to="/" className="btn btn-info">Back</Link>
+    </div>;
   }
 });
