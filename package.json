@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "dev": "webpack-dev-server",
-    "pretest": "eslint src --ext js,jsx",
+    "pretest": "eslint src test --ext js,jsx",
     "test": "mocha --compilers js:babel-core/register --require ./test/helper.js --recursive"
   },
   "keywords": [
@@ -53,7 +53,9 @@
   },
   "eslintConfig": {
     "env": {
-      "browser": true
+      "browser": true,
+      "node": true,
+      "mocha": true
     },
     "extends": [
       "eslint:recommended",

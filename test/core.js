@@ -1,7 +1,7 @@
-import {List, Map, fromJS} from 'immutable';
+import {Map, fromJS} from 'immutable';
 import {expect} from 'chai';
 
-import {setState, addBook} from '../src/core';
+import {addBook} from '../src/core';
 
 describe('Core logic', () => {
   describe('addBook', () => {
