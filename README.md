@@ -11,3 +11,10 @@ npm i
  - dev? `npm run dev`
  - build? `npm run build`
  - test? `npm test`
+
+## Todo
+
+ - [ ] Update book
+ - [ ] Delete book
+ - [ ] Beautiful design
+ - [ ] Import/export feature
