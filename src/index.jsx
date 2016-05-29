@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {compose, createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import persistState from 'redux-localstorage';
 import {fromJS} from 'immutable';
 
@@ -29,9 +29,9 @@ const store = createPersistentStore(reducer);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
-      <Route component={App}>
-        <Route path="/" component={Library}></Route>
-        <Route path="/new" component={NewBook}></Route>
+      <Route path="/" component={App}>
+        <IndexRoute component={Library} />
+        <Route path="new" component={NewBook} />
       </Route>
     </Router>
   </Provider>,
