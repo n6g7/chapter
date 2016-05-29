@@ -16,5 +16,6 @@ npm i
 
  - [ ] Update book
  - [ ] Delete book
- - [ ] Beautiful design
+ - [X] Beautiful design
  - [ ] Import/export feature
+ - [ ] Detect cover colour palette
