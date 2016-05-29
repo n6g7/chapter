@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Karla:400,700);
+
+blue = rgb(53, 73, 93)
+blueDark = rgb(45, 62, 79)
+gray = rgb(236, 240, 241)
+grayDark = rgb(189, 195, 199)
+green = rgb(47, 209, 175)
+greenDark = rgb(35, 159, 133)
+yellow = rgb(240, 195, 48)
+yellowDark = rgb(241, 155, 44)
+
+sideWidth = 20px
+sideWidthExpanded = 40px
+
+bookHeight = 280px
+bookWidth = 180px
+
+sectionHeight = bookHeight + 2*20px
+
+sidebox(mainColor, sideColor, height=40px)
+  background mainColor
+  padding 20px 60px 20px 60px+sideWidth
+  position relative
+
+  h2, &::before
+    background sideColor
+    bottom 0
+    color transparent
+    content ''
+    font-size 1.8rem
+    height sideWidth
+    line-height sideWidth
+    position absolute
+    right 100%
+    text-align center
+    top 0
+    transition .5s
+    transform rotate(-90deg)
+    transform-origin top right
+    width height
+
+  &:hover h2
+    color rgba(255, 255, 255, 0.8)
+    height sideWidthExpanded
+    line-height sideWidthExpanded
+
+book()
+  background rgba(0,0,0,0.1)
+  height bookHeight
+  position relative
+  width bookWidth
+
+  img
+    display block
+    height bookHeight - 80px
+    left 20px
+    object-fit contain
+    position absolute
+    top 20px
+    width bookWidth - 40px
+
+  .description
+    background linear-gradient(to top, blue 0%, blue 40%, transparent 100%)
+    bottom 0
+    display flex
+    flex-flow column nowrap
+    height 160px
+    justify-content flex-end
+    padding 0 10px 10px
+    position absolute
+    width 100%
+
+    h3
+      font-size 1.6rem
+      margin-bottom 5px
+
+    p
+      font-size 1rem
+      margin 0
+      opacity 0.7
+
+*
+  box-sizing border-box
+
+a
+  color #3498db
+  text-decoration none
+
+h1, h2, h3
+  font-weight normal
+  margin 0
+
+html
+  font-size 62.5%
+
+body
+  background blue
+  color white
+  font-family Karla, sans-serif
+  font-size 1.4rem
+  margin 0
+  padding 0
+
+header
+  sidebox(blue, blueDark, 104px)
+  padding-bottom 40px
+  padding-top 40px
+
+  h1
+    font-size 2rem
+
+.collections
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+
+  section
+    height sectionHeight
+
+    ul
+      display flex
+      flex-flow row nowrap
+      justify-content flex-start
+      list-style none
+      margin 0
+      padding 0
+
+      li
+        book()
+        margin-right 20px
+
+        &:last-child
+          margin 0
+
+    &.stock
+      sidebox(gray, grayDark, sectionHeight)
+      flex-basis 100%
+
+    &.reading
+      sidebox(yellow, yellowDark, sectionHeight)
+      flex-grow 0
+
+    &.read
+      sidebox(green, greenDark, sectionHeight)
+      flex-grow 1
+
+footer
+  sidebox(blue, blueDark, 57px)
+  opacity 0.8

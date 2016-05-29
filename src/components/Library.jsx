@@ -1,6 +1,5 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import ActionBar from './ActionBar';
 import BookList from './BookList';
 
 export default React.createClass({
@@ -12,14 +11,13 @@ export default React.createClass({
   render: function() {
     const books = this.props.library.books;
     const stock = books.filter(book => book.state === 'stock');
+    const reading = books.filter(book => book.state === 'reading');
     const read = books.filter(book => book.state === 'read');
 
-    return <div>
-      <ActionBar/>
-      <h1>Stock</h1>
-      <BookList books={stock} />
-      <h1>Read</h1>
-      <BookList books={read} />
+    return <div className="collections">
+      <BookList type="stock" books={stock} />
+      <BookList type="reading" books={reading} />
+      <BookList type="read" books={read} />
     </div>;
   }
 });

@@ -1,0 +1,61 @@
+.cssload-container
+  margin 0 auto
+  max-width 391px
+
+  *
+    box-sizing border-box
+
+  ul li
+    list-style none
+
+.cssload-flex-container
+  display flex
+  flex-direction row
+  flex-wrap wrap
+  justify-content space-around
+
+  li
+    padding 7px
+    height 70px
+    width 70px
+    margin 21px 14px
+    position relative
+    text-align center
+
+.cssload-loading
+  &, &::after, &::before
+    display inline-block
+    position relative
+    width 6px
+    height 70px
+    background rgba(0,0,0,0.6)
+    margin-top 35%
+    border-radius 700px
+    animation cssload-upDown2 1.3s ease infinite
+    animation-direction alternate
+    animation-delay 0.33s
+
+  &::after, &::before
+    position absolute
+    content ''
+    animation cssload-upDown 1.3s ease infinite
+    animation-direction alternate
+
+  &::before
+    left -14px
+
+  &::after
+    left 14px
+    animation-delay 0.65s
+
+@keyframes cssload-upDown
+  from
+    transform translateY(14px)
+  to
+    transform translateY(-14px)
+
+@keyframes cssload-upDown2
+  from
+    transform translateY(21px)
+  to
+    transform translateY(-14px)

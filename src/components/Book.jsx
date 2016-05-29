@@ -1,6 +1,8 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import $ from 'jquery';
+import Loader from './loader';
+import get from 'lodash/get';
 
 export default React.createClass({
   displayName: 'Book',
@@ -10,29 +12,49 @@ export default React.createClass({
   },
   fetchBookData: function(book) {
     // An ISBN is either 10 or 13 chars long
-    if (book.ISBN.length != 10 && book.ISBN.length != 13) return;
+    if (book.ISBN.length != 10 && book.ISBN.length != 13)
+      return this.setState({
+        loaded: true
+      });
 
     $.ajax({
       url: 'https://www.googleapis.com/books/v1/volumes',
       data: { q: `isbn:${book.ISBN}` },
       success: (data) => {
-        if (data.totalItems === 0) return;
+        if (data.totalItems === 0) return this.setState({
+          loaded: true
+        });
 
         this.setState({
-          bookData: data.items[0].volumeInfo
+          loaded: true,
+          data: data.items[0].volumeInfo
+        });
+      },
+      error: () => {
+        this.setState({
+          loaded: true
         });
       }
     });
+  },
+  getImage: function() {
+    if (!this.state || !this.state.loaded) return <Loader />;
+
+    const url = get(this.state.data, 'imageLinks.thumbnail', '');
+    return <img src={url} alt={this.props.book.title}/>;
   },
   componentDidMount: function () {
     this.fetchBookData(this.props.book);
   },
   render: function() {
     const book = this.props.book;
-    const authors = this.state ? this.state.bookData.authors.join(', ') : '';
 
-    return <li className="list-group-item">
-      <strong>{book.title}</strong> ({authors}) <em>{book.startDate} - {book.endDate}</em>
+    return <li>
+      {this.getImage()}
+      <div className="description">
+        <h3>{book.title}</h3>
+        <p>From {book.startDate} to {book.endDate}</p>
+      </div>
     </li>;
   }
 });
