@@ -7,7 +7,7 @@ export default React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
     return <header>
-      <h1>Library</h1>
+      <h1>Chapter</h1>
       <ActionBar />
     </header>
   }

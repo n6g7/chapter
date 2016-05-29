@@ -6,7 +6,7 @@ export default React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
     return <footer>
-      Built with ♥ on <a href="https://github.com/n6g7/library" target="blank">GitHub</a>.
+      Built with ♥ on <a href="https://github.com/n6g7/chapter" target="blank">GitHub</a>.
     </footer>
   }
 });
