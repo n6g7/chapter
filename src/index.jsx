@@ -12,7 +12,7 @@ import Library from './containers/Library';
 import NewBook from './containers/NewBook';
 import reducer from './reducer';
 
-import './assets/styl.styl';
+import './assets/styl/chapter.styl';
 
 const createPersistentStore = compose(
   persistState('', {

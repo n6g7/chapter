@@ -23,48 +23,29 @@ export default React.createClass({
     const book = this.props.book;
     const label = this.props.label || 'Submit';
 
-    return <form className="form-horizontal" onSubmit={this.handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="title" className="col-sm-2 control-label">Title</label>
-        <div className="col-sm-10">
-          <input type="text" id="title" className="form-control" value={book.title}/>
-        </div>
+    return <form onSubmit={this.handleSubmit}>
+      <div className="item">
+        <label htmlFor="title">Title</label>
+        <input type="text" id="title" value={book.title}/>
       </div>
-      <div className="form-group">
-        <label htmlFor="isbn" className="col-sm-2 control-label">ISBN</label>
-        <div className="col-sm-10">
-          <input type="text" id="isbn" className="form-control" value={book.ISBN}/>
-        </div>
+      <div className="item">
+        <label htmlFor="isbn">ISBN</label>
+        <input type="text" id="isbn" value={book.ISBN}/>
       </div>
-      <div className="form-group">
-        <label htmlFor="state" className="col-sm-2 control-label">State</label>
-        <div className="col-sm-10">
-          <select id="state" className="form-control" value={book.state}>
-            <option value="stock">Stock</option>
-            <option value="reading">Reading</option>
-            <option value="read">Read</option>
-          </select>
-        </div>
+      <div className="item">
+        <label htmlFor="state">State</label>
+        <select id="state" value={book.state}>
+          <option value="stock">Stock</option>
+          <option value="reading">Reading</option>
+          <option value="read">Read</option>
+        </select>
       </div>
-      <div className="form-group">
-        <label htmlFor="startDate" className="col-sm-2 control-label">Start date</label>
-        <div className="col-sm-4">
-          <input type="date" id="startDate" className="form-control" value={book.startDate}/>
-        </div>
-        <label htmlFor="endDate" className="col-sm-2 control-label">End date</label>
-        <div className="col-sm-4">
-          <input type="date" id="endDate" className="form-control" value={book.endDate}/>
-        </div>
-      </div>
-      <div className="form-group">
-        <div className="col-sm-offset-2 col-sm-10">
-          <button
-            type="submit"
-            className="btn btn-primary"
-          >
-            {label}
-          </button>
-        </div>
+      <div className="item">
+        <label htmlFor="startDate">Start date</label>
+        <input type="date" id="startDate" value={book.startDate}/>
+
+        <label htmlFor="endDate">End date</label>
+        <input type="date" id="endDate" value={book.endDate}/>
       </div>
     </form>;
   }

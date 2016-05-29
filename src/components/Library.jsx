@@ -2,6 +2,8 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import BookList from './BookList';
 
+import '../assets/styl/library.styl'
+
 export default React.createClass({
   displayName: 'Library',
   mixins: [PureRenderMixin],
