@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 import {Map} from 'immutable';
 import BookList from './BookList';
 import Header from './Header';
@@ -27,7 +27,7 @@ export default React.createClass({
       </Header>
       <div className="collections">
         <BookList type="stock" books={stock} />
-        <BookList type="reading" books={reading} />
+        <BookList type="reading" books={reading} hideWhenEmpty={true} />
         <BookList type="read" books={read} />
       </div>
     </div>;
