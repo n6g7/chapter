@@ -4,6 +4,8 @@ import $ from 'jquery';
 import Loader from './loader';
 import get from 'lodash/get';
 
+import '../assets/styl/book.styl';
+
 export default React.createClass({
   displayName: 'Book',
   mixins: [PureRenderMixin],
@@ -49,12 +51,12 @@ export default React.createClass({
   render: function() {
     const book = this.props.book;
 
-    return <li>
+    return <div className="book">
       {this.getImage()}
       <div className="description">
         <h3>{book.title}</h3>
         <p>From {book.startDate} to {book.endDate}</p>
       </div>
-    </li>;
+    </div>;
   }
 });

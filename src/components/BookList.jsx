@@ -16,7 +16,9 @@ export default React.createClass({
     return <section className={this.props.type}>
       <h2>{sectionName}</h2>
       <ul>
-        {this.props.books.map(book => <Book book={book} />)}
+        {this.props.books.map(book =>
+          <li><Book book={book} /></li>
+        )}
       </ul>
     </section>;
   }
