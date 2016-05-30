@@ -12,6 +12,13 @@ h1, h2, h3
   font-weight normal
   margin 0
 
+button
+  background cyan
+  border none
+  color white
+  font-size 1.4rem
+  height buttonHeight
+
 html
   font-size 62.5%
 
@@ -24,18 +31,37 @@ body
   padding 0
 
 header
-  sidebox(blue, blueDark, 104px)
+  sidebox(blue, blueDark, headerHeight)
+  height headerHeight
   padding-bottom 40px
   padding-top 40px
 
   h1
     display inline-block
+    font-size 2.2rem
+    height headerHeight - 80px
+    line-height headerHeight - 80px
+
+  p
+    margin 0
+    opacity 0.6
+    position absolute
+    top 25px
+
+  .back
+    color rgba(255, 255, 255, 0.7)
     font-size 2rem
+    left 0
+    position absolute
+    top ((headerHeight - buttonHeight) / 2)
+    width buttonHeight
 
   nav
     display flex
     flex-flow row nowrap
-    float right
+    position absolute
+    right 60px
+    top ((headerHeight - buttonHeight) / 2)
 
 footer
   sidebox(blue, blueDark, 57px)

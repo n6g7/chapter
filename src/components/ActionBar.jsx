@@ -7,7 +7,9 @@ export default React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
     return <nav>
-      <Link to="/new">New book</Link>
+      <Link to="/new">
+        <button>New book</button>
+      </Link>
     </nav>
   }
 });
