@@ -10,7 +10,8 @@ export default React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     title: React.PropTypes.string,
-    backButton: React.PropTypes.bool
+    backButton: React.PropTypes.bool,
+    children: React.PropTypes.object
   },
   goBack: function() {
     hashHistory.goBack();

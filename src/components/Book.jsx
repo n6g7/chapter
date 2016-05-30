@@ -14,7 +14,7 @@ export default React.createClass({
   },
   fetchBookData: function(book) {
     // An ISBN is either 10 or 13 chars long
-    if (book.ISBN.length != 10 && book.ISBN.length != 13)
+    if (!book.ISBN || (book.ISBN.length != 10 && book.ISBN.length != 13))
       return this.setState({
         loaded: true
       });
@@ -47,6 +47,9 @@ export default React.createClass({
   },
   componentDidMount: function () {
     this.fetchBookData(this.props.book);
+  },
+  componentWillReceiveProps: function (props) {
+    this.fetchBookData(props.book);
   },
   render: function() {
     const book = this.props.book;

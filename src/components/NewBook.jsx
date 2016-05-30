@@ -1,8 +1,10 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
-import {Link} from 'react-router'
 import BookForm from './BookForm';
+import Header from './Header';
+
+import '../assets/styl/form.styl';
 
 export default React.createClass({
   displayName: 'NewBook',
@@ -13,16 +15,25 @@ export default React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
+  update: function(book) {
+    this.setState(book);
+  },
+  save: function(book) {
+    this.props.addBook(book);
+    this.context.router.push('/');
+  },
   render: function() {
-    const book = Map();
-    const create = book => {
-      this.props.addBook(book);
-      this.context.router.push('/');
-    };
-
     return <div>
-      <BookForm book={book} label="Create" onSubmit={create}></BookForm>
-      <Link to="/" className="btn btn-info">Back</Link>
+      <Header title="Add a book" backButton={true}>
+        <button onClick={() => this.save(this.state)}>Save book</button>
+      </Header>
+      <section className="form">
+        <BookForm
+          book={Map()}
+          onSubmit={this.save}
+          onChange={this.update}
+        />
+      </section>
     </div>;
   }
 });
