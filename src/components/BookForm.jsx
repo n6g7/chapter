@@ -8,37 +8,32 @@ export default React.createClass({
   displayName: 'BookForm',
   mixins: [PureRenderMixin],
   propTypes: {
-    onSubmit: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    book: React.PropTypes.object
+    book: React.PropTypes.instanceOf(Map)
   },
   getInitialState: function() {
-    return this.props.book;
+    return { book: this.props.book };
   },
-  handleChange: function() {
-    this.setState({
-      title: document.getElementById('title').value,
-      ISBN: document.getElementById('isbn').value,
-      state: document.getElementById('state').value,
-      startDate: document.getElementById('startDate').value,
-      endDate: document.getElementById('endDate').value
-    });
+  handleChange: function(e) {
+    const book = this.state.book.merge(Map({
+      [e.target.id]: e.target.value
+    }));
+    this.setState({ book });
 
-    this.props.onChange(this.state);
-  },
-  handleSubmit: function() {
-    this.props.onSubmit(Map(this.state));
+    this.props.onChange(this.state.book);
   },
   render: function() {
+    const book = this.state.book;
+
     return <div className="bookForm">
-      <Book book={this.state}/>
-      <form onSubmit={this.handleSubmit}>
+      <Book book={book}/>
+      <form>
         <div className="item half">
           <label htmlFor="isbn">ISBN</label>
           <input
             type="text"
-            id="isbn"
-            value={this.state.ISBN}
+            id="ISBN"
+            value={book.get('ISBN')}
             placeholder="000-0-000-00000-0"
             onChange={this.handleChange}
           />
@@ -47,7 +42,7 @@ export default React.createClass({
           <label htmlFor="state">Status</label>
           <select
             id="state"
-            value={this.state.state}
+            value={book.get('state')}
             onChange={this.handleChange}
           >
             <option value="stock">Stock</option>
@@ -60,7 +55,7 @@ export default React.createClass({
           <input
             type="text"
             id="title"
-            value={this.state.title}
+            value={book.get('title')}
             onChange={this.handleChange}
           />
         </div>
@@ -69,7 +64,7 @@ export default React.createClass({
           <input
             type="date"
             id="startDate"
-            value={this.state.startDate}
+            value={book.get('startDate')}
             placeholder="YYYY-MM-DD"
             onChange={this.handleChange}
           />
@@ -79,7 +74,7 @@ export default React.createClass({
           <input
             type="date"
             id="endDate"
-            value={this.state.endDate}
+            value={book.get('endDate')}
             placeholder="YYYY-MM-DD"
             onChange={this.handleChange}
           />

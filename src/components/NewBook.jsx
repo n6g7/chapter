@@ -16,7 +16,7 @@ export default React.createClass({
     router: React.PropTypes.object
   },
   update: function(book) {
-    this.setState(book);
+    this.setState({ book });
   },
   save: function(book) {
     this.props.addBook(book);
@@ -25,7 +25,7 @@ export default React.createClass({
   render: function() {
     return <div>
       <Header title="Add a book" backButton={true}>
-        <button onClick={() => this.save(this.state)}>Save book</button>
+        <button onClick={() => this.save(this.state.book)}>Save book</button>
       </Header>
       <section className="form">
         <BookForm

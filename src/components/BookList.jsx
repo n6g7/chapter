@@ -1,13 +1,14 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import capitalize from 'lodash/capitalize';
+import {List} from 'immutable';
 import Book from './Book';
 
 export default React.createClass({
   displayName: 'BookList',
   mixins: [PureRenderMixin],
   propTypes: {
-    books: React.PropTypes.array,
+    books: React.PropTypes.instanceOf(List),
     type: React.PropTypes.string
   },
   render: function() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Map} from 'immutable';
 import $ from 'jquery';
 import Loader from './loader';
 import get from 'lodash/get';
@@ -10,18 +11,18 @@ export default React.createClass({
   displayName: 'Book',
   mixins: [PureRenderMixin],
   propTypes: {
-    book: React.PropTypes.object
+    book: React.PropTypes.instanceOf(Map)
   },
   fetchBookData: function(book) {
     // An ISBN is either 10 or 13 chars long
-    if (!book.ISBN || (book.ISBN.length != 10 && book.ISBN.length != 13))
+    if (!book.has('ISBN') || (book.get('ISBN').length != 10 && book.get('ISBN').length != 13))
       return this.setState({
         loaded: true
       });
 
     $.ajax({
       url: 'https://www.googleapis.com/books/v1/volumes',
-      data: { q: `isbn:${book.ISBN}` },
+      data: { q: `isbn:${book.get('ISBN')}` },
       success: (data) => {
         if (data.totalItems === 0) return this.setState({
           loaded: true
@@ -43,7 +44,7 @@ export default React.createClass({
     if (!this.state || !this.state.loaded) return <Loader />;
 
     const url = get(this.state.data, 'imageLinks.thumbnail', '');
-    return <img src={url} alt={this.props.book.title}/>;
+    return <img src={url} alt={this.props.book.get('title')}/>;
   },
   componentDidMount: function () {
     this.fetchBookData(this.props.book);
@@ -57,8 +58,8 @@ export default React.createClass({
     return <div className="book">
       {this.getImage()}
       <div className="description">
-        <h3>{book.title}</h3>
-        <p>From {book.startDate} to {book.endDate}</p>
+        <h3>{book.get('title')}</h3>
+        <p>From {book.get('startDate')} to {book.get('endDate')}</p>
       </div>
     </div>;
   }

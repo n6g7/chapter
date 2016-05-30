@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router'
+import {Map} from 'immutable';
 import BookList from './BookList';
 import Header from './Header';
 
@@ -10,13 +11,13 @@ export default React.createClass({
   displayName: 'Library',
   mixins: [PureRenderMixin],
   propTypes: {
-    library: React.PropTypes.object
+    library: React.PropTypes.instanceOf(Map)
   },
   render: function() {
-    const books = this.props.library.books;
-    const stock = books.filter(book => book.state === 'stock');
-    const reading = books.filter(book => book.state === 'reading');
-    const read = books.filter(book => book.state === 'read');
+    const books = this.props.library.get('books');
+    const stock = books.filter(book => book.get('state') === 'stock');
+    const reading = books.filter(book => book.get('state') === 'reading');
+    const read = books.filter(book => book.get('state') === 'read');
 
     return <div>
       <Header>
