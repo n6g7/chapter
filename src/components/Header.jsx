@@ -27,7 +27,9 @@ export default React.createClass({
         <p>{DEFAULT_TITLE}</p> : ''
       }
       <h1>{title}</h1>
-      <ActionBar />
+      <ActionBar>
+        {this.props.children}
+      </ActionBar>
     </header>
   }
 });

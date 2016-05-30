@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router'
 import BookList from './BookList';
 import Header from './Header';
 
@@ -18,7 +19,11 @@ export default React.createClass({
     const read = books.filter(book => book.state === 'read');
 
     return <div>
-      <Header/>
+      <Header>
+        <Link to="/new">
+          <button>New book</button>
+        </Link>
+      </Header>
       <div className="collections">
         <BookList type="stock" books={stock} />
         <BookList type="reading" books={reading} />
