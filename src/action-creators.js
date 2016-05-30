@@ -11,3 +11,10 @@ export function addBook(book) {
     book
   };
 }
+
+export function updateBook(book) {
+  return {
+    type: 'UPDATE_BOOK',
+    book
+  }
+}

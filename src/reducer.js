@@ -1,4 +1,4 @@
-import {INITIAL_STATE, setState, addBook} from './core';
+import {INITIAL_STATE, setState, addBook, updateBook} from './core';
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
@@ -6,6 +6,8 @@ export default function(state = INITIAL_STATE, action) {
       return setState(state, action.state);
     case 'ADD_BOOK':
       return addBook(state, action.book);
+    case 'UPDATE_BOOK':
+      return updateBook(state, action.book);
   }
 
   return state;
