@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import BookList from './BookList';
+import Header from './Header';
 
 import '../assets/styl/library.styl'
 
@@ -16,10 +17,13 @@ export default React.createClass({
     const reading = books.filter(book => book.state === 'reading');
     const read = books.filter(book => book.state === 'read');
 
-    return <div className="collections">
-      <BookList type="stock" books={stock} />
-      <BookList type="reading" books={reading} />
-      <BookList type="read" books={read} />
+    return <div>
+      <Header/>
+      <div className="collections">
+        <BookList type="stock" books={stock} />
+        <BookList type="reading" books={reading} />
+        <BookList type="read" books={read} />
+      </div>
     </div>;
   }
 });
