@@ -1,51 +1,35 @@
-.cssload-container
-  margin 0 auto
-  max-width 391px
-
-  *
-    box-sizing border-box
-
-  ul li
-    list-style none
-
-.cssload-flex-container
+.loader
+  align-items center
   display flex
-  flex-direction row
-  flex-wrap wrap
-  justify-content space-around
+  flex-flow row nowrap
+  height 100%
+  justify-content center
+  margin 0
+  padding 0
 
-  li
-    padding 7px
-    height 70px
-    width 70px
-    margin 21px 14px
-    position relative
-    text-align center
+  span
+    &, &::after, &::before
+      animation cssload-upDown2 1.3s ease infinite
+      animation-delay 0.33s
+      animation-direction alternate
+      background rgba(0,0,0,0.2)
+      height 70px
+      margin-bottom 60px
+      position relative
+      width 6px
 
-.cssload-loading
-  &, &::after, &::before
-    display inline-block
-    position relative
-    width 6px
-    height 70px
-    background rgba(0,0,0,0.2)
-    margin-top 35%
-    animation cssload-upDown2 1.3s ease infinite
-    animation-direction alternate
-    animation-delay 0.33s
+    &::after, &::before
+      animation cssload-upDown 1.3s ease infinite
+      animation-direction alternate
+      content ''
+      position absolute
 
-  &::after, &::before
-    position absolute
-    content ''
-    animation cssload-upDown 1.3s ease infinite
-    animation-direction alternate
+    &::before
+      left -14px
 
-  &::before
-    left -14px
-
-  &::after
-    left 14px
-    animation-delay 0.65s
+    &::after
+      animation-delay 0.65s
+      left 14px
 
 @keyframes cssload-upDown
   from
