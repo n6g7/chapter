@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ActionBar from './ActionBar';
+import Button from './Button';
 
 const DEFAULT_TITLE = 'Chapter';
 
@@ -24,7 +25,7 @@ export default React.createClass({
 
     return <header>
       { this.props.backButton ?
-        <button className="back" onClick={this.goBack}>&lt;</button> : ''
+        <Button click={this.goBack} label="&lt;" className="back" /> : ''
       }
       { addPreTitle ?
         <p>{DEFAULT_TITLE}</p> : ''

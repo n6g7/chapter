@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router';
 import {Map} from 'immutable';
 import BookList from './BookList';
+import Button from './Button';
 import Header from './Header';
 
 import '../assets/styl/library.styl'
@@ -21,9 +22,7 @@ export default React.createClass({
 
     return <div>
       <Header>
-        <Link to="/new">
-          <button>New book</button>
-        </Link>
+        <Button label="New book" icon="+" link="/new" />
       </Header>
       <div className="collections">
         <BookList type="stock" books={stock} />

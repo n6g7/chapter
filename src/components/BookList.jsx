@@ -2,7 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import capitalize from 'lodash/capitalize';
 import {List} from 'immutable';
-import {Link} from 'react-router';
+import Button from './Button';
 import Book from './Book';
 
 export default React.createClass({
@@ -27,7 +27,7 @@ export default React.createClass({
     return <section className={this.props.type}>
       <h2>{sectionName}</h2>
       {this.props.books.isEmpty() ?
-        <p className="announce">Whoops, nothing here yet. Do you want to <Link to="/new"><button>Add a book</button></Link>?</p> :
+        <p className="announce">Whoops, nothing here yet. Do you want to <Button label="Add a book" link="/new" /> ?</p> :
         <ul>
           {this.props.books.map(book =>
             <li onClick={() => this.goTo(book)}>

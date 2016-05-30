@@ -2,6 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 import BookForm from './BookForm';
+import Button from './Button';
 import Header from './Header';
 
 import '../assets/styl/form.styl';
@@ -32,7 +33,7 @@ export default React.createClass({
 
     return <div>
       <Header title={title} backButton={true}>
-        <button onClick={() => this.save(this.state.book)}>Save book</button>
+        <Button click={() => this.save(this.state.book)} label="Save book" />
       </Header>
       <section className="form">
         <BookForm

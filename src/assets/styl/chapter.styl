@@ -12,12 +12,38 @@ h1, h2, h3
   font-weight normal
   margin 0
 
-button
+.button
   background cyan
   border none
   color white
+  cursor default
+  display inline-block
+  line-height buttonHeight
   font-size 1.4rem
+  padding 0 6px
+  position relative
   height buttonHeight
+  text-align center
+
+  .icon
+    background cyanDark
+    flex-shrink 0
+    font-size 2.2rem
+    height buttonHeight
+    line-height buttonHeight
+    margin 0
+    position absolute
+    top 0
+    left 0
+    text-align center
+    transition 0.5s
+    width 100%
+
+    & + span
+      padding-left buttonHeight
+
+  &:hover .icon
+    width buttonHeight
 
 input, select
   background cyanDark
@@ -70,6 +96,9 @@ header
     position absolute
     right 60px
     top ((headerHeight - buttonHeight) / 2)
+
+    & > *
+      margin-left 10px
 
 footer
   sidebox(blue, blueDark, 57px)
