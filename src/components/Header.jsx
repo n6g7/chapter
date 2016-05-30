@@ -1,6 +1,5 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {hashHistory} from 'react-router';
 import ActionBar from './ActionBar';
 
 const DEFAULT_TITLE = 'Chapter';
@@ -13,8 +12,11 @@ export default React.createClass({
     backButton: React.PropTypes.bool,
     children: React.PropTypes.object
   },
+  contextTypes: {
+    router: React.PropTypes.object
+  },
   goBack: function() {
-    hashHistory.goBack();
+    this.context.router.goBack();
   },
   render: function() {
     const title = this.props.title || DEFAULT_TITLE;

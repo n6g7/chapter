@@ -11,6 +11,12 @@ export default React.createClass({
     books: React.PropTypes.instanceOf(List),
     type: React.PropTypes.string
   },
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+  goTo: function(book) {
+    this.context.router.push(`/edit/${book.get('uuid')}`);
+  },
   render: function() {
     const sectionName = capitalize(this.props.type);
 
@@ -18,7 +24,9 @@ export default React.createClass({
       <h2>{sectionName}</h2>
       <ul>
         {this.props.books.map(book =>
-          <li><Book book={book} /></li>
+          <li onClick={() => this.goTo(book)}>
+            <Book book={book} />
+          </li>
         )}
       </ul>
     </section>;

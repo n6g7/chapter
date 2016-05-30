@@ -10,6 +10,7 @@ import {INITIAL_STATE} from './core';
 import App from './containers/App';
 import Library from './containers/Library';
 import NewBook from './containers/NewBook';
+import EditBook from './containers/EditBook';
 import reducer from './reducer';
 
 import './assets/styl/chapter.styl';
@@ -32,6 +33,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Library} />
         <Route path="new" component={NewBook} />
+        <Route path="edit/:uuid" component={EditBook} />
       </Route>
     </Router>
   </Provider>,

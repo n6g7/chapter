@@ -14,7 +14,7 @@ npm i
 
 ## Todo
 
- - [ ] Update book
+ - [X] Update book
  - [ ] Delete book
  - [X] Beautiful design
  - [ ] Import/export feature

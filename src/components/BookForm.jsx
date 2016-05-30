@@ -20,7 +20,7 @@ export default React.createClass({
     }));
     this.setState({ book });
 
-    this.props.onChange(this.state.book);
+    this.props.onChange(book);
   },
   render: function() {
     const book = this.state.book;
