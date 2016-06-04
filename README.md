@@ -1,5 +1,7 @@
 # Chapter [![CircleCI](https://circleci.com/gh/n6g7/chapter/tree/master.svg?style=svg)](https://circleci.com/gh/n6g7/chapter/tree/master) [![bitHound Overall Score](https://www.bithound.io/github/n6g7/chapter/badges/score.svg)](https://www.bithound.io/github/n6g7/chapter)
 
+![Chapter screenshot](./screenshot.png)
+
 ## Install
 
 ```sh
@@ -14,8 +16,11 @@ npm i
 
 ## Todo
 
- - [X] Update book
- - [ ] Delete book
  - [X] Beautiful design
+ - [X] Update book
+ - [X] Delete book
+ - [ ] Sort books by read date
+ - [ ] Drag & Drop books
  - [ ] Import/export feature
  - [ ] Detect cover colour palette
+ - [ ] Books timeline
