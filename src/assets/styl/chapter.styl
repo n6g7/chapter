@@ -24,6 +24,13 @@ h1, h2, h3
   position relative
   height buttonHeight
   text-align center
+  transition 0.1s
+
+  &.red
+    background red
+
+    .icon
+      background redDark
 
   .icon
     background cyanDark
@@ -41,6 +48,9 @@ h1, h2, h3
 
     & + span
       padding-left buttonHeight
+
+  &:active
+    transform translate(0, 2px)
 
   &:hover .icon
     width buttonHeight
@@ -89,6 +99,9 @@ header
     position absolute
     top ((headerHeight - buttonHeight) / 2)
     width buttonHeight
+
+    &:active
+      transform translate(-2px, 0)
 
   nav
     display flex
