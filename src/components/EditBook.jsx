@@ -12,7 +12,8 @@ export default React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     updateBook: React.PropTypes.func,
-    book: React.PropTypes.instanceOf(Map)
+    book: React.PropTypes.instanceOf(Map),
+    removeBook: React.PropTypes.func
   },
   contextTypes: {
     router: React.PropTypes.object
@@ -27,12 +28,19 @@ export default React.createClass({
     this.props.updateBook(book);
     this.context.router.push('/');
   },
+  remove: function(book) {
+    if (confirm('Are you sure ?')) {
+      this.props.removeBook(book);
+      this.context.router.push('/');
+    }
+  },
   render: function() {
     const book = this.state.book;
     const title = `Update « ${book.get('title')} »`
 
     return <div>
       <Header title={title} backButton={true}>
+        <Button click={() => this.remove(this.state.book)} label="Delete book" className="red" />
         <Button click={() => this.save(this.state.book)} label="Save book" />
       </Header>
       <section className="form">
