@@ -1,7 +1,7 @@
 import {Map, fromJS} from 'immutable';
 import {expect} from 'chai';
 
-import {addBook, updateBook} from '../src/core';
+import {addBook, updateBook, removeBook} from '../src/core';
 
 describe('Core logic', () => {
   describe('addBook', () => {
@@ -158,6 +158,69 @@ describe('Core logic', () => {
       expect(nextBook).to.have.property('endDate', 'later');
       expect(nextBook).to.have.property('state', 'reading');
       expect(nextBook).to.have.property('uuid', 'def');
+    });
+  });
+
+  describe('removeBook', () => {
+    it('removes a book from a single-book collection', () => {
+      const book = Map({
+        ISBN: 'abc',
+        title: 'def',
+        uuid: 123
+      });
+      const state = fromJS({
+        library: {
+          books: [ book ]
+        }
+      });
+      const nextState = removeBook(state, book);
+
+      const nextBooks = nextState.getIn(['library', 'books']);
+      expect(nextBooks.count()).to.equal(0);
+    });
+
+    it('removes a book from a multi-books collection', () => {
+      const book = Map({
+        ISBN: 'abc',
+        title: 'def',
+        uuid: 123
+      });
+      const state = fromJS({
+        library: {
+          books: [
+            {
+              uuid: 789
+            },
+            book,
+            {
+              uuid: 456
+            }
+          ]
+        }
+      });
+      const nextState = removeBook(state, book);
+
+      const nextBooks = nextState.getIn(['library', 'books']);
+      expect(nextBooks.count()).to.equal(2);
+
+      expect(nextBooks.getIn(['0', 'uuid'])).to.equal(789);
+      expect(nextBooks.getIn(['1', 'uuid'])).to.equal(456);
+    });
+
+    it('doesn\'t chnage an empty collection', () => {
+      const book = Map({
+        ISBN: 'abc',
+        title: 'def',
+        uuid: 123
+      });
+      const state = fromJS({
+        library: {
+          books: []
+        }
+      });
+      const nextState = removeBook(state, book);
+
+      expect(nextState).to.equal(state);
     });
   });
 });

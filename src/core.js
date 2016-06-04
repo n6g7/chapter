@@ -34,3 +34,14 @@ export function updateBook(state, book) {
     }
   });
 }
+
+export function removeBook(state, book) {
+  const books = state.getIn(['library', 'books']);
+  const index = books.findKey(bk => bk === book);
+
+  return state.merge({
+    library: {
+      books: books.delete(index)
+    }
+  });
+}

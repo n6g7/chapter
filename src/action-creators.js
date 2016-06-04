@@ -18,3 +18,10 @@ export function updateBook(book) {
     book
   }
 }
+
+export function removeBook(book) {
+  return {
+    type: 'REMOVE_BOOK',
+    book
+  }
+}
