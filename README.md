@@ -19,8 +19,8 @@ npm i
  - [X] Beautiful design
  - [X] Update book
  - [X] Delete book
+ - [X] Detect cover colour palette
  - [ ] Sort books by read date
  - [ ] Drag & Drop books
  - [ ] Import/export feature
- - [ ] Detect cover colour palette
  - [ ] Books timeline

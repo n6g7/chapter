@@ -1,9 +1,9 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
-import $ from 'jquery';
 import Loader from './loader';
 import get from 'lodash/get';
+import {getBookData, getMainColour} from '../services/books';
 
 import '../assets/styl/book.styl';
 
@@ -14,29 +14,14 @@ export default React.createClass({
     book: React.PropTypes.instanceOf(Map)
   },
   fetchBookData: function(book) {
-    // An ISBN is either 10 or 13 chars long
-    if (!book.has('ISBN') || (book.get('ISBN').length != 10 && book.get('ISBN').length != 13))
-      return this.setState({
-        loaded: true
-      });
+    getBookData(book)
+    .then((data) => {
+      this.setState({ loaded: true, data});
 
-    $.ajax({
-      url: 'https://www.googleapis.com/books/v1/volumes',
-      data: { q: `isbn:${book.get('ISBN')}` },
-      success: (data) => {
-        if (data.totalItems === 0) return this.setState({
-          loaded: true
-        });
-
-        this.setState({
-          loaded: true,
-          data: data.items[0].volumeInfo
-        });
-      },
-      error: () => {
-        this.setState({
-          loaded: true
-        });
+      let imageUrl = get(this.state.data, 'imageLinks.thumbnail');
+      if (imageUrl) {
+        getMainColour(imageUrl)
+        .then((colour) => this.setState({colour}));
       }
     });
   },
@@ -54,8 +39,9 @@ export default React.createClass({
   },
   render: function() {
     const book = this.props.book;
+    const colour = get(this.state, 'colour')
 
-    return <div className="book">
+    return <div className="book" style={{ backgroundColor: colour}}>
       {this.getImage()}
       <div className="description">
         <h3>{book.get('title')}</h3>
