@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {List} from 'immutable';
-import Cover from '../book/Cover';
+import Cover from '../book/DraggableCover';
 
 export default React.createClass({
   displayName: 'BookList',

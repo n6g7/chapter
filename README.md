@@ -20,7 +20,7 @@ npm i
  - [X] Update book
  - [X] Delete book
  - [X] Detect cover colour palette
+ - [X] Drag & Drop books
  - [ ] Sort books by read date
- - [ ] Drag & Drop books
  - [ ] Import/export feature
  - [ ] Books timeline

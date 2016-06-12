@@ -1,6 +1,6 @@
 {
   "name": "chapter",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Digital library for physical books",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,8 @@
     "lodash": "^4.13.1",
     "react": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",

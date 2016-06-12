@@ -1,17 +1,20 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import BookShelf from './library/BookShelf';
 import Button from './common/Button';
 import Header from './common/Header';
 
 import '../assets/styl/library.styl'
 
-export default React.createClass({
+const Library = React.createClass({
   displayName: 'Library',
   mixins: [PureRenderMixin],
   propTypes: {
-    library: React.PropTypes.instanceOf(Map)
+    library: React.PropTypes.instanceOf(Map),
+    updateBook: React.PropTypes.func
   },
   render: function() {
     const books = this.props.library.get('books');
@@ -24,10 +27,12 @@ export default React.createClass({
         <Button label="New book" icon="+" link="/new" />
       </Header>
       <div className="collections">
-        <BookShelf type="stock" books={stock} />
-        <BookShelf type="reading" books={reading} hideWhenEmpty={true} />
-        <BookShelf type="read" books={read} />
+        <BookShelf type="stock" books={stock} updateBook={this.props.updateBook} />
+        <BookShelf type="reading" books={reading} hideWhenEmpty={true} updateBook={this.props.updateBook} />
+        <BookShelf type="read" books={read} updateBook={this.props.updateBook} />
       </div>
     </div>;
   }
 });
+
+export default DragDropContext(HTML5Backend)(Library);
