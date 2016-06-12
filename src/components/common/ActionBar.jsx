@@ -5,7 +5,10 @@ export default React.createClass({
   displayName: 'ActionBar',
   mixins: [PureRenderMixin],
   propTypes: {
-    children: React.PropTypes.object
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.element,
+      React.PropTypes.arrayOf(React.PropTypes.element)
+    ])
   },
   render: function() {
     return <nav>

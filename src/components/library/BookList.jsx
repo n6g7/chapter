@@ -18,7 +18,7 @@ export default React.createClass({
   render: function() {
     return <ul>
       {this.props.books.map(book =>
-        <li onClick={() => this.goTo(book)}>
+        <li key={book.get('ISBN')} onClick={() => this.goTo(book)}>
           <Cover book={book} />
         </li>
       )}

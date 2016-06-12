@@ -11,7 +11,10 @@ export default React.createClass({
   propTypes: {
     title: React.PropTypes.string,
     backButton: React.PropTypes.bool,
-    children: React.PropTypes.object
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.element,
+      React.PropTypes.arrayOf(React.PropTypes.element)
+    ])
   },
   contextTypes: {
     router: React.PropTypes.object

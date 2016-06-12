@@ -14,13 +14,13 @@ export default React.createClass({
   },
   render: function() {
     const classes = ['button', this.props.className].join(' ');
-    const button = <div className={classes} onClick={this.props.click}>
+    const button = <span className={classes} onClick={this.props.click}>
       {this.props.icon ?
         <span className="icon">{this.props.icon}</span> :
         ''
       }
       <span>{this.props.label}</span>
-    </div>;
+    </span>;
 
     return this.props.link ?
       <Link to={this.props.link}>{button}</Link>:
