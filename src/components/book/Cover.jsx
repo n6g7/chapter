@@ -1,14 +1,14 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
-import Loader from './loader';
 import get from 'lodash/get';
-import {getBookData, getMainColour} from '../services/books';
+import Loader from '../common/Loader';
+import {getBookData, getMainColour} from '../../services/books';
 
-import '../assets/styl/book.styl';
+import '../../assets/styl/cover.styl';
 
 export default React.createClass({
-  displayName: 'Book',
+  displayName: 'Cover',
   mixins: [PureRenderMixin],
   propTypes: {
     book: React.PropTypes.instanceOf(Map)
@@ -41,7 +41,7 @@ export default React.createClass({
     const book = this.props.book;
     const colour = get(this.state, 'colour')
 
-    return <div className="book" style={{ backgroundColor: colour}}>
+    return <div className="cover" style={{ backgroundColor: colour}}>
       {this.getImage()}
       <div className="description">
         <h3>{book.get('title')}</h3>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import packageConfig from '../../package.json';
+import packageConfig from '../../../package.json';
 
 export default React.createClass({
   displayName: 'Footer',

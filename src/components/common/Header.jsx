@@ -24,11 +24,11 @@ export default React.createClass({
     const addPreTitle = title !== DEFAULT_TITLE;
 
     return <header>
-      { this.props.backButton ?
-        <Button click={this.goBack} label="&lt;" className="back" /> : ''
+      { this.props.backButton &&
+        <Button click={this.goBack} label="&lt;" className="back" />
       }
-      { addPreTitle ?
-        <p>{DEFAULT_TITLE}</p> : ''
+      { addPreTitle &&
+        <p>{DEFAULT_TITLE}</p>
       }
       <h1>{title}</h1>
       <ActionBar>

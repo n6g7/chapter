@@ -2,7 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 
-import Book from './Book';
+import Cover from '../book/Cover';
 
 export default React.createClass({
   displayName: 'BookForm',
@@ -26,7 +26,7 @@ export default React.createClass({
     const book = this.state.book;
 
     return <div className="bookForm">
-      <Book book={book}/>
+      <Cover book={book}/>
       <form>
         <div className="item half">
           <label htmlFor="isbn">ISBN</label>

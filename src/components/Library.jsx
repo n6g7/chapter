@@ -1,9 +1,9 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
-import BookList from './BookList';
-import Button from './Button';
-import Header from './Header';
+import BookShelf from './library/BookShelf';
+import Button from './common/Button';
+import Header from './common/Header';
 
 import '../assets/styl/library.styl'
 
@@ -24,9 +24,9 @@ export default React.createClass({
         <Button label="New book" icon="+" link="/new" />
       </Header>
       <div className="collections">
-        <BookList type="stock" books={stock} />
-        <BookList type="reading" books={reading} hideWhenEmpty={true} />
-        <BookList type="read" books={read} />
+        <BookShelf type="stock" books={stock} />
+        <BookShelf type="reading" books={reading} hideWhenEmpty={true} />
+        <BookShelf type="read" books={read} />
       </div>
     </div>;
   }
