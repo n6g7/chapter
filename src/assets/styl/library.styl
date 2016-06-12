@@ -49,6 +49,14 @@
     &.reading
       sidebox(yellow, yellowDark, sectionHeight)
       flex-basis auto
+      transition .5s
+
+      &.hide
+        min-width 0
+        padding 0
+
+      &.hover
+        min-width sectionHeight
 
     &.read
       sidebox(green, greenDark, sectionHeight)
