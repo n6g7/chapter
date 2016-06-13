@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
-const TINT_API = 'http://tint-api.herokuapp.com';
+const TINT_API = 'https://tint.gnab.fr';
 
 export function getBookData(book) {
   const isbn = book.get('ISBN');
