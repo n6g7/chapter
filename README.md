@@ -24,3 +24,4 @@ npm i
  - [ ] Sort books by read date
  - [ ] Import/export feature
  - [ ] Books timeline
+ - [ ] New state: wishlist
