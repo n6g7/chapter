@@ -24,7 +24,7 @@ h1, h2, h3
   position relative
   height buttonHeight
   text-align center
-  transition 0.1s
+  transition 0.2s
 
   &.red
     background red
@@ -33,18 +33,21 @@ h1, h2, h3
       background redDark
 
   &.back
-    color rgba(255, 255, 255, 0.7)
+    buttonTranslation = 10px
+
+    color alpha(#ffffff, 0.7)
     font-size 2rem
-    left 0
+    left - buttonTranslation
+    padding 0 0 0 buttonTranslation
     position absolute
     top ((headerHeight - buttonHeight) / 2)
-    width buttonHeight
+    width buttonHeight + buttonTranslation
 
     &:hover
-      transform translate(2px, 0)
+      transform translate(buttonTranslation, 0)
 
     &:active
-      transform translate(-2px, 0)
+      transform translate(-buttonTranslation, 0)
 
   .icon
     background cyanDark
@@ -57,7 +60,7 @@ h1, h2, h3
     top 0
     left 0
     text-align center
-    transition 0.5s
+    transition 0.3s
     width 100%
 
     & + span
@@ -72,7 +75,7 @@ h1, h2, h3
 input, select
   background cyanDark
   border none
-  color rgba(255, 255, 255, 0.5)
+  color alpha(#ffffff, 0.5)
   font-size 1.4rem
   height 40px
   padding 5px 10px
@@ -118,7 +121,7 @@ header
 
 footer
   sidebox(blue, blueDark, 71px)
-  opacity 0.8
+  color alpha(#ffffff, 0.8)
 
   .dim
-    opacity 0.6
+    color alpha(#ffffff, 0.5)
