@@ -4,6 +4,7 @@ import {Map} from 'immutable';
 import BookForm from './form/BookForm';
 import Button from './common/Button';
 import Header from './common/Header';
+import { newBook } from '../services/book';
 
 import '../assets/styl/form.styl';
 
@@ -30,7 +31,7 @@ export default React.createClass({
       </Header>
       <section className="form">
         <BookForm
-          book={Map()}
+          book={newBook}
           onSubmit={this.save}
           onChange={this.update}
         />

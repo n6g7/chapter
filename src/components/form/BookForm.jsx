@@ -24,7 +24,7 @@ export default React.createClass({
     this.props.onChange(book);
   },
   render: function() {
-    const book = this.state.book;
+    const { book } = this.state;
 
     return <div className="bookForm">
       <Cover book={book}/>
