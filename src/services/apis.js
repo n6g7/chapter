@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
-const TINT_API = 'https://tint.gnab.fr';
+const TINT_API = '//tint.gnab.fr';
 
 export function getBookData(book) {
   const isbn = book.get('ISBN');

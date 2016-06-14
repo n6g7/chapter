@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 import get from 'lodash/get';
 import Loader from '../common/Loader';
-import {getBookData, getMainColour} from '../../services/books';
+import {getBookData, getMainColour} from '../../services/apis';
 
 import '../../assets/styl/cover.styl';
 
