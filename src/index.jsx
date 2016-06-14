@@ -11,6 +11,7 @@ import App from './containers/App';
 import Library from './containers/Library';
 import NewBook from './containers/NewBook';
 import EditBook from './containers/EditBook';
+import ImportExport from './containers/ImportExport';
 import reducer from './reducer';
 
 import './assets/styl/chapter.styl';
@@ -34,6 +35,7 @@ ReactDOM.render(
         <IndexRoute component={Library} />
         <Route path="new" component={NewBook} />
         <Route path="edit/:uuid" component={EditBook} />
+        <Route path="io" component={ImportExport} />
       </Route>
     </Router>
   </Provider>,

@@ -21,7 +21,7 @@ npm i
  - [X] Delete book
  - [X] Detect cover colour palette
  - [X] Drag & Drop books
+ - [X] Import/export feature
  - [ ] Sort books by read date
- - [ ] Import/export feature
  - [ ] Books timeline
  - [ ] New state: wishlist

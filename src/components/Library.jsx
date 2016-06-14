@@ -26,6 +26,7 @@ const Library = React.createClass({
     return <div>
       <Header>
         <Button label="New book" icon="+" link="/new" />
+        <Button label="Export" icon="I/O" link="/io" />
       </Header>
       <div className="collections">
         <BookShelf type="stock" books={stock} updateBook={this.props.updateBook} />

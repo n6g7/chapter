@@ -1,6 +1,5 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Map} from 'immutable';
 import BookForm from './form/BookForm';
 import Button from './common/Button';
 import Header from './common/Header';

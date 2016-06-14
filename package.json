@@ -17,6 +17,7 @@
   "author": "Nathan G <n6g7@gnab.fr>",
   "license": "MIT",
   "dependencies": {
+    "copy-to-clipboard": "^3.0.2",
     "immutable": "^3.8.1",
     "jquery": "^3.0.0",
     "lodash": "^4.13.1",
