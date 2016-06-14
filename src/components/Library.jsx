@@ -6,6 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import BookShelf from './library/BookShelf';
 import Button from './common/Button';
 import Header from './common/Header';
+import states from '../config/bookStates';
 
 import '../assets/styl/library.styl'
 
@@ -18,9 +19,9 @@ const Library = React.createClass({
   },
   render: function() {
     const books = this.props.library.get('books');
-    const stock = books.filter(book => book.get('state') === 'stock');
-    const reading = books.filter(book => book.get('state') === 'reading');
-    const read = books.filter(book => book.get('state') === 'read');
+    const stock = books.filter(book => book.get('state') === states.stock);
+    const reading = books.filter(book => book.get('state') === states.reading);
+    const read = books.filter(book => book.get('state') === states.read);
 
     return <div>
       <Header>

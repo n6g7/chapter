@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 
 import Cover from '../book/Cover';
+import states from '../../config/bookStates';
 
 export default React.createClass({
   displayName: 'BookForm',
@@ -45,9 +46,9 @@ export default React.createClass({
             value={book.get('state')}
             onChange={this.handleChange}
           >
-            <option value="stock">Stock</option>
-            <option value="reading">Reading</option>
-            <option value="read">Read</option>
+            <option value={states.stock}>Stock</option>
+            <option value={states.reading}>Reading</option>
+            <option value={states.read}>Read</option>
           </select>
         </div>
         <div className="item full">
