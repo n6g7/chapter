@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import keys from '../config/keys.json';
 
 const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
 const TINT_API = '//tint.gnab.fr';
@@ -15,7 +16,8 @@ export function getBookData(book) {
     $.ajax({
       url: GOOGLE_API,
       data: {
-        q: `isbn:${isbn}`
+        q: `isbn:${isbn}`,
+        key: keys.google
       },
       success: (data) => {
         resolve(data.totalItems === 0 ? null : data.items[0].volumeInfo);
