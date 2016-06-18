@@ -159,6 +159,62 @@ describe('Core logic', () => {
       expect(nextBook).to.have.property('state', 'reading');
       expect(nextBook).to.have.property('uuid', 'def');
     });
+
+    it('updates a book\'s extra data', () => {
+      const state = fromJS({
+        library: {
+          books: [
+            {
+              ISBN: '123',
+              title: 'Je suis Pilgrim',
+              startDate: '2016',
+              endDate: '2016-04-17',
+              state: 'read',
+              uuid: 'abc'
+            },
+            {
+              ISBN: '456',
+              title: 'Je suis Pilgrim',
+              startDate: '2016',
+              endDate: '2016-04-17',
+              state: 'read',
+              uuid: 'def'
+            },
+            {
+              ISBN: '789',
+              title: 'Je suis Pilgrim',
+              startDate: '2016',
+              endDate: '2016-04-17',
+              state: 'read',
+              uuid: 'ghi'
+            }
+          ]
+        }
+      });
+      const nextState = updateBook(state, fromJS({
+        ISBN: '789',
+        title: 'Je suis Pilgrim',
+        startDate: '2016',
+        endDate: '2016-04-17',
+        state: 'read',
+        extra: {
+          coverUrl: 'http://books.google.co.uk/books/content?id=j6uuCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+          coverColour: '#98BBB5'
+        },
+        uuid: 'ghi'
+      }));
+
+      const nextBooks = nextState.getIn(['library', 'books']);
+      expect(nextBooks.count()).to.equal(3);
+
+      const nextBook = nextBooks.get(2);
+      expect(nextBook).to.have.property('uuid', 'ghi');
+      expect(nextBook).to.have.property('ISBN', '789');
+      expect(nextBook).to.have.property('extra');
+      const extra = nextBook.get('extra');
+      expect(extra).to.have.property('coverUrl', 'http://books.google.co.uk/books/content?id=j6uuCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api');
+      expect(extra).to.have.property('coverColour', '#98BBB5');
+    });
   });
 
   describe('removeBook', () => {

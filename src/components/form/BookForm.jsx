@@ -1,9 +1,11 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
+import get from 'lodash/get';
 
 import Cover from '../book/Cover';
 import states from '../../config/bookStates';
+import {getBookData, getMainColour} from '../../services/apis';
 
 export default React.createClass({
   displayName: 'BookForm',
@@ -13,21 +15,52 @@ export default React.createClass({
     book: React.PropTypes.instanceOf(Map)
   },
   getInitialState: function() {
-    return { book: this.props.book };
+    return {
+      loading: false
+    };
+  },
+  fetchBookData: function(book) {
+    this.setState({ loading: true });
+
+    return getBookData(book)
+    .then((data) => {
+      const coverUrl = get(data, 'imageLinks.thumbnail');
+
+      if (coverUrl) {
+        return getMainColour(coverUrl)
+        .then((colour) => {
+          this.setState({ loading: false });
+
+          return book.merge({
+            extra: {
+              coverUrl,
+              coverColour: colour
+            }
+          });
+        });
+      }
+      else {
+        this.setState({ loading: false });
+        return book;
+      }
+    });
   },
   handleChange: function(e) {
-    const book = this.state.book.merge(Map({
+    const book = this.props.book.merge(Map({
       [e.target.id]: e.target.value
     }));
-    this.setState({ book });
 
-    this.props.onChange(book);
+    if (e.target.id === 'ISBN') {
+      this.fetchBookData(book).then(this.props.onChange);
+    }
+    else this.props.onChange(book);
   },
   render: function() {
-    const { book } = this.state;
+    const { book } = this.props;
+    const { loading } = this.state;
 
     return <div className="bookForm">
-      <Cover book={book}/>
+      <Cover book={book} loading={loading} />
       <form>
         <div className="item half">
           <label htmlFor="isbn">ISBN</label>

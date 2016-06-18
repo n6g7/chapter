@@ -1,9 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
-import get from 'lodash/get';
 import Loader from '../common/Loader';
-import {getBookData, getMainColour} from '../../services/apis';
 
 import '../../assets/styl/cover.styl';
 
@@ -11,35 +9,18 @@ export default React.createClass({
   displayName: 'Cover',
   mixins: [PureRenderMixin],
   propTypes: {
-    book: React.PropTypes.instanceOf(Map)
-  },
-  fetchBookData: function(book) {
-    getBookData(book)
-    .then((data) => {
-      this.setState({ loaded: true, data});
-
-      let imageUrl = get(this.state.data, 'imageLinks.thumbnail');
-      if (imageUrl) {
-        getMainColour(imageUrl)
-        .then((colour) => this.setState({colour}));
-      }
-    });
+    book: React.PropTypes.instanceOf(Map).isRequired,
+    loading: React.PropTypes.bool
   },
   getImage: function() {
-    if (!this.state || !this.state.loaded) return <Loader />;
+    const { book, loading } = this.props;
+    const url = book.getIn(['extra', 'coverUrl']);
 
-    const url = get(this.state.data, 'imageLinks.thumbnail', '');
-    return <img src={url} alt={this.props.book.get('title')}/>;
-  },
-  componentDidMount: function () {
-    this.fetchBookData(this.props.book);
-  },
-  componentWillReceiveProps: function (props) {
-    this.fetchBookData(props.book);
+    return loading ? <Loader /> : <img src={url} alt={book.get('title')}/>;
   },
   render: function() {
-    const book = this.props.book;
-    const colour = get(this.state, 'colour')
+    const { book, loading } = this.props;
+    const colour = !loading ? book.getIn(['extra', 'coverColour']) : null;
 
     return <div className="cover" style={{ backgroundColor: colour}}>
       {this.getImage()}
