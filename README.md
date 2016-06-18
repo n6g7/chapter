@@ -23,10 +23,10 @@ npm i
  - [X] Drag & Drop books
  - [X] Import/export feature
  - [X] Save image url to save on Google API requests
+ - [X] Autoformat ISBN field (à la stripe credit card)
  - [ ] Sort books by read date
  - [ ] Books timeline
  - [ ] New state: wishlist
- - [ ] Autoformat ISBN field (à la stripe credit card)
  - [ ] Add a favicon
  - [ ] Autofill book data from ISBN
  - [ ] Default book image

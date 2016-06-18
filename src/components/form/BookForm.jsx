@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import Cover from '../book/Cover';
 import states from '../../config/bookStates';
 import {getBookData, getMainColour} from '../../services/apis';
+import ISBNInput from './ISBNInput';
 
 export default React.createClass({
   displayName: 'BookForm',
@@ -41,7 +42,7 @@ export default React.createClass({
       }
       else {
         this.setState({ loading: false });
-        return book;
+        return book.delete('extra');
       }
     });
   },
@@ -64,11 +65,9 @@ export default React.createClass({
       <form>
         <div className="item half">
           <label htmlFor="isbn">ISBN</label>
-          <input
-            type="text"
+          <ISBNInput
             id="ISBN"
             value={book.get('ISBN')}
-            placeholder="000-0-000-00000-0"
             onChange={this.handleChange}
           />
         </div>
