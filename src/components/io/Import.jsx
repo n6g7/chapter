@@ -1,6 +1,5 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { fromJS } from 'immutable';
 
 import Button from '../common/Button';
 
@@ -8,16 +7,15 @@ export default React.createClass({
   displayName: 'Import',
   mixins: [PureRenderMixin],
   propTypes: {
-    setState: React.PropTypes.func.isRequired
+    importState: React.PropTypes.func.isRequired
   },
   getInitialState: function() {
     return { jsonState: '' };
   },
   doImport: function() {
     const { jsonState } = this.state;
-    const newState = fromJS(JSON.parse(jsonState));
 
-    this.props.setState(newState);
+    this.props.importState(JSON.parse(jsonState));
   },
   handleChange: function(e) {
     const newValue = e.target.value;

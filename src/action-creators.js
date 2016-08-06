@@ -1,10 +1,3 @@
-export function setState(state) {
-  return {
-    type: 'SET_STATE',
-    state
-  };
-}
-
 export function addBook(book) {
   return {
     type: 'ADD_BOOK',
@@ -24,4 +17,11 @@ export function removeBook(book) {
     type: 'REMOVE_BOOK',
     book
   }
+}
+
+export function importState(importedState) {
+  return {
+    type: 'IMPORT_STATE',
+    importedState
+  };
 }

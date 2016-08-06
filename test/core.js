@@ -1,7 +1,7 @@
 import {Map, fromJS} from 'immutable';
 import {expect} from 'chai';
 
-import {addBook, updateBook, removeBook} from '../src/core';
+import {addBook, updateBook, removeBook, importState} from '../src/core';
 
 describe('Core logic', () => {
   describe('addBook', () => {
@@ -277,6 +277,87 @@ describe('Core logic', () => {
       const nextState = removeBook(state, book);
 
       expect(nextState).to.equal(state);
+    });
+  });
+
+  describe('importState', () => {
+    it('imports books into the state', () => {
+      const state = fromJS({
+        library: {
+          books: [
+            {
+              isbn: 123
+            }
+          ]
+        }
+      });
+      const importedState = {
+        library: {
+          books: [
+            {
+              isbn: 456
+            }
+          ]
+        }
+      };
+
+      const nextState = importState(state, importedState);
+
+      const nextBooks = nextState.getIn(['library', 'books']);
+      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
+    });
+
+    it('generates UUIDs', () => {
+      const state = fromJS({
+        library: {
+          books: [
+            {
+              isbn: 123
+            }
+          ]
+        }
+      });
+      const importedState = {
+        library: {
+          books: [
+            {
+              isbn: 456
+            }
+          ]
+        }
+      };
+
+      const nextState = importState(state, importedState);
+
+      const nextBooks = nextState.getIn(['library', 'books']);
+      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.getIn([0, 'uuid'])).to.not.be.null;
+    });
+
+    it('accepts partial states', () => {
+      const state = fromJS({
+        library: {
+          books: [
+            {
+              isbn: 123
+            }
+          ]
+        }
+      });
+      const importedState = {
+        books: [
+          {
+            isbn: 456
+          }
+        ]
+      };
+
+      const nextState = importState(state, importedState);
+
+      const nextBooks = nextState.getIn(['library', 'books']);
+      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
     });
   });
 });

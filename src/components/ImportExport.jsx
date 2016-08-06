@@ -12,17 +12,17 @@ export default React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     state: React.PropTypes.instanceOf(Map).isRequired,
-    setState: React.PropTypes.func.isRequired
+    importState: React.PropTypes.func.isRequired
   },
   render: function() {
-    const { state, setState } = this.props;
+    const { state, importState } = this.props;
 
     return <div>
       <Header title="Export" backButton={true} />
 
       <section className="io">
         <Export state={state} />
-        <Import setState={setState} />
+        <Import importState={importState} />
       </section>
     </div>;
   }
