@@ -33,9 +33,9 @@ export default React.createClass({
       mask={mask}
       maskChar={null}
       placeholder="000 0 000 00000 0"
-      onChange={this.handleChange}
       type="text"
       {...extraProps}
+      onChange={this.handleChange}
     />;
   }
 });

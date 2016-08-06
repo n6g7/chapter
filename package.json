@@ -1,6 +1,6 @@
 {
   "name": "chapter",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Digital library for physical books",
   "main": "index.js",
   "scripts": {
