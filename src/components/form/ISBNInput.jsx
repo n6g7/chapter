@@ -26,7 +26,7 @@ export default React.createClass({
     this.props.onChange(e);
   },
   render: function() {
-    const { onChange, ...extraProps } = this.props;
+    const { ...extraProps } = this.props;
     const { mask } = this.state;
 
     return <InputElement
