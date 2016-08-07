@@ -26,13 +26,14 @@ export default React.createClass({
     return getBookData(book)
     .then((data) => {
       const coverUrl = get(data, 'imageLinks.thumbnail');
+      const newBook = Map({ title: data.title }).merge(book);
 
       if (coverUrl) {
         return getMainColour(coverUrl)
         .then((colour) => {
           this.setState({ loading: false });
 
-          return book.merge({
+          return newBook.merge({
             extra: {
               coverUrl,
               coverColour: colour
@@ -42,7 +43,7 @@ export default React.createClass({
       }
       else {
         this.setState({ loading: false });
-        return book.delete('extra');
+        return newBook.delete('extra');
       }
     });
   },

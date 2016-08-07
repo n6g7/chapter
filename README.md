@@ -25,11 +25,11 @@ npm i
  - [X] Save image url to save on Google API requests
  - [X] Autoformat ISBN field (à la stripe credit card)
  - [X] Pre-fill book status when I click on "add a book" in a shelf
+ - [X] Autofill book data from ISBN
  - [ ] Sort books by read date
  - [ ] Books timeline
  - [ ] New state: wishlist
  - [ ] Add a favicon
- - [ ] Autofill book data from ISBN
  - [ ] Default book image
  - [ ] Hido "from to" on stock books
  - [ ] Add book tags to filter them
