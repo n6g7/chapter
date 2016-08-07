@@ -1,6 +1,8 @@
 import { Map } from 'immutable';
 import states from '../config/bookStates';
 
-export const newBook = Map({
-  state: states.stock
-});
+export function newBook(state = states.stock) {
+  return Map({
+    state
+  });
+}

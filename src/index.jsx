@@ -33,7 +33,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Library} />
-        <Route path="new" component={NewBook} />
+        <Route path="new(/:type)" component={NewBook} />
         <Route path="edit/:uuid" component={EditBook} />
         <Route path="io" component={ImportExport} />
       </Route>

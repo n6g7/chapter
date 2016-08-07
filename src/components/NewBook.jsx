@@ -11,14 +11,15 @@ export default React.createClass({
   displayName: 'NewBook',
   mixins: [PureRenderMixin],
   propTypes: {
-    addBook: React.PropTypes.func
+    addBook: React.PropTypes.func.isRequired,
+    state: React.PropTypes.string
   },
   contextTypes: {
     router: React.PropTypes.object
   },
   getInitialState: function() {
     return {
-      book: newBook
+      book: newBook(this.props.state)
     };
   },
   update: function(book) {
