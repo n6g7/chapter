@@ -45,6 +45,10 @@ export default React.createClass({
         this.setState({ loading: false });
         return newBook.delete('extra');
       }
+    })
+    .catch(() => {
+      this.setState({ loading: false });
+      return book.delete('extra');
     });
   },
   handleChange: function(e) {
@@ -52,10 +56,11 @@ export default React.createClass({
       [e.target.id]: e.target.value
     }));
 
+    this.props.onChange(book);
+
     if (e.target.id === 'ISBN') {
       this.fetchBookData(book).then(this.props.onChange);
     }
-    else this.props.onChange(book);
   },
   render: function() {
     const { book } = this.props;
