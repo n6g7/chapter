@@ -35,7 +35,7 @@ export default React.createClass({
     }
   },
   render: function() {
-    const book = this.state.book;
+    const { book } = this.state;
     const title = `Update « ${book.get('title')} »`
 
     return <div>

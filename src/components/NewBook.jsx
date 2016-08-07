@@ -16,6 +16,11 @@ export default React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
+  getInitialState: function() {
+    return {
+      book: newBook
+    };
+  },
   update: function(book) {
     this.setState({ book });
   },
@@ -24,13 +29,15 @@ export default React.createClass({
     this.context.router.push('/');
   },
   render: function() {
+    const { book } = this.state;
+
     return <div>
       <Header title="Add a book" backButton={true}>
-        <Button click={() => this.save(this.state.book)} label="Save book" />
+        <Button click={() => this.save(book)} label="Save book" />
       </Header>
       <section className="form">
         <BookForm
-          book={newBook}
+          book={book}
           onSubmit={this.save}
           onChange={this.update}
         />
