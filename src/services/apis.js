@@ -2,7 +2,7 @@ import $ from 'jquery';
 import keys from '../config/keys.json';
 
 const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
-const TINT_API = '//tint.gnab.fr';
+const TINT_API = 'https://tint.gnab.fr/tint';
 
 export function getBookData(book) {
   const isbn = book.get('ISBN');
@@ -30,8 +30,12 @@ export function getBookData(book) {
 export function getMainColour(imageUrl) {
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: `${TINT_API}/${imageUrl}`,
-      success: (data) => resolve(data.colour),
+      url: TINT_API,
+      method: 'post',
+      data: {
+        url: imageUrl
+      },
+      success: (data) => resolve(`#${data.colours[0].hex}`),
       error: reject
     });
   });
