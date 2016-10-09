@@ -18,20 +18,16 @@ export default React.createClass({
 
     return <aside className="sidebar">
       <h1>{title}</h1>
-      <div>
-        <nav>
-          <ul>
-            <li><Link to="new">+</Link></li>
-          </ul>
-        </nav>
-        <footer>
-          <a
-            href="https://github.com/n6g7/chapter"
-            target="blank"
-            title="gh://n6g7/chapter"
-          >v{packageConfig.version}</a>
-        </footer>
-      </div>
+      <nav>
+        <ul>
+          <li><Link to="new">+</Link></li>
+        </ul>
+        <a
+          href="https://github.com/n6g7/chapter"
+          target="blank"
+          title="gh://n6g7/chapter"
+        >v{packageConfig.version}</a>
+      </nav>
     </aside>
   }
 });
