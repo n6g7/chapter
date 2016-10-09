@@ -1,36 +1,53 @@
 @import './vars.styl';
 
-.cover
-  background alpha(#000000, 0.1)
-  height bookHeight
+article.cover
+  align-items center
+  display flex
+  height coverHeight
+  justify-content center
+  width coverWidth
+
+  img
+    width coverWidth - 40px
+
+article.detailedCover
+  height detailedCoverHeight
+  overflow hidden
   position relative
-  width bookWidth
+  width detailedCoverWidth
 
   img
     display block
-    height bookHeight - 80px
-    left 20px
+    height detailedCoverHeight
+    left 33px
     object-fit contain
     position absolute
-    top 20px
-    width bookWidth - 40px
+    top 0
+    width 160px
+    z-index 15
 
   .description
-    background linear-gradient(to top, blue 0%, blue 40%, transparent 100%)
+    angled-before(blueDark, detailedCoverHeight)
+    background blueDark
     bottom 0
-    display flex
-    flex-flow column nowrap
-    height 160px
-    justify-content flex-end
-    padding 0 10px 10px
+    color white
+    padding 40px 10px 40px 60px
     position absolute
-    width 100%
+    right 0
+    top 0
+    width 330px
+    z-index 10
 
     h3
-      font-size 1.6rem
-      margin-bottom 5px
+      font-size 1.8rem
 
     p
-      font-size 1rem
-      margin 0
-      opacity 0.7
+      opacity 0.8
+
+    .startDate
+      margin-top 30px
+      opacity 0.4
+
+    .progressbar
+      bottom 30px
+      position absolute

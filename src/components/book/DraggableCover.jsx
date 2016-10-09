@@ -24,13 +24,14 @@ const DraggableCover = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     book: React.PropTypes.instanceOf(Map),
+    detailed: React.PropTypes.bool,
     connectDragSource: React.PropTypes.func.isRequired
   },
   render: function() {
-    const { connectDragSource } = this.props;
+    const { connectDragSource, book, detailed } = this.props;
 
     return connectDragSource(
-      <div><Cover book={this.props.book} /></div>
+      <div><Cover book={book} detailed={detailed} /></div>
     );
   }
 });

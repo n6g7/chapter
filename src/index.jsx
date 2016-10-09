@@ -14,8 +14,6 @@ import EditBook from './containers/EditBook';
 import ImportExport from './containers/ImportExport';
 import reducer from './reducer';
 
-import './assets/styl/chapter.styl';
-
 const createPersistentStore = compose(
   persistState('', {
     merge: (initialState, persistedState) => {

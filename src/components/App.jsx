@@ -1,5 +1,8 @@
 import React from 'react';
-import Footer from './common/Footer';
+import Library from '../containers/Library';
+import Sidebar from './Sidebar';
+
+import '../assets/styl/chapter.styl';
 
 export default React.createClass({
   displayName: 'App',
@@ -7,9 +10,10 @@ export default React.createClass({
     children: React.PropTypes.object
   },
   render: function() {
-    return <div>
+    return <div className="chapter">
+      <Sidebar/>
+      <Library/>
       {this.props.children}
-      <Footer/>
     </div>;
   }
 });

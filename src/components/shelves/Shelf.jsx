@@ -3,9 +3,12 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import capitalize from 'lodash/capitalize';
 import { List } from 'immutable';
 import { DropTarget } from 'react-dnd';
+import {Link} from 'react-router';
 import Button from '../common/Button';
 import BookList from './BookList';
 import ItemTypes from '../../config/dragDropTypes';
+
+import '../../assets/styl/shelf.styl'
 
 const shelfTarget = {
   drop(props, monitor) {
@@ -25,7 +28,7 @@ function collect(connect, monitor) {
 }
 
 const BookShelf = React.createClass({
-  displayName: 'BookShelf',
+  displayName: 'Shelf',
   mixins: [PureRenderMixin],
   propTypes: {
     books: React.PropTypes.instanceOf(List),
@@ -33,13 +36,14 @@ const BookShelf = React.createClass({
     type: React.PropTypes.string,
     updateBook: React.PropTypes.func,
     connectDropTarget: React.PropTypes.func.isRequired,
-    canDrop: React.PropTypes.bool.isRequired
+    canDrop: React.PropTypes.bool.isRequired,
+    detailed: React.PropTypes.bool
   },
   render: function() {
-    const { canDrop, connectDropTarget, type } = this.props;
+    const { canDrop, connectDropTarget, type, detailed } = this.props;
     const sectionName = capitalize(type);
 
-    let classes = [type];
+    let classes = ['shelf', type];
     if (canDrop) classes.push('hover');
 
     let inner = <p className="announce">
@@ -51,11 +55,21 @@ const BookShelf = React.createClass({
       classes.push('hide');
     }
     else if (!this.props.books.isEmpty()) {
-      inner = <BookList books={this.props.books} />;
+      inner = <BookList
+        books={this.props.books}
+        detailed={detailed}
+      />;
     }
 
     return connectDropTarget(<section className={classes.join(' ')}>
-      <h2>{sectionName}</h2>
+      <header>
+        <h2>{sectionName}</h2>
+        <nav>
+          <ul>
+            <li><Link to={`/new/${type}`}>+ Add a book</Link></li>
+          </ul>
+        </nav>
+      </header>
       {inner}
     </section>);
   }

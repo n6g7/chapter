@@ -1,0 +1,39 @@
+@import './vars.styl';
+
+section.shelf
+  padding 45px 45px 30px
+  width 100%
+
+  header
+    align-items center
+    display flex
+    flex-flow row nowrap
+    justify-content flex-start
+    margin-bottom 20px
+    padding 0
+
+    h2
+      margin-right 20px
+
+    nav ul
+      display flex
+      flex-flow row nowrap
+      list-style none
+      margin 0
+      padding 0
+
+  & > ul
+    display flex
+    flex-flow row wrap
+    list-style none
+    margin 0
+    padding 0
+
+    li
+      margin 0 15px 15px 0
+
+  &:nth-child(odd)
+    background lightGray
+
+  &.hide
+    display none

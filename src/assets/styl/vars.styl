@@ -1,51 +1,40 @@
-blue = rgb(53, 73, 93)
-blueDark = rgb(45, 62, 79)
-cyan = rgb(58, 153, 216)
+cyan = rgb(71, 151, 202)
 cyanDark = rgb(45, 129, 183)
-gray = rgb(236, 240, 241)
-grayDark = rgb(189, 195, 199)
-green = rgb(47, 209, 175)
-greenDark = rgb(35, 159, 133)
-yellow = rgb(240, 195, 48)
-yellowDark = rgb(241, 155, 44)
-red = #e74c3c
-redDark = #c0392b
+blueDark = rgb(46, 62, 80)
+lightGray = rgb(244, 245, 247)
+grayDark = rgb(54, 65, 78)
 
-headerHeight = 120px
+sidebarWidth = 80px
 
 buttonHeight = 40px
 
-sideWidth = 20px
-sideWidthExpanded = 40px
+coverHeight = 315px
+coverWidth = 200px
 
-bookHeight = 280px
-bookWidth = 180px
+detailedCoverHeight = coverHeight
+detailedCoverWidth = 500px
 
-sectionHeight = bookHeight + 2*20px
+angle = 8.88deg
 
-sidebox(mainColor, sideColor, height=40px)
-  background mainColor
-  padding 20px 60px 20px 60px+sideWidth
-  position relative
+angled-content(color, height)
+  background color
+  content ''
+  display block
+  height (height / cos(angle))
+  position absolute
+  top 0
+  transform rotate(angle)
+  transform-origin 0 0
+  width (height * sin(angle))
 
-  h2, &::before
-    background sideColor
-    bottom 0
-    color transparent
-    content ''
-    font-size 1.8rem
-    height sideWidth
-    line-height sideWidth
-    position absolute
-    right 100%
-    text-align center
-    top 0
-    transition .5s
-    transform rotate(-90deg)
-    transform-origin top right
-    width height
+angled-before(color, height)
+  &::before
+    angled-content(color, height)
+    left 0
+    transform-origin 0 0
 
-  &:hover h2, &.hover h2
-    color alpha(#ffffff, 0.8)
-    height sideWidthExpanded
-    line-height sideWidthExpanded
+angled-after(color, height)
+  &::after
+    angled-content(color, height)
+    right 0
+    transform-origin 100% 100%

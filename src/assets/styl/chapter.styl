@@ -12,6 +12,9 @@ h1, h2, h3
   font-weight normal
   margin 0
 
+.chapter
+  background white
+
 .button
   background cyan
   border none
@@ -25,29 +28,6 @@ h1, h2, h3
   height buttonHeight
   text-align center
   transition 0.2s
-
-  &.red
-    background red
-
-    .icon
-      background redDark
-
-  &.back
-    buttonTranslation = 10px
-
-    color alpha(#ffffff, 0.7)
-    font-size 2rem
-    left - buttonTranslation
-    padding 0 0 0 buttonTranslation
-    position absolute
-    top ((headerHeight - buttonHeight) / 2)
-    width buttonHeight + buttonTranslation
-
-    &:hover
-      transform translate(buttonTranslation, 0)
-
-    &:active
-      transform translate(-buttonTranslation, 0)
 
   .icon
     background cyanDark
@@ -84,44 +64,8 @@ html
   font-size 62.5%
 
 body
-  background blue
-  color white
+  color grayDark
   font-family Karla, sans-serif
   font-size 1.4rem
   margin 0
   padding 0
-
-header
-  sidebox(blue, blueDark, headerHeight)
-  height headerHeight
-  padding-bottom 40px
-  padding-top 40px
-
-  h1
-    display inline-block
-    font-size 2.2rem
-    height headerHeight - 80px
-    line-height headerHeight - 80px
-
-  p
-    margin 0
-    opacity 0.6
-    position absolute
-    top 25px
-
-  nav
-    display flex
-    flex-flow row nowrap
-    position absolute
-    right 60px
-    top ((headerHeight - buttonHeight) / 2)
-
-    & > *
-      margin-left 10px
-
-footer
-  sidebox(blue, blueDark, 71px)
-  color alpha(#ffffff, 0.8)
-
-  .dim
-    color alpha(#ffffff, 0.5)

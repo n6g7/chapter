@@ -1,64 +1,7 @@
 @import './vars.styl';
 
-.collections
+main.library
   display flex
-  flex-flow row wrap
-  justify-content space-between
-
-  section
-    height sectionHeight
-    max-width 100%
-    overflow-y auto
-
-    ul
-      display flex
-      flex-flow row nowrap
-      justify-content flex-start
-      list-style none
-      margin 0
-      padding 0
-
-      li
-        margin-right 20px
-
-        &:last-child
-          margin 0
-
-    .announce
-      color alpha(#ffffff, 0.9)
-      font-size 1.8rem
-      left 50%
-      margin 0
-      position absolute
-      top 50%
-      transform translate(-50%, -50%)
-
-      .button
-        box-shadow 0 1px 2px alpha(#000000, 0.5)
-        height 30px
-        line-height 30px
-        margin 0 5px
-
-    &.stock
-      sidebox(gray, grayDark, sectionHeight)
-      flex-basis 100%
-
-      .announce
-        color alpha(#000000, 0.6)
-
-    &.reading
-      sidebox(yellow, yellowDark, sectionHeight)
-      flex-basis auto
-      transition .5s
-
-      &.hide
-        min-width 0
-        padding 0
-
-      &.hover
-        min-width sectionHeight
-
-    &.read
-      sidebox(green, greenDark, sectionHeight)
-      flex-basis 50%
-      flex-grow 1
+  flex-flow column nowrap
+  justify-content center
+  margin-left sidebarWidth
