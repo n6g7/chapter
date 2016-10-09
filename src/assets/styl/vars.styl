@@ -17,24 +17,23 @@ detailedCoverWidth = 500px
 angle = 8.88deg
 
 angled-content(color, height)
-  background color
   content ''
   display block
-  height (height / cos(angle))
+  height 0
   position absolute
   top 0
-  transform rotate(angle)
-  transform-origin 0 0
-  width (height * sin(angle))
+  width 0
 
 angled-before(color, height)
   &::before
     angled-content(color, height)
-    left 0
-    transform-origin 0 0
+    border-bottom height solid color
+    border-left (height * tan(angle)) solid transparent
+    right 100%
 
 angled-after(color, height)
   &::after
     angled-content(color, height)
-    right 0
-    transform-origin 100% 100%
+    left 100%
+    border-top height solid color
+    border-right (height * tan(angle)) solid transparent
