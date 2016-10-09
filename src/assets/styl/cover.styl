@@ -8,7 +8,7 @@ article.cover
   width coverWidth
 
   img
-    width coverWidth - 40px
+    width coverImageWidth
 
 article.detailedCover
   height detailedCoverHeight
@@ -19,11 +19,12 @@ article.detailedCover
   img
     display block
     height detailedCoverHeight
-    left 33px
+    left 100px
     object-fit contain
     position absolute
     top 0
-    width 160px
+    transform translate(-50%, 0)
+    width coverImageWidth
     z-index 15
 
   .description
@@ -31,11 +32,11 @@ article.detailedCover
     background blueDark
     bottom 0
     color white
-    padding 40px 10px 40px 60px
+    padding 35px 10px 35px 50px
     position absolute
     right 0
     top 0
-    width 330px
+    width 290px
     z-index 10
 
     h3

@@ -15,47 +15,10 @@ h1, h2, h3
 .chapter
   background white
 
-.button
-  background cyan
-  border none
-  color white
-  cursor default
-  display inline-block
-  line-height buttonHeight
-  font-size 1.4rem
-  padding 0 6px
-  position relative
-  height buttonHeight
-  text-align center
-  transition 0.2s
-
-  .icon
-    background cyanDark
-    flex-shrink 0
-    font-size 2.2rem
-    height buttonHeight
-    line-height buttonHeight
-    margin 0
-    position absolute
-    top 0
-    left 0
-    text-align center
-    transition 0.3s
-    width 100%
-
-    & + span
-      padding-left buttonHeight
-
-  &:active
-    transform translate(0, 2px)
-
-  &:hover .icon
-    width buttonHeight
-
 input, select, textarea
   background cyanDark
   border none
-  color alpha(#ffffff, 0.5)
+  color dimFontColour
   font-size 1.4rem
   height 40px
   padding 5px 10px

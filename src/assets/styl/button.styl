@@ -1,0 +1,21 @@
+@import './vars.styl';
+
+buttonHeight = 60px
+
+button
+  background cyan
+  border none
+  color white
+  line-height buttonHeight
+  font-size 1.6rem
+  position relative
+  height buttonHeight
+  text-align center
+  transition 0.1s
+
+  &:active
+    transform translate(0, 3px)
+
+  img
+    margin-right 10px
+    vertical-align middle

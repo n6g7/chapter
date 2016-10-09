@@ -1,0 +1,74 @@
+@import './vars.styl';
+
+buffer = 200px
+width = 570px
+
+headerHeight = 250px
+
+.drawer
+  background blueDark
+  bottom - buffer
+  box-shadow 0 0 10px rgba(0,0,0,0.3)
+  color white
+  overflow hidden
+  padding buffer 0 0
+  position absolute
+  right - buffer
+  top - buffer
+  transform rotate(angle)
+  transform-origin 0 buffer
+  width width + buffer
+  z-index 150
+
+  & > .wrapper
+    transform rotate(- angle)
+    transform-origin 0 0
+    width width
+
+  header
+    align-items flex-end
+    display flex
+    flex-flow row nowrap
+    justify-content center
+    left - buffer
+    height headerHeight
+    position relative
+    padding-left buffer
+    width width + buffer
+
+    img
+      max-height headerHeight
+      object-fit contain
+      transform translate(0, 25px)
+      width coverImageWidth + 20px
+
+  main
+    padding 50px 60px
+
+    h2
+      font-size 3.5rem
+      margin 0 0 10px
+
+    .author
+      font-size 1.8rem
+      margin 0 0 20px
+
+    .progressbar
+      margin 0 0 20px
+
+    .date
+      margin 0 0 5px
+      opacity dimOpacity
+
+  nav
+    align-items center
+    display flex
+    flex-flow row nowrap
+    justify-content space-between
+    margin 40px 0 0
+
+    button
+      flex-grow 1
+
+      &:not(:first-child)
+        margin-left 10px

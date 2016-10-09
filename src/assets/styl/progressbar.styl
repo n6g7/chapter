@@ -1,6 +1,7 @@
 @import './vars.styl';
 
 .progressbar
+  align-items center
   display flex
   flex-flow row nowrap
 
@@ -19,6 +20,10 @@
       angled-before(white, 10px)
       width 26px
 
-    &:last-child
+    &:last-of-type
       angled-after(white, 10px)
       width 26px
+
+  .label
+    color dimFontColour
+    margin-left 10px

@@ -15,7 +15,7 @@ export default React.createClass({
     router: React.PropTypes.object
   },
   goTo: function(book) {
-    this.context.router.push(`/edit/${book.get('uuid')}`);
+    this.context.router.push(`/view/${book.get('uuid')}`);
   },
   renderCover: function(book) {
     const {detailed} = this.props;

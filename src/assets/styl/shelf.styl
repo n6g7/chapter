@@ -1,7 +1,9 @@
 @import './vars.styl';
 
+book-space = 15px
+
 section.shelf
-  padding 45px 45px 30px
+  padding 40px
   width 100%
 
   header
@@ -26,11 +28,11 @@ section.shelf
     display flex
     flex-flow row wrap
     list-style none
-    margin 0
+    margin 0 0 (- book-space)
     padding 0
 
     li
-      margin 0 15px 15px 0
+      margin 0 book-space book-space 0
 
   &:nth-child(odd)
     background lightGray

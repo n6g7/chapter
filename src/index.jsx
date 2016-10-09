@@ -10,6 +10,7 @@ import {INITIAL_STATE} from './core';
 import App from './containers/App';
 import NewBook from './containers/NewBook';
 import EditBook from './containers/EditBook';
+import ViewBook from './containers/ViewBook';
 import ImportExport from './containers/ImportExport';
 import reducer from './reducer';
 
@@ -30,6 +31,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <Route path="new(/:type)" component={NewBook} />
+        <Route path="view/:uuid" component={ViewBook} />
         <Route path="edit/:uuid" component={EditBook} />
         <Route path="io" component={ImportExport} />
       </Route>
