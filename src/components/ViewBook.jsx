@@ -2,11 +2,11 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 
-import Button from '../common/Button';
-import BookDrawer from './BookDrawer';
-import Progressbar from '../book/Progressbar';
+import Button from './common/Button';
+import BookDrawer from './drawer/BookDrawer';
+import Progressbar from './common/Progressbar';
 
-import editImg from '../../assets/images/edit.png';
+import editImg from '../images/edit.png';
 
 export default React.createClass({
   displayName: 'ViewBook',

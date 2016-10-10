@@ -2,8 +2,8 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router';
 
-import packageConfig from '../../package.json';
-import '../assets/styl/sidebar.styl';
+import packageConfig from '../../../package.json';
+import './Sidebar.styl';
 
 const DEFAULT_TITLE = 'Chapter';
 

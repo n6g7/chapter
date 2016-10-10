@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 import Loader from '../common/Loader';
 
-import '../../assets/styl/cover.styl';
+import './Cover.styl';
 
 export default React.createClass({
   displayName: 'Cover',

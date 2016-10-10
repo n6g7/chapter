@@ -5,7 +5,7 @@ import { Map } from 'immutable';
 import Header from './common/Header';
 import Export from './io/Export';
 import Import from './io/Import';
-import '../assets/styl/export.styl';
+import './ImportExport.styl';
 
 export default React.createClass({
   displayName: 'ImportExport',

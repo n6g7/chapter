@@ -1,46 +1,24 @@
-@import './vars.styl';
-
-buffer = 200px
-width = 570px
-
-headerHeight = 250px
+@import '../vars.styl';
 
 .drawer
   background blueDark
-  bottom - buffer
+  bottom - drawerBuffer
   box-shadow 0 0 10px rgba(0,0,0,0.3)
   color white
   overflow hidden
-  padding buffer 0 0
+  padding drawerBuffer 0 0
   position absolute
-  right - buffer
-  top - buffer
+  right - drawerBuffer
+  top - drawerBuffer
   transform rotate(angle)
-  transform-origin 0 buffer
-  width width + buffer
+  transform-origin 0 drawerBuffer
+  width drawerWidth + drawerBuffer
   z-index 150
 
   & > .wrapper
     transform rotate(- angle)
     transform-origin 0 0
-    width width
-
-  header
-    align-items flex-end
-    display flex
-    flex-flow row nowrap
-    justify-content center
-    left - buffer
-    height headerHeight
-    position relative
-    padding-left buffer
-    width width + buffer
-
-    img
-      max-height headerHeight
-      object-fit contain
-      transform translate(0, 25px)
-      width coverImageWidth + 20px
+    width drawerWidth
 
   main
     padding 50px 60px

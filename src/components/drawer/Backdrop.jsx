@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../assets/styl/backdrop.styl';
+import './Backdrop.styl';
 
 export default React.createClass({
   displayName: 'Backdrop',

@@ -8,7 +8,7 @@ import Button from '../common/Button';
 import BookList from './BookList';
 import ItemTypes from '../../config/dragDropTypes';
 
-import '../../assets/styl/shelf.styl'
+import './Shelf.styl'
 
 const shelfTarget = {
   drop(props, monitor) {

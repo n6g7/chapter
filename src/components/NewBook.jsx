@@ -5,7 +5,7 @@ import Button from './common/Button';
 import Header from './common/Header';
 import { newBook } from '../services/book';
 
-import '../assets/styl/form.styl';
+import './Form.styl';
 
 export default React.createClass({
   displayName: 'NewBook',

@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-import '../../assets/styl/button.styl';
+import './Button.styl';
 
 export default React.createClass({
   displayName: 'Button',

@@ -4,10 +4,10 @@ import {Map} from 'immutable';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import Shelf from './shelves/Shelf';
-import states from '../config/bookStates';
+import Shelf from './Shelf';
+import states from '../../config/bookStates';
 
-import '../assets/styl/library.styl'
+import './Library.styl'
 
 const Library = React.createClass({
   displayName: 'Library',

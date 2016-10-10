@@ -2,9 +2,9 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 import Loader from '../common/Loader';
-import Progressbar from './Progressbar';
+import Progressbar from '../common/Progressbar';
 
-import '../../assets/styl/cover.styl';
+import './DetailedCover.styl';
 
 export default React.createClass({
   displayName: 'DetailedCover',

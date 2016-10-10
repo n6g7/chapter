@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ViewBook from '../components/drawer/ViewBook';
+import ViewBook from '../components/ViewBook';
 import * as actionCreators from '../action-creators';
 
 const mapStateToProps = (state, props) => ({

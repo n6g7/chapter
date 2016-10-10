@@ -1,10 +1,10 @@
 import React from 'react';
 import {Map} from 'immutable';
 
-import Library from './Library';
-import Sidebar from './Sidebar';
+import Library from './library/Library';
+import Sidebar from './common/Sidebar';
 
-import '../assets/styl/chapter.styl';
+import './App.styl';
 
 export default React.createClass({
   displayName: 'App',

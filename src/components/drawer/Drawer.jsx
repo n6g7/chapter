@@ -2,7 +2,7 @@ import React from 'react';
 
 import Backdrop from './Backdrop';
 
-import '../../assets/styl/drawer.styl';
+import './Drawer.styl';
 
 export default React.createClass({
   displayName: 'Drawer',

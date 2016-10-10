@@ -5,7 +5,7 @@ import BookForm from './form/BookForm';
 import Button from './common/Button';
 import Header from './common/Header';
 
-import '../assets/styl/form.styl';
+import './Form.styl';
 
 export default React.createClass({
   displayName: 'EditBook',

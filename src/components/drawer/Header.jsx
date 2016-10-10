@@ -1,6 +1,8 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
+import './Header.styl'
+
 export default React.createClass({
   displayName: 'Header',
   mixins: [PureRenderMixin],
