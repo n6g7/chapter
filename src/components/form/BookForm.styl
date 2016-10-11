@@ -1,0 +1,33 @@
+@import '../vars.styl';
+
+inputBackground = rgb(66, 81, 96)
+
+input, select, textarea
+  background inputBackground
+  border none
+  color white
+  font-size 1.4rem
+  height 40px
+  padding 5px 10px
+
+.bookForm
+  align-items center
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+  margin 20px 0
+
+  .item
+    display flex
+    flex-flow column nowrap
+    margin-bottom 15px
+
+    label
+      margin-bottom 5px
+      opacity 0.7
+
+    &.half
+      width 47%
+
+    &.full
+      width 100%

@@ -1,11 +1,11 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
+
+import BookDrawer from './drawer/BookDrawer';
 import BookForm from './form/BookForm';
 import Button from './common/Button';
-import Header from './common/Header';
-
-import './Form.styl';
+import saveImg from '../images/save.png';
 
 export default React.createClass({
   displayName: 'EditBook',
@@ -29,27 +29,41 @@ export default React.createClass({
     this.context.router.push('/');
   },
   remove: function(book) {
-    if (confirm('Are you sure ?')) {
+    if (confirm('Are you sure?')) {
       this.props.removeBook(book);
       this.context.router.push('/');
     }
   },
   render: function() {
     const { book } = this.state;
-    const title = `Update « ${book.get('title')} »`
 
-    return <div>
-      <Header title={title} backButton={true}>
-        <Button click={() => this.remove(this.state.book)} label="Delete book" className="red" />
-        <Button click={() => this.save(this.state.book)} label="Save book" />
-      </Header>
-      <section className="form">
-        <BookForm
-          book={book}
-          onSubmit={this.save}
-          onChange={this.update}
-        />
-      </section>
-    </div>;
+    return <BookDrawer book={book}>
+      <header>
+        <h2>
+          Edit a book
+        </h2>
+        <aside>
+          <a onClick={this.context.router.goBack}>
+            Cancel
+          </a>
+        </aside>
+      </header>
+
+      <BookForm
+        book={book}
+        onSubmit={this.save}
+        onChange={this.update}
+      />
+
+      <nav>
+        <Button click={() => this.save(book)}>
+          <img src={saveImg} alt="save" />
+          Save book
+        </Button>
+        <Button click={() => this.remove(book)}>
+          Delete book
+        </Button>
+      </nav>
+    </BookDrawer>;
   }
 });

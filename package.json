@@ -89,5 +89,9 @@
     "plugins": [
       "react"
     ]
+  },
+  "repository": {
+    "url": "git@github.com:n6g7/chapter.git",
+    "type": "git"
   }
 }

@@ -24,9 +24,13 @@ export default React.createClass({
     const { book } = this.props;
 
     return <BookDrawer book={book}>
-      <h2>{book.get('title')}</h2>
-      <p className="author">&lt;Author&gt;</p>
-      <Progressbar progress="2" label="Read" />
+      <h2>
+        {book.get('title')}
+      </h2>
+      <p className="author">
+        {book.get('author')}
+      </p>
+      <Progressbar progress="2" label={book.get('state')} />
       <p className="date">
         Starting date: {book.get('startDate')}
       </p>
