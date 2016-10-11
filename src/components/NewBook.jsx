@@ -1,11 +1,11 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+
+import BookDrawer from './drawer/BookDrawer';
 import BookForm from './form/BookForm';
 import Button from './common/Button';
-import Header from './common/Header';
 import { newBook } from '../services/book';
-
-import './Form.styl';
+import saveImg from '../images/save.png';
 
 export default React.createClass({
   displayName: 'NewBook',
@@ -32,17 +32,26 @@ export default React.createClass({
   render: function() {
     const { book } = this.state;
 
-    return <div>
-      <Header title="Add a book" backButton={true}>
-        <Button click={() => this.save(book)} label="Save book" />
-      </Header>
-      <section className="form">
-        <BookForm
-          book={book}
-          onSubmit={this.save}
-          onChange={this.update}
-        />
-      </section>
-    </div>;
+    return <BookDrawer book={book}>
+      <header>
+        <h2>Add a book</h2>
+        <aside>
+          <a href="#">Cancel</a>
+        </aside>
+      </header>
+
+      <BookForm
+        book={book}
+        onSubmit={this.save}
+        onChange={this.update}
+      />
+
+      <nav>
+        <Button click={() => this.save(book)}>
+          <img src={saveImg} alt="save" />
+          Save book
+        </Button>
+      </nav>
+    </BookDrawer>;
   }
 });
