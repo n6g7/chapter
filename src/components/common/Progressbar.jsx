@@ -15,8 +15,8 @@ export default React.createClass({
 
     return <div className="progressbar">
       {[1,2,3,4].map(x => progress >= x ?
-        <div className="step done"/>:
-        <div className="step"/>
+        <div key={`progress-${x}`} className="step done"/>:
+        <div key={`progress-${x}`} className="step"/>
       )}
       <span className="label">{ label }</span>
     </div>;

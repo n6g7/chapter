@@ -30,7 +30,7 @@ export default React.createClass({
       <p className="author">
         {book.get('author')}
       </p>
-      <Progressbar progress="2" label={book.get('state')} />
+      <Progressbar progress={2} label={book.get('state')} />
       <p className="date">
         Starting date: {book.get('startDate')}
       </p>

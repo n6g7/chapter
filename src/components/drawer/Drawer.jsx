@@ -7,7 +7,7 @@ import './Drawer.styl';
 export default React.createClass({
   displayName: 'Drawer',
   propTypes: {
-    children: React.PropTypes.object
+    children: React.PropTypes.any
   },
   contextTypes: {
     router: React.PropTypes.object

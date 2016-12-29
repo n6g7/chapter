@@ -6,11 +6,11 @@ import Drawer from './Drawer';
 import Header from './Header';
 
 export default React.createClass({
-  displayName: 'ViewBook',
+  displayName: 'BookDrawer',
   mixins: [PureRenderMixin],
   propTypes: {
     book: React.PropTypes.instanceOf(Map),
-    children: React.PropTypes.element
+    children: React.PropTypes.any
   },
   getImage: function() {
     const { book } = this.props;

@@ -47,7 +47,7 @@ const BookShelf = React.createClass({
     if (canDrop) classes.push('hover');
 
     let inner = <p className="announce">
-      Whoops, nothing here yet. Do you want to <Button label="Add a book" link={`/new/${type}`} /> ?
+      Whoops, nothing here yet. Do you want to <Button link={`/new/${type}`} inline={true}>Add a book</Button> ?
     </p>;
 
     if (this.props.hideWhenEmpty && this.props.books.isEmpty()) {

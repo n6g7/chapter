@@ -7,8 +7,9 @@ export default React.createClass({
   displayName: 'Button',
   mixins: [PureRenderMixin],
   propTypes: {
-    children: React.PropTypes.element,
+    children: React.PropTypes.any,
     click: React.PropTypes.func,
+    inline: React.PropTypes.bool,
     link: React.PropTypes.string
   },
   contextTypes: {
@@ -22,7 +23,9 @@ export default React.createClass({
     else if (link) return router.push(link);
   },
   render: function() {
-    return <button onClick={this.onClick}>
+    const classes = this.props.inline ? 'inline' : '';
+
+    return <button onClick={this.onClick} className={classes}>
       {this.props.children}
     </button>;
   }
