@@ -16,6 +16,11 @@ module.exports = {
         test: /\.styl$/,
         exclude: /node_modules/,
         loader: 'style!css!stylus'
+      },
+      {
+        test: /\.png$/,
+        exclude: /node_modules/,
+        loader: 'url!img'
       }
     ]
   },
