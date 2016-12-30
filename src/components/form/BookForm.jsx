@@ -46,7 +46,7 @@ class BookForm extends PureComponent {
       <div className="item half">
         <label htmlFor="isbn">ISBN</label>
         <ISBNInput
-          id="ISBN"
+          id="isbn"
           value={editorBook.get('ISBN')}
           onChange={this.onChange('ISBN')}
         />

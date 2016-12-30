@@ -7,6 +7,7 @@ export const types = {
 };
 
 const initialState = fromJS({
+  author: '',
   endDate: '',
   ISBN: '',
   progress: 0,
