@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
 import BookDrawer from './drawer/BookDrawer';
-import BookForm from './form/BookForm';
+import { BookFormContainer } from './form/BookForm';
 import Button from './common/Button';
 import saveImg from '../images/save.png';
 import {
@@ -16,18 +16,13 @@ const EditBook = React.createClass({
   displayName: 'EditBook',
   mixins: [PureRenderMixin],
   propTypes: {
+    editorBook: React.PropTypes.instanceOf(Map),
     updateBook: React.PropTypes.func,
     book: React.PropTypes.instanceOf(Map),
     removeBook: React.PropTypes.func
   },
   contextTypes: {
     router: React.PropTypes.object
-  },
-  getInitialState: function() {
-    return { book: this.props.book };
-  },
-  update: function(book) {
-    this.setState({ book });
   },
   save: function(book) {
     this.props.updateBook(book);
@@ -40,9 +35,9 @@ const EditBook = React.createClass({
     }
   },
   render: function() {
-    const { book } = this.state;
+    const { book, editorBook } = this.props;
 
-    return <BookDrawer book={book}>
+    return <BookDrawer book={editorBook}>
       <header>
         <h2>
           Edit a book
@@ -54,21 +49,18 @@ const EditBook = React.createClass({
         </aside>
       </header>
 
-      <BookForm
-        book={book}
+      <BookFormContainer
+        initialBook={book}
         onSubmit={this.save}
-        onChange={this.update}
-      />
-
-      <nav>
-        <Button click={() => this.save(book)}>
+      >
+        <Button click={() => this.save(editorBook)}>
           <img src={saveImg} alt="save" />
           Save book
         </Button>
         <Button click={() => this.remove(book)}>
           Delete book
         </Button>
-      </nav>
+      </BookFormContainer>
     </BookDrawer>;
   }
 });
@@ -78,7 +70,8 @@ export default EditBook;
 const mapStateToProps = (state, props) => ({
   book: state
     .getIn(['library', 'books'])
-    .find(book => book.get('uuid') === props.params.uuid)
+    .find(book => book.get('uuid') === props.params.uuid),
+  editorBook: state.get('editor')
 });
 
 const mapDispatchToProps = {

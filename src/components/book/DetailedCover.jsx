@@ -26,10 +26,10 @@ export default React.createClass({
     return <article className="detailedCover" style={{ backgroundColor: colour}}>
       {this.getImage()}
       <div className="description">
-        <h3>{book.get('title')}</h3>
-        <p>&lt;author&gt;</p>
+        <h3>{ book.get('title') }</h3>
+        <p>{ book.get('author') }</p>
         <p className="startDate">Starting date {book.get('startDate')}</p>
-        <Progressbar progress={2} />
+        <Progressbar progress={ book.get('progress') } />
       </div>
     </article>;
   }

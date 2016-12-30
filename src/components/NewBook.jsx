@@ -1,12 +1,10 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
+import { Map } from 'immutable';
 
 import BookDrawer from './drawer/BookDrawer';
-import BookForm from './form/BookForm';
-import Button from './common/Button';
-import { newBook } from '../services/book';
-import saveImg from '../images/save.png';
+import { BookFormContainer } from './form/BookForm';
 import { addBook } from '../redux/reducers/library.action';
 
 const NewBook = React.createClass({
@@ -14,27 +12,20 @@ const NewBook = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     addBook: React.PropTypes.func.isRequired,
+    editorBook: React.PropTypes.instanceOf(Map),
     state: React.PropTypes.string
   },
   contextTypes: {
     router: React.PropTypes.object
-  },
-  getInitialState: function() {
-    return {
-      book: newBook(this.props.state)
-    };
-  },
-  update: function(book) {
-    this.setState({ book });
   },
   save: function(book) {
     this.props.addBook(book);
     this.context.router.push('/');
   },
   render: function() {
-    const { book } = this.state;
+    const { editorBook } = this.props;
 
-    return <BookDrawer book={book}>
+    return <BookDrawer book={editorBook}>
       <header>
         <h2>Add a book</h2>
         <aside>
@@ -42,18 +33,7 @@ const NewBook = React.createClass({
         </aside>
       </header>
 
-      <BookForm
-        book={book}
-        onSubmit={this.save}
-        onChange={this.update}
-      />
-
-      <nav>
-        <Button click={() => this.save(book)}>
-          <img src={saveImg} alt="save" />
-          Save book
-        </Button>
-      </nav>
+      <BookFormContainer onSubmit={this.save}/>
     </BookDrawer>;
   }
 });
@@ -61,6 +41,7 @@ const NewBook = React.createClass({
 export default NewBook;
 
 const mapStateToProps = (state, props) => ({
+  editorBook: state.get('editor'),
   state: props.params.type
 });
 
