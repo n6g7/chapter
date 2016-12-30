@@ -13,18 +13,21 @@ const Library = React.createClass({
   displayName: 'Library',
   mixins: [PureRenderMixin],
   propTypes: {
-    library: React.PropTypes.instanceOf(Map)
+    library: React.PropTypes.instanceOf(Map),
+    updateBook: React.PropTypes.func.isRequired
   },
   render: function() {
-    const books = this.props.library.get('books');
+    const { library, updateBook } = this.props;
+
+    const books = library.get('books');
     const stock = books.filter(book => book.get('state') === states.stock);
     const reading = books.filter(book => book.get('state') === states.reading);
     const read = books.filter(book => book.get('state') === states.read);
 
     return <main className="library">
-      <Shelf type="reading" books={reading} hideWhenEmpty={true} detailed={true}/>
-      <Shelf type="stock" books={stock} />
-      <Shelf type="read" books={read} />
+      <Shelf type="reading" books={reading} hideWhenEmpty={true} detailed={true} updateBook={updateBook} />
+      <Shelf type="stock" books={stock} updateBook={updateBook} />
+      <Shelf type="read" books={read} updateBook={updateBook} />
     </main>;
   }
 });
