@@ -1,9 +1,9 @@
 import {Map, fromJS} from 'immutable';
 import {expect} from 'chai';
 
-import {addBook, updateBook, removeBook, importState} from '../src/core';
+import {addBook, updateBook, removeBook, importState} from '../../../src/redux/reducers/library.core';
 
-describe('Core logic', () => {
+describe('Library core logic', () => {
   describe('addBook', () => {
     const newBook = fromJS({
       ISBN: '9780451417855',
@@ -15,22 +15,20 @@ describe('Core logic', () => {
 
     it('adds a book to the library', () => {
       const state = fromJS({
-        library: {
-          books: [
-            {
-              ISBN: '9782253001676',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'aaa'
-            }
-          ]
-        }
+        books: [
+          {
+            ISBN: '9782253001676',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'aaa'
+          }
+        ]
       });
       const nextState = addBook(state, newBook);
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(2);
 
       const nextBook = nextBooks.get(1);
@@ -46,9 +44,9 @@ describe('Core logic', () => {
       const state = Map();
       const nextState = addBook(state, newBook);
 
-      expect(nextState).to.have.deep.property(['library', 'books']);
+      expect(nextState).to.have.deep.property(['books']);
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(1);
     });
 
@@ -60,7 +58,7 @@ describe('Core logic', () => {
       });
       const nextState = addBook(state, newBook);
 
-      const books = nextState.getIn(['library', 'books']);
+      const books = nextState.getIn(['books']);
       expect(books.count()).to.equal(1);
 
       const book = books.get(0);
@@ -74,18 +72,16 @@ describe('Core logic', () => {
   describe('updateBook', () => {
     it('updates a book', () => {
       const state = fromJS({
-        library: {
-          books: [
-            {
-              ISBN: '123',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'abc'
-            }
-          ]
-        }
+        books: [
+          {
+            ISBN: '123',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'abc'
+          }
+        ]
       });
       const nextState = updateBook(state, Map({
         ISBN: '456',
@@ -96,7 +92,7 @@ describe('Core logic', () => {
         uuid: 'abc'
       }));
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(1);
 
       const nextBook = nextBooks.get(0);
@@ -110,34 +106,32 @@ describe('Core logic', () => {
 
     it('updates a book without changing its position', () => {
       const state = fromJS({
-        library: {
-          books: [
-            {
-              ISBN: '123',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'abc'
-            },
-            {
-              ISBN: '456',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'def'
-            },
-            {
-              ISBN: '789',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'ghi'
-            }
-          ]
-        }
+        books: [
+          {
+            ISBN: '123',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'abc'
+          },
+          {
+            ISBN: '456',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'def'
+          },
+          {
+            ISBN: '789',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'ghi'
+          }
+        ]
       });
       const nextState = updateBook(state, Map({
         ISBN: '10',
@@ -148,7 +142,7 @@ describe('Core logic', () => {
         uuid: 'def'
       }));
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(3);
 
       const nextBook = nextBooks.get(1);
@@ -162,34 +156,32 @@ describe('Core logic', () => {
 
     it('updates a book\'s extra data', () => {
       const state = fromJS({
-        library: {
-          books: [
-            {
-              ISBN: '123',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'abc'
-            },
-            {
-              ISBN: '456',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'def'
-            },
-            {
-              ISBN: '789',
-              title: 'Je suis Pilgrim',
-              startDate: '2016',
-              endDate: '2016-04-17',
-              state: 'read',
-              uuid: 'ghi'
-            }
-          ]
-        }
+        books: [
+          {
+            ISBN: '123',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'abc'
+          },
+          {
+            ISBN: '456',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'def'
+          },
+          {
+            ISBN: '789',
+            title: 'Je suis Pilgrim',
+            startDate: '2016',
+            endDate: '2016-04-17',
+            state: 'read',
+            uuid: 'ghi'
+          }
+        ]
       });
       const nextState = updateBook(state, fromJS({
         ISBN: '789',
@@ -204,7 +196,7 @@ describe('Core logic', () => {
         uuid: 'ghi'
       }));
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(3);
 
       const nextBook = nextBooks.get(2);
@@ -225,13 +217,11 @@ describe('Core logic', () => {
         uuid: 123
       });
       const state = fromJS({
-        library: {
-          books: [ book ]
-        }
+        books: [ book ]
       });
       const nextState = removeBook(state, book);
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(0);
     });
 
@@ -242,21 +232,19 @@ describe('Core logic', () => {
         uuid: 123
       });
       const state = fromJS({
-        library: {
-          books: [
-            {
-              uuid: 789
-            },
-            book,
-            {
-              uuid: 456
-            }
-          ]
-        }
+        books: [
+          {
+            uuid: 789
+          },
+          book,
+          {
+            uuid: 456
+          }
+        ]
       });
       const nextState = removeBook(state, book);
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(2);
 
       expect(nextBooks.getIn(['0', 'uuid'])).to.equal(789);
@@ -270,9 +258,7 @@ describe('Core logic', () => {
         uuid: 123
       });
       const state = fromJS({
-        library: {
-          books: []
-        }
+        books: []
       });
       const nextState = removeBook(state, book);
 
@@ -283,67 +269,11 @@ describe('Core logic', () => {
   describe('importState', () => {
     it('imports books into the state', () => {
       const state = fromJS({
-        library: {
-          books: [
-            {
-              isbn: 123
-            }
-          ]
-        }
-      });
-      const importedState = {
-        library: {
-          books: [
-            {
-              isbn: 456
-            }
-          ]
-        }
-      };
-
-      const nextState = importState(state, importedState);
-
-      const nextBooks = nextState.getIn(['library', 'books']);
-      expect(nextBooks.count()).to.equal(1);
-      expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
-    });
-
-    it('generates UUIDs', () => {
-      const state = fromJS({
-        library: {
-          books: [
-            {
-              isbn: 123
-            }
-          ]
-        }
-      });
-      const importedState = {
-        library: {
-          books: [
-            {
-              isbn: 456
-            }
-          ]
-        }
-      };
-
-      const nextState = importState(state, importedState);
-
-      const nextBooks = nextState.getIn(['library', 'books']);
-      expect(nextBooks.count()).to.equal(1);
-      expect(nextBooks.getIn([0, 'uuid'])).to.not.be.null;
-    });
-
-    it('accepts partial states', () => {
-      const state = fromJS({
-        library: {
-          books: [
-            {
-              isbn: 123
-            }
-          ]
-        }
+        books: [
+          {
+            isbn: 123
+          }
+        ]
       });
       const importedState = {
         books: [
@@ -355,7 +285,53 @@ describe('Core logic', () => {
 
       const nextState = importState(state, importedState);
 
-      const nextBooks = nextState.getIn(['library', 'books']);
+      const nextBooks = nextState.getIn(['books']);
+      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
+    });
+
+    it('generates UUIDs', () => {
+      const state = fromJS({
+        books: [
+          {
+            isbn: 123
+          }
+        ]
+      });
+      const importedState = {
+        books: [
+          {
+            isbn: 456
+          }
+        ]
+      };
+
+      const nextState = importState(state, importedState);
+
+      const nextBooks = nextState.getIn(['books']);
+      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.getIn([0, 'uuid'])).to.not.be.null;
+    });
+
+    it('accepts partial states', () => {
+      const state = fromJS({
+        books: [
+          {
+            isbn: 123
+          }
+        ]
+      });
+      const importedState = {
+        books: [
+          {
+            isbn: 456
+          }
+        ]
+      };
+
+      const nextState = importState(state, importedState);
+
+      const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).to.equal(1);
       expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
     });

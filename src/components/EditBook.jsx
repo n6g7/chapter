@@ -1,16 +1,22 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Map} from 'immutable';
-import BookForm from './form/BookForm';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
+
+import BookDrawer from './drawer/BookDrawer';
+import { BookFormContainer } from './form/BookForm';
 import Button from './common/Button';
-import Header from './common/Header';
+import saveImg from '../images/save.png';
+import {
+  updateBook,
+  removeBook
+} from '../redux/reducers/library.action';
 
-import '../assets/styl/form.styl';
-
-export default React.createClass({
+const EditBook = React.createClass({
   displayName: 'EditBook',
   mixins: [PureRenderMixin],
   propTypes: {
+    editorBook: React.PropTypes.instanceOf(Map),
     updateBook: React.PropTypes.func,
     book: React.PropTypes.instanceOf(Map),
     removeBook: React.PropTypes.func
@@ -18,38 +24,62 @@ export default React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
-  getInitialState: function() {
-    return { book: this.props.book };
-  },
-  update: function(book) {
-    this.setState({ book });
-  },
   save: function(book) {
     this.props.updateBook(book);
     this.context.router.push('/');
   },
   remove: function(book) {
-    if (confirm('Are you sure ?')) {
+    if (confirm('Are you sure?')) {
       this.props.removeBook(book);
       this.context.router.push('/');
     }
   },
   render: function() {
-    const { book } = this.state;
-    const title = `Update « ${book.get('title')} »`
+    const { book, editorBook } = this.props;
 
-    return <div>
-      <Header title={title} backButton={true}>
-        <Button click={() => this.remove(this.state.book)} label="Delete book" className="red" />
-        <Button click={() => this.save(this.state.book)} label="Save book" />
-      </Header>
-      <section className="form">
-        <BookForm
-          book={book}
-          onSubmit={this.save}
-          onChange={this.update}
-        />
-      </section>
-    </div>;
+    return <BookDrawer book={editorBook}>
+      <header>
+        <h2>
+          Edit a book
+        </h2>
+        <aside>
+          <a onClick={this.context.router.goBack}>
+            Cancel
+          </a>
+        </aside>
+      </header>
+
+      <BookFormContainer
+        initialBook={book}
+        onSubmit={this.save}
+      >
+        <Button click={() => this.save(editorBook)}>
+          <img src={saveImg} alt="save" />
+          Save book
+        </Button>
+        <Button click={() => this.remove(book)}>
+          Delete book
+        </Button>
+      </BookFormContainer>
+    </BookDrawer>;
   }
 });
+
+export default EditBook;
+
+const mapStateToProps = (state, props) => ({
+  book: state
+    .getIn(['library', 'books'])
+    .find(book => book.get('uuid') === props.params.uuid),
+  editorBook: state.get('editor')
+});
+
+const mapDispatchToProps = {
+  updateBook,
+  removeBook
+}
+
+export const EditBookContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditBook);

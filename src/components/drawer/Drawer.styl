@@ -1,0 +1,63 @@
+@import '../vars.styl';
+
+.drawer
+  background blueDark
+  bottom - drawerBuffer
+  box-shadow 0 0 10px rgba(0,0,0,0.3)
+  color white
+  overflow hidden
+  padding drawerBuffer 0 0
+  position absolute
+  right - drawerBuffer
+  top - drawerBuffer
+  transform rotate(angle)
+  transform-origin 0 drawerBuffer
+  width drawerWidth + drawerBuffer
+  z-index 150
+
+  & > .wrapper
+    transform rotate(- angle)
+    transform-origin 0 0
+    width drawerWidth
+
+  main
+    padding 50px 60px
+
+    header
+      align-items center
+      display flex
+      flex-flow row nowrap
+      justify-content space-between
+
+    h2
+      font-size 3.5rem
+      margin 0 0 10px
+
+    aside
+      font-size 1.8rem
+
+    .author
+      font-size 1.8rem
+      margin 0 0 20px
+
+    .progressbar
+      margin 0 0 20px
+
+    .date
+      margin 0 0 5px
+      opacity dimOpacity
+
+  nav
+    align-items center
+    display flex
+    flex-flow row nowrap
+    justify-content space-between
+    margin 40px 0 0
+    width 100%
+
+    button
+      flex-grow 1
+      width 30%
+
+      &:not(:first-child)
+        margin-left 10px

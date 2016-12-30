@@ -1,0 +1,29 @@
+@import '../vars.styl';
+
+.progressbar
+  align-items center
+  display flex
+  flex-flow row nowrap
+
+  .step
+    background white
+    height 10px
+    margin-right 2px
+    opacity 0.2
+    position relative
+    width 28px
+
+    &.done
+      opacity 1
+
+    &:first-child
+      angled-before(white, 10px)
+      width 26px
+
+    &:last-of-type
+      angled-after(white, 10px)
+      width 26px
+
+  .label
+    color dimFontColour
+    margin-left 10px

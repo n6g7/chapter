@@ -13,9 +13,10 @@ const coverSource = {
   }
 };
 
-function collect(connect) {
+function collect(connect, monitor) {
   return {
-    connectDragSource: connect.dragSource()
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
   };
 }
 
@@ -24,13 +25,17 @@ const DraggableCover = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     book: React.PropTypes.instanceOf(Map),
-    connectDragSource: React.PropTypes.func.isRequired
+    detailed: React.PropTypes.bool,
+    connectDragSource: React.PropTypes.func.isRequired,
+    isDragging: React.PropTypes.bool.isRequired
   },
   render: function() {
-    const { connectDragSource } = this.props;
+    const { connectDragSource, book, detailed, isDragging } = this.props;
 
     return connectDragSource(
-      <div><Cover book={this.props.book} /></div>
+      <div style={{ opacity: isDragging ? 0.5 : 1 }}>
+        <Cover book={book} detailed={detailed} />
+      </div>
     );
   }
 });

@@ -1,0 +1,56 @@
+@import '../vars.styl';
+
+aside.sidebar
+  align-items flex-end
+  background blueDark
+  bottom 0
+  color white
+  display flex
+  flex-flow column nowrap
+  justify-content space-between
+  left 0
+  position fixed
+  top 0
+  width sidebarWidth
+
+  h1
+    margin 0 (sidebarWidth/2) 0 0
+    font-size 3rem
+    height sidebarWidth
+    line-height sidebarWidth
+    transform rotate(-90deg)
+    transform-origin 100% 50%
+
+  nav
+    ul
+      align-items center;
+      display flex
+      flex-flow column nowrap
+      list-style none
+      margin 0
+      padding 0
+      width sidebarWidth
+
+      li
+        font-size 5rem
+        height sidebarWidth
+        line-height sidebarWidth
+        text-align center
+        width sidebarWidth
+
+        a
+          color white
+          display block
+
+        &:hover
+          background cyan
+
+    & > a
+      color white
+      display block
+      margin 5px 0
+      opacity 0.3
+      text-align center
+
+      &:hover
+        text-decoration underline

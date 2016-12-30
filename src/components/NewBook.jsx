@@ -1,48 +1,55 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import BookForm from './form/BookForm';
-import Button from './common/Button';
-import Header from './common/Header';
-import { newBook } from '../services/book';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
 
-import '../assets/styl/form.styl';
+import BookDrawer from './drawer/BookDrawer';
+import { BookFormContainer } from './form/BookForm';
+import { addBook } from '../redux/reducers/library.action';
 
-export default React.createClass({
+const NewBook = React.createClass({
   displayName: 'NewBook',
   mixins: [PureRenderMixin],
   propTypes: {
     addBook: React.PropTypes.func.isRequired,
+    editorBook: React.PropTypes.instanceOf(Map),
     state: React.PropTypes.string
   },
   contextTypes: {
     router: React.PropTypes.object
-  },
-  getInitialState: function() {
-    return {
-      book: newBook(this.props.state)
-    };
-  },
-  update: function(book) {
-    this.setState({ book });
   },
   save: function(book) {
     this.props.addBook(book);
     this.context.router.push('/');
   },
   render: function() {
-    const { book } = this.state;
+    const { editorBook } = this.props;
 
-    return <div>
-      <Header title="Add a book" backButton={true}>
-        <Button click={() => this.save(book)} label="Save book" />
-      </Header>
-      <section className="form">
-        <BookForm
-          book={book}
-          onSubmit={this.save}
-          onChange={this.update}
-        />
-      </section>
-    </div>;
+    return <BookDrawer book={editorBook}>
+      <header>
+        <h2>Add a book</h2>
+        <aside>
+          <a href="#">Cancel</a>
+        </aside>
+      </header>
+
+      <BookFormContainer onSubmit={this.save}/>
+    </BookDrawer>;
   }
 });
+
+export default NewBook;
+
+const mapStateToProps = (state, props) => ({
+  editorBook: state.get('editor'),
+  state: props.params.type
+});
+
+const mapDispatchToProps = {
+  addBook
+};
+
+export const NewBookContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewBook);

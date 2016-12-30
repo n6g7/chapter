@@ -2,11 +2,12 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 import Loader from '../common/Loader';
+import Progressbar from '../common/Progressbar';
 
-import './Cover.styl';
+import './DetailedCover.styl';
 
 export default React.createClass({
-  displayName: 'Cover',
+  displayName: 'DetailedCover',
   mixins: [PureRenderMixin],
   propTypes: {
     book: React.PropTypes.instanceOf(Map).isRequired,
@@ -22,8 +23,14 @@ export default React.createClass({
     const { book, loading } = this.props;
     const colour = !loading ? book.getIn(['extra', 'coverColour']) : null;
 
-    return <article className="cover" style={{ backgroundColor: colour}}>
+    return <article className="detailedCover" style={{ backgroundColor: colour}}>
       {this.getImage()}
+      <div className="description">
+        <h3>{ book.get('title') }</h3>
+        <p>{ book.get('author') }</p>
+        <p className="startDate">Starting date {book.get('startDate')}</p>
+        <Progressbar progress={ book.get('progress') } />
+      </div>
     </article>;
   }
 });

@@ -1,0 +1,18 @@
+@import '../vars.styl';
+
+.drawer .wrapper > header
+  align-items flex-end
+  display flex
+  flex-flow row nowrap
+  justify-content center
+  left - drawerBuffer
+  height drawerHeaderHeight
+  position relative
+  padding-left drawerBuffer
+  width drawerWidth + drawerBuffer
+
+  img
+    max-height drawerHeaderHeight
+    object-fit contain
+    transform translate(0, 25px)
+    width coverImageWidth + 20px
