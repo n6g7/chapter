@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Map} from 'immutable';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
 
 import Button from './common/Button';
 import BookDrawer from './drawer/BookDrawer';
@@ -8,7 +9,7 @@ import Progressbar from './common/Progressbar';
 
 import editImg from '../images/edit.png';
 
-export default React.createClass({
+const ViewBook = React.createClass({
   displayName: 'ViewBook',
   mixins: [PureRenderMixin],
   propTypes: {
@@ -46,3 +47,15 @@ export default React.createClass({
     </BookDrawer>;
   }
 });
+
+export default ViewBook;
+
+const mapStateToProps = (state, props) => ({
+  book: state
+    .getIn(['library', 'books'])
+    .find(book => book.get('uuid') === props.params.uuid)
+});
+
+export const ViewBookContainer = connect(
+  mapStateToProps
+)(ViewBook);

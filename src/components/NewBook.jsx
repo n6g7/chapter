@@ -1,13 +1,15 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import { connect } from 'react-redux';
 
 import BookDrawer from './drawer/BookDrawer';
 import BookForm from './form/BookForm';
 import Button from './common/Button';
 import { newBook } from '../services/book';
 import saveImg from '../images/save.png';
+import { addBook } from '../redux/reducers/library.action';
 
-export default React.createClass({
+const NewBook = React.createClass({
   displayName: 'NewBook',
   mixins: [PureRenderMixin],
   propTypes: {
@@ -55,3 +57,18 @@ export default React.createClass({
     </BookDrawer>;
   }
 });
+
+export default NewBook;
+
+const mapStateToProps = (state, props) => ({
+  state: props.params.type
+});
+
+const mapDispatchToProps = {
+  addBook
+};
+
+export const NewBookContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewBook);

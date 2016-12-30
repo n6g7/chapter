@@ -1,13 +1,18 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Map} from 'immutable';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
 
 import BookDrawer from './drawer/BookDrawer';
 import BookForm from './form/BookForm';
 import Button from './common/Button';
 import saveImg from '../images/save.png';
+import {
+  updateBook,
+  removeBook
+} from '../redux/reducers/library.action';
 
-export default React.createClass({
+const EditBook = React.createClass({
   displayName: 'EditBook',
   mixins: [PureRenderMixin],
   propTypes: {
@@ -67,3 +72,21 @@ export default React.createClass({
     </BookDrawer>;
   }
 });
+
+export default EditBook;
+
+const mapStateToProps = (state, props) => ({
+  book: state
+    .getIn(['library', 'books'])
+    .find(book => book.get('uuid') === props.params.uuid)
+});
+
+const mapDispatchToProps = {
+  updateBook,
+  removeBook
+}
+
+export const EditBookContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditBook);

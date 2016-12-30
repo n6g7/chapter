@@ -1,12 +1,13 @@
 import React from 'react';
-import {Map} from 'immutable';
+import { connect } from 'react-redux';
+import { Map } from 'immutable';
 
 import Library from './library/Library';
 import Sidebar from './common/Sidebar';
 
 import './App.styl';
 
-export default React.createClass({
+const App = React.createClass({
   displayName: 'App',
   propTypes: {
     library: React.PropTypes.instanceOf(Map),
@@ -20,3 +21,13 @@ export default React.createClass({
     </div>;
   }
 });
+
+export default App;
+
+const mapStateToProps = state => ({
+  library: state.get('library')
+});
+
+export const AppContainer = connect(
+  mapStateToProps
+)(App);
