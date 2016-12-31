@@ -14,7 +14,7 @@ export default React.createClass({
   },
   getImage: function() {
     const { book } = this.props;
-    const url = book.getIn(['extra', 'coverUrl']);
+    const url = book.getIn(['cover', 'image']);
 
     return <img src={url} alt={book.get('title')}/>;
   },
@@ -22,7 +22,7 @@ export default React.createClass({
     const { book, children } = this.props;
 
     return <Drawer>
-      <Header colour={book.getIn(['extra', 'coverColour'])}>
+      <Header colour={book.getIn(['cover', 'colour'])}>
         {this.getImage()}
       </Header>
       <main>

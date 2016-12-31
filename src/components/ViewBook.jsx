@@ -15,12 +15,6 @@ const ViewBook = React.createClass({
   propTypes: {
     book: React.PropTypes.instanceOf(Map)
   },
-  getImage: function() {
-    const { book } = this.props;
-    const url = book.getIn(['extra', 'coverUrl']);
-
-    return <img src={url} alt={book.get('title')}/>;
-  },
   render: function() {
     const { book } = this.props;
 

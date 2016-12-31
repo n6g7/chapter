@@ -14,13 +14,13 @@ export default React.createClass({
   },
   getImage: function() {
     const { book, loading } = this.props;
-    const url = book.getIn(['extra', 'coverUrl']);
+    const url = book.getIn(['cover', 'image']);
 
     return loading ? <Loader /> : <img src={url} alt={book.get('title')}/>;
   },
   render: function() {
     const { book, loading } = this.props;
-    const colour = !loading ? book.getIn(['extra', 'coverColour']) : null;
+    const colour = !loading ? book.getIn(['cover', 'colour']) : null;
 
     return <article className="cover" style={{ backgroundColor: colour}}>
       {this.getImage()}

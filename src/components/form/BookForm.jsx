@@ -14,6 +14,8 @@ class BookForm extends PureComponent {
   constructor(props) {
     super(props);
     props.reset(props.initialBook ? props.initialBook : null);
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(field) {

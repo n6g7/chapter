@@ -1,17 +1,11 @@
-import { fromJS } from 'immutable';
 import { createStore, compose } from 'redux';
-import persistState from 'redux-localstorage'
 
 import reducers from './reducers';
+import { localStorage, middlewares } from './enhancers';
 
 const enhancers = compose(
-  persistState('', {
-    merge: (initialState, persistedState) => {
-      initialState = initialState || fromJS({});
-      persistedState = fromJS(persistedState);
-      return initialState.merge(persistedState);
-    }
-  }),
+  localStorage,
+  middlewares,
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
