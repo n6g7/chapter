@@ -1,17 +1,25 @@
 import { applyMiddleware } from 'redux';
 import { getBookData, getMainColour } from '../../services/apis';
 import { types } from '../reducers/editor';
-import { setCoverField } from '../reducers/editor.action';
+import { setField, setCoverField } from '../reducers/editor.action';
 
-export const bookCover = store => next => action => {
+export const bookData = store => next => action => {
   const result = next(action);
 
   if (action.type == types.SET_FIELD && action.field == 'ISBN') {
     const book = store.getState().get('editor');
 
     getBookData(book)
-    .then(data => data.imageLinks.thumbnail)
-    .then(imageUrl => {
+    .then(data => {
+      if (!book.get('author')) {
+        store.dispatch(setField('author', data.authors.join(', ')));
+      }
+
+      if (!book.get('title')) {
+        store.dispatch(setField('title', data.title));
+      }
+
+      const imageUrl = data.imageLinks.thumbnail;
       store.dispatch(setCoverField('image', imageUrl));
       return getMainColour(imageUrl);
     })
@@ -25,5 +33,5 @@ export const bookCover = store => next => action => {
 };
 
 export default applyMiddleware(
-  bookCover
+  bookData
 );
