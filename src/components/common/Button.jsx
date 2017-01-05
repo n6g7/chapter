@@ -1,32 +1,34 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import './Button.styl';
 
-export default React.createClass({
-  displayName: 'Button',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    children: React.PropTypes.any,
-    click: React.PropTypes.func,
-    inline: React.PropTypes.bool,
-    link: React.PropTypes.string
-  },
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-  onClick: function() {
+class Button extends React.PureComponent {
+  onClick() {
     const { click, link } = this.props;
     const { router } = this.context;
 
     if (click) return click();
     else if (link) return router.push(link);
-  },
-  render: function() {
+  }
+
+  render() {
     const classes = this.props.inline ? 'inline' : '';
 
-    return <button onClick={this.onClick} className={classes}>
+    return <button onClick={this.onClick.bind(this)} className={classes}>
       {this.props.children}
     </button>;
   }
-});
+}
+
+Button.propTypes = {
+  children: React.PropTypes.any,
+  click: React.PropTypes.func,
+  inline: React.PropTypes.bool,
+  link: React.PropTypes.string
+};
+
+Button.contextTypes = {
+  router: React.PropTypes.object
+};
+
+export default Button;

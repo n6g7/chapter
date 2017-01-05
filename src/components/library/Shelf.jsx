@@ -27,19 +27,8 @@ function collect(connect, monitor) {
   };
 }
 
-const BookShelf = React.createClass({
-  displayName: 'Shelf',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    books: React.PropTypes.instanceOf(List),
-    hideWhenEmpty: React.PropTypes.bool,
-    type: React.PropTypes.string,
-    updateBook: React.PropTypes.func,
-    connectDropTarget: React.PropTypes.func.isRequired,
-    canDrop: React.PropTypes.bool.isRequired,
-    detailed: React.PropTypes.bool
-  },
-  render: function() {
+class BookShelf extends React.PureComponent {
+  render() {
     const { canDrop, connectDropTarget, type, detailed } = this.props;
     const sectionName = capitalize(type);
 
@@ -73,6 +62,16 @@ const BookShelf = React.createClass({
       {inner}
     </section>);
   }
-});
+}
+
+BookShelf.propTypes = {
+  books: React.PropTypes.instanceOf(List),
+  hideWhenEmpty: React.PropTypes.bool,
+  type: React.PropTypes.string,
+  updateBook: React.PropTypes.func,
+  connectDropTarget: React.PropTypes.func.isRequired,
+  canDrop: React.PropTypes.bool.isRequired,
+  detailed: React.PropTypes.bool
+};
 
 export default DropTarget(ItemTypes.BOOK, shelfTarget, collect)(BookShelf);

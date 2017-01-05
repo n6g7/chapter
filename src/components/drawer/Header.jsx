@@ -1,20 +1,20 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import './Header.styl'
 
-export default React.createClass({
-  displayName: 'Header',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    children: React.PropTypes.element,
-    colour: React.PropTypes.string
-  },
-  render: function() {
+class Header extends React.PureComponent {
+  render() {
     const { children, colour } = this.props;
 
     return <header style={{backgroundColor: colour }}>
         {children}
     </header>;
   }
-});
+}
+
+Header.propTypes = {
+  children: React.PropTypes.element,
+  colour: React.PropTypes.string
+};
+
+export default Header;

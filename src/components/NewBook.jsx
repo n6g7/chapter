@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
@@ -7,22 +6,13 @@ import BookDrawer from './drawer/BookDrawer';
 import { BookFormContainer } from './form/BookForm';
 import { addBook } from '../redux/reducers/library.action';
 
-const NewBook = React.createClass({
-  displayName: 'NewBook',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    addBook: React.PropTypes.func.isRequired,
-    editorBook: React.PropTypes.instanceOf(Map),
-    state: React.PropTypes.string
-  },
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-  save: function(book) {
+class NewBook extends React.PureComponent {
+  save(book) {
     this.props.addBook(book);
     this.context.router.push('/');
-  },
-  render: function() {
+  }
+
+  render() {
     const { editorBook } = this.props;
 
     return <BookDrawer book={editorBook}>
@@ -33,10 +23,20 @@ const NewBook = React.createClass({
         </aside>
       </header>
 
-      <BookFormContainer onSubmit={this.save}/>
+      <BookFormContainer onSubmit={this.save.bind(this)}/>
     </BookDrawer>;
   }
-});
+}
+
+NewBook.propTypes = {
+  addBook: React.PropTypes.func.isRequired,
+  editorBook: React.PropTypes.instanceOf(Map),
+  state: React.PropTypes.string
+};
+
+NewBook.contextTypes = {
+  router: React.PropTypes.object
+};
 
 export default NewBook;
 

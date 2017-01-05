@@ -4,27 +4,32 @@ import Backdrop from './Backdrop';
 
 import './Drawer.styl';
 
-export default React.createClass({
-  displayName: 'Drawer',
-  propTypes: {
-    children: React.PropTypes.any
-  },
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-  onClickBackdrop: function() {
+class Drawer extends React.PureComponent {
+  onClickBackdrop() {
     this.context.router.push('/');
-  },
-  onClickDrawer: function(event) {
+  }
+
+  onClickDrawer(event) {
     event.stopPropagation();
-  },
-  render: function() {
-    return <Backdrop onClick={this.onClickBackdrop}>
-      <aside className="drawer" onClick={this.onClickDrawer}>
+  }
+
+  render() {
+    return <Backdrop onClick={this.onClickBackdrop.bind(this)}>
+      <aside className="drawer" onClick={this.onClickDrawer.bind(this)}>
         <div className="wrapper">
           {this.props.children}
         </div>
       </aside>
     </Backdrop>;
   }
-});
+}
+
+Drawer.propTypes = {
+  children: React.PropTypes.any
+};
+
+Drawer.contextTypes = {
+  router: React.PropTypes.object
+};
+
+export default Drawer;

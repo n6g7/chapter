@@ -7,7 +7,6 @@ import { AppContainer } from './components/App';
 import { NewBookContainer } from './components/NewBook';
 import { EditBookContainer } from './components/EditBook';
 import { ViewBookContainer } from './components/ViewBook';
-import { ImportExportContainer } from './components/ImportExport';
 import store from './redux/store';
 
 ReactDOM.render(
@@ -17,7 +16,6 @@ ReactDOM.render(
         <Route path="new(/:type)" component={NewBookContainer} />
         <Route path="view/:uuid" component={ViewBookContainer} />
         <Route path="edit/:uuid" component={EditBookContainer} />
-        <Route path="io" component={ImportExportContainer} />
       </Route>
     </Router>
   </Provider>,

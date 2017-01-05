@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -9,14 +8,8 @@ import states from '../../config/bookStates';
 
 import './Library.styl'
 
-const Library = React.createClass({
-  displayName: 'Library',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    library: React.PropTypes.instanceOf(Map),
-    updateBook: React.PropTypes.func.isRequired
-  },
-  render: function() {
+class Library extends React.PureComponent {
+  render() {
     const { library, updateBook } = this.props;
 
     const books = library.get('books');
@@ -30,6 +23,11 @@ const Library = React.createClass({
       <Shelf type="read" books={read} updateBook={updateBook} />
     </main>;
   }
-});
+}
+
+Library.propTypes = {
+  library: React.PropTypes.instanceOf(Map),
+  updateBook: React.PropTypes.func.isRequired
+};
 
 export default DragDropContext(HTML5Backend)(Library);

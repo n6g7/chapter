@@ -1,24 +1,18 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Map} from 'immutable';
 
 import Drawer from './Drawer';
 import Header from './Header';
 
-export default React.createClass({
-  displayName: 'BookDrawer',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    book: React.PropTypes.instanceOf(Map),
-    children: React.PropTypes.any
-  },
-  getImage: function() {
+class BookDrawer extends React.PureComponent {
+  getImage() {
     const { book } = this.props;
     const url = book.getIn(['cover', 'image']);
 
     return <img src={url} alt={book.get('title')}/>;
-  },
-  render: function() {
+  }
+
+  render() {
     const { book, children } = this.props;
 
     return <Drawer>
@@ -30,4 +24,11 @@ export default React.createClass({
       </main>
     </Drawer>;
   }
-});
+}
+
+BookDrawer.propTypes = {
+  book: React.PropTypes.instanceOf(Map),
+  children: React.PropTypes.any
+};
+
+export default BookDrawer;

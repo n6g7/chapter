@@ -8,14 +8,8 @@ import { updateBook } from '../redux/reducers/library.action';
 
 import './App.styl';
 
-const App = React.createClass({
-  displayName: 'App',
-  propTypes: {
-    children: React.PropTypes.object,
-    library: React.PropTypes.instanceOf(Map),
-    updateBook: React.PropTypes.func.isRequired
-  },
-  render: function() {
+class App extends React.PureComponent {
+  render() {
     const { updateBook } = this.props;
 
     return <div className="chapter">
@@ -24,7 +18,13 @@ const App = React.createClass({
       {this.props.children}
     </div>;
   }
-});
+}
+
+App.propTypes = {
+  children: React.PropTypes.object,
+  library: React.PropTypes.instanceOf(Map),
+  updateBook: React.PropTypes.func.isRequired
+};
 
 export default App;
 

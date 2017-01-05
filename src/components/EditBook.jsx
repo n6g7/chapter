@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
@@ -12,29 +11,20 @@ import {
   removeBook
 } from '../redux/reducers/library.action';
 
-const EditBook = React.createClass({
-  displayName: 'EditBook',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    editorBook: React.PropTypes.instanceOf(Map),
-    updateBook: React.PropTypes.func,
-    book: React.PropTypes.instanceOf(Map),
-    removeBook: React.PropTypes.func
-  },
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-  save: function(book) {
+class EditBook extends React.PureComponent {
+  save(book) {
     this.props.updateBook(book);
     this.context.router.push('/');
-  },
-  remove: function(book) {
+  }
+
+  remove(book) {
     if (confirm('Are you sure?')) {
       this.props.removeBook(book);
       this.context.router.push('/');
     }
-  },
-  render: function() {
+  }
+
+  render() {
     const { book, editorBook } = this.props;
 
     return <BookDrawer book={editorBook}>
@@ -63,7 +53,18 @@ const EditBook = React.createClass({
       </BookFormContainer>
     </BookDrawer>;
   }
-});
+}
+
+EditBook.propTypes = {
+  editorBook: React.PropTypes.instanceOf(Map),
+  updateBook: React.PropTypes.func,
+  book: React.PropTypes.instanceOf(Map),
+  removeBook: React.PropTypes.func
+};
+
+EditBook.contextTypes = {
+  router: React.PropTypes.object
+};
 
 export default EditBook;
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
@@ -9,13 +8,8 @@ import Progressbar from './common/Progressbar';
 
 import editImg from '../images/edit.png';
 
-const ViewBook = React.createClass({
-  displayName: 'ViewBook',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    book: React.PropTypes.instanceOf(Map)
-  },
-  render: function() {
+class ViewBook extends React.PureComponent {
+  render() {
     const { book } = this.props;
 
     return <BookDrawer book={book}>
@@ -40,7 +34,11 @@ const ViewBook = React.createClass({
       </nav>
     </BookDrawer>;
   }
-});
+}
+
+ViewBook.propTypes = {
+  book: React.PropTypes.instanceOf(Map)
+};
 
 export default ViewBook;
 

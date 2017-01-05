@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {DragSource} from 'react-dnd';
 import {Map} from 'immutable';
 import Cover from './Cover';
@@ -20,16 +19,8 @@ function collect(connect, monitor) {
   };
 }
 
-const DraggableCover = React.createClass({
-  displayName: 'DraggableCover',
-  mixins: [PureRenderMixin],
-  propTypes: {
-    book: React.PropTypes.instanceOf(Map),
-    detailed: React.PropTypes.bool,
-    connectDragSource: React.PropTypes.func.isRequired,
-    isDragging: React.PropTypes.bool.isRequired
-  },
-  render: function() {
+class DraggableCover extends React.PureComponent {
+  render() {
     const { connectDragSource, book, detailed, isDragging } = this.props;
 
     return connectDragSource(
@@ -38,6 +29,13 @@ const DraggableCover = React.createClass({
       </div>
     );
   }
-});
+}
+
+DraggableCover.propTypes = {
+  book: React.PropTypes.instanceOf(Map),
+  detailed: React.PropTypes.bool,
+  connectDragSource: React.PropTypes.func.isRequired,
+  isDragging: React.PropTypes.bool.isRequired
+};
 
 export default DragSource(ItemTypes.BOOK, coverSource, collect)(DraggableCover);
