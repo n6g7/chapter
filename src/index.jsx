@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, browserHistory} from 'react-router';
 
 import { AppContainer } from './components/App';
 import { NewBookContainer } from './components/NewBook';
@@ -11,7 +11,7 @@ import store from './redux/store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <Route path="new(/:type)" component={NewBookContainer} />
         <Route path="view/:uuid" component={ViewBookContainer} />
