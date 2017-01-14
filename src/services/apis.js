@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import keys from '../config/keys.json';
+import config from 'config';
 
 const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
 const TINT_API = 'https://tint.gnab.fr/tint';
@@ -9,15 +9,14 @@ export function getBookData(book) {
 
   // An ISBN is either 10 or 13 chars long
   if (!isbn || (isbn.length != 10 && isbn.length != 13))
-    return Promise.resolve(null);
-
+    return Promise.reject(null);
 
   return new Promise((resolve, reject) => {
     $.ajax({
       url: GOOGLE_API,
       data: {
         q: `isbn:${isbn}`,
-        key: keys.google
+        key: config.googleApiKey
       },
       success: (data) => {
         resolve(data.totalItems === 0 ? null : data.items[0].volumeInfo);

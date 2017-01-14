@@ -37,5 +37,10 @@ module.exports = Object.assign({}, baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  externals: {
+    config: JSON.stringify({
+      googleApiKey: 'AIzaSyCf1cp94cx0m09VuCeMcqpX_v3oy3V_yFI'
+    })
+  }
 });

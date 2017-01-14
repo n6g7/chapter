@@ -1,3 +1,9 @@
+const environments = {
+  production: {
+    googleApiKey: 'AIzaSyCGJLle1uZO6BzHvdYdwY7JEHuHoz8Av-s'
+  }
+};
+
 module.exports = {
   entry: './src/index.jsx',
   module: {
@@ -31,5 +37,8 @@ module.exports = {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js'
+  },
+  externals: {
+    config: JSON.stringify(environments[process.env.NODE_ENV])
   }
 }

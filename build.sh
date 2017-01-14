@@ -13,7 +13,7 @@ VERSION=$1
 
 # Build
 git checkout $MAIN_BRANCH
-npm run build
+NODE_ENV=production npm run build
 cp -r dist dist-deploy
 git stash
 
