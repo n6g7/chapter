@@ -11,6 +11,8 @@ import saveImg from '../../images/save.png';
 import './BookForm.styl';
 import Progressbar from '../common/Progressbar';
 
+import { StateInput } from './inputs';
+
 class BookForm extends PureComponent {
   constructor(props) {
     super(props);
@@ -57,15 +59,7 @@ class BookForm extends PureComponent {
       </div>
       <div className="item half">
         <label htmlFor="state">Status</label>
-        <select
-          id="state"
-          value={editorBook.get('state')}
-          onChange={this.onChange('state')}
-        >
-          <option value={states.stock}>Stock</option>
-          <option value={states.reading}>Reading</option>
-          <option value={states.read}>Read</option>
-        </select>
+        <StateInput value={editorBook.get('state')} onChange={this.onChange('state')} />
       </div>
       <div className="item full">
         <label htmlFor="title">Title</label>
