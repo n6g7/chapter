@@ -1,5 +1,7 @@
 @import '../vars.styl';
 
+wishlistRatio = 2/3
+
 article.cover
   align-items center
   background: darken(white, 10%)
@@ -10,3 +12,10 @@ article.cover
 
   img
     width coverImageWidth
+
+  .shelf.wishlist &
+    height: (coverHeight * wishlistRatio)
+    width: (coverWidth * wishlistRatio)
+
+    img
+      width: (coverImageWidth * wishlistRatio)
