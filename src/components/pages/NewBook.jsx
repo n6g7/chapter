@@ -7,6 +7,12 @@ import { BookFormContainer } from '../form/BookForm';
 import { addBook } from '../../redux/reducers/library.action';
 
 class NewBook extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.save = this.save.bind(this);
+  }
+
   save(book) {
     this.props.addBook(book);
     this.context.router.push('/');
@@ -23,7 +29,7 @@ class NewBook extends React.PureComponent {
         </aside>
       </header>
 
-      <BookFormContainer onSubmit={this.save.bind(this)}/>
+      <BookFormContainer onSubmit={this.save}/>
     </BookDrawer>;
   }
 }

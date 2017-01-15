@@ -12,6 +12,12 @@ import {
 } from '../../redux/reducers/library.action';
 
 class EditBook extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.save = this.save.bind(this);
+  }
+
   save(book) {
     this.props.updateBook(book);
     this.context.router.push('/');
@@ -43,7 +49,7 @@ class EditBook extends React.PureComponent {
         initialBook={book}
         onSubmit={this.save}
       >
-        <Button click={() => this.save(editorBook)}>
+        <Button type="submit">
           <img src={saveImg} alt="save" />
           Save book
         </Button>

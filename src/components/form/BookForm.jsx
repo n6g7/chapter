@@ -28,7 +28,8 @@ class BookForm extends PureComponent {
     };
   }
 
-  onSubmit() {
+  onSubmit(event) {
+    event.preventDefault();
     this.props.onSubmit(this.props.editorBook);
   }
 
