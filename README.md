@@ -26,11 +26,11 @@ yarn install
  - [X] Autoformat ISBN field (à la stripe credit card)
  - [X] Pre-fill book status when I click on "add a book" in a shelf
  - [X] Autofill book data from ISBN
+ - [X] Hide "from to" on stock books
+ - [X] New state: wishlist
  - [ ] Sort books by read date
  - [ ] Books timeline
- - [ ] New state: wishlist
  - [ ] Add a favicon
  - [ ] Default book image
- - [ ] Hido "from to" on stock books
  - [ ] Add book tags to filter them
  - [ ] Mobile app to scan barcodes and automatically add books to the library
