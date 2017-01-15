@@ -12,6 +12,9 @@ class ViewBook extends React.PureComponent {
   render() {
     const { book } = this.props;
 
+    const startDate = book.get('startDate');
+    const endDate = book.get('endDate');
+
     return <BookDrawer book={book}>
       <h2>
         {book.get('title')}
@@ -20,12 +23,16 @@ class ViewBook extends React.PureComponent {
         {book.get('author')}
       </p>
       <Progressbar progress={book.get('progress')} label={book.get('state')} />
-      <p className="date">
-        Starting date: {book.get('startDate')}
-      </p>
-      <p className="date">
-        Ending date: {book.get('endDate')}
-      </p>
+      { startDate &&
+        <p className="date">
+          Starting date: {startDate.format('DD/MM/YYYY')}
+        </p>
+      }
+      { endDate &&
+        <p className="date">
+          Ending date: {endDate.format('DD/MM/YYYY')}
+        </p>
+      }
       <nav>
         <Button link={`/edit/${book.get('uuid')}`}>
           <img src={editImg} alt="edit" />

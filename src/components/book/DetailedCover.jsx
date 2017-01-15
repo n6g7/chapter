@@ -22,7 +22,7 @@ class DetailedCover extends React.PureComponent {
       <div className="description">
         <h3>{ book.get('title') }</h3>
         <p>{ book.get('author') }</p>
-        <p className="startDate">Starting date {book.get('startDate')}</p>
+        <p className="startDate">Starting date {book.get('startDate').format('DD/MM/YYYY')}</p>
         <Progressbar progress={ book.get('progress') } />
       </div>
     </article>;
