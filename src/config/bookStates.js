@@ -1,6 +1,6 @@
 export default {
-  stock: 'Stock',
-  reading: 'Reading',
-  read: 'Read',
-  wishlist: 'Wishlist',
+  stock: 'stock',
+  reading: 'reading',
+  read: 'read',
+  wishlist: 'wishlist',
 };

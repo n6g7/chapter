@@ -13,7 +13,7 @@ class StateInput extends PureComponent {
       {...props}
     >
       {Object.keys(states).map(key =>
-        <option value={key} key={key}>{states[key]}</option>
+        <option value={key} key={key}>{key}</option>
       )}
     </select>;
   }
