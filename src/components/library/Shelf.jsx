@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import capitalize from 'lodash/capitalize';
 import { List } from 'immutable';
 import { DropTarget } from 'react-dnd';

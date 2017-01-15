@@ -5,14 +5,14 @@
 ## Install
 
 ```sh
-npm i
+yarn install
 ```
 
 ## How to:
 
- - dev? `npm run dev`
- - build? `npm run build`
- - test? `npm test`
+ - dev? `yarn dev`
+ - build? `yarn build`
+ - test? `yarn test`
 
 ## Todo
 
