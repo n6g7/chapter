@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
-import Button from './common/Button';
-import BookDrawer from './drawer/BookDrawer';
-import Progressbar from './common/Progressbar';
+import Button from '../common/Button';
+import BookDrawer from '../drawer/BookDrawer';
+import Progressbar from '../common/Progressbar';
 
-import editImg from '../images/edit.png';
+import editImg from '../../images/edit.png';
 
 class ViewBook extends React.PureComponent {
   render() {

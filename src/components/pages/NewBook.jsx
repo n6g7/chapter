@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
-import BookDrawer from './drawer/BookDrawer';
-import { BookFormContainer } from './form/BookForm';
-import { addBook } from '../redux/reducers/library.action';
+import BookDrawer from '../drawer/BookDrawer';
+import { BookFormContainer } from '../form/BookForm';
+import { addBook } from '../../redux/reducers/library.action';
 
 class NewBook extends React.PureComponent {
   save(book) {

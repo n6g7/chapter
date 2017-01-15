@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
-import BookDrawer from './drawer/BookDrawer';
-import { BookFormContainer } from './form/BookForm';
-import Button from './common/Button';
-import saveImg from '../images/save.png';
+import BookDrawer from '../drawer/BookDrawer';
+import { BookFormContainer } from '../form/BookForm';
+import Button from '../common/Button';
+import saveImg from '../../images/save.png';
 import {
   updateBook,
   removeBook
-} from '../redux/reducers/library.action';
+} from '../../redux/reducers/library.action';
 
 class EditBook extends React.PureComponent {
   save(book) {
