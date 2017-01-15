@@ -13,7 +13,7 @@ class Sidebar extends React.PureComponent {
           <li><Link to="new">+</Link></li>
         </ul>
         <a
-          href="https://github.com/n6g7/chapter"
+          href={packageConfig.homepage}
           target="blank"
           title="gh://n6g7/chapter"
         >v{packageConfig.version}</a>

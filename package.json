@@ -15,6 +15,7 @@
     "chapter"
   ],
   "author": "Nathan G <n6g7@gnab.fr>",
+  "homepage": "https://github.com/n6g7/chapter",
   "license": "MIT",
   "dependencies": {
     "copy-to-clipboard": "^3.0.2",
