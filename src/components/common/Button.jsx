@@ -12,10 +12,15 @@ class Button extends React.PureComponent {
   }
 
   render() {
-    const classes = this.props.inline ? 'inline' : '';
+    const { children, inline, type } = this.props;
+    const classes = inline ? 'inline' : '';
 
-    return <button onClick={this.onClick.bind(this)} className={classes}>
-      {this.props.children}
+    return <button
+      className={classes}
+      onClick={this.onClick.bind(this)}
+      type={type}
+    >
+      { children }
     </button>;
   }
 }
@@ -24,7 +29,12 @@ Button.propTypes = {
   children: React.PropTypes.any,
   click: React.PropTypes.func,
   inline: React.PropTypes.bool,
-  link: React.PropTypes.string
+  link: React.PropTypes.string,
+  type: React.PropTypes.string
+};
+
+Button.defaultProps = {
+  type: 'button'
 };
 
 Button.contextTypes = {
