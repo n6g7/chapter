@@ -54,6 +54,7 @@ class BookShelf extends React.PureComponent {
         <h2>{sectionName}</h2>
         <nav>
           <ul>
+            <li>{this.props.books.count()} books</li>
             <li><Link to={`/new/${type}`}>+ Add a book</Link></li>
           </ul>
         </nav>
