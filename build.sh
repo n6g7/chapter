@@ -20,7 +20,7 @@ git stash
 # Commit
 git checkout $SITE_BRANCH
 cp dist-deploy/* .
-git add index.html bundle.js
+git add index.html 404.html bundle.js
 rm -r dist-deploy
 git commit -m "$PROJECT_NAME v$VERSION."
 
