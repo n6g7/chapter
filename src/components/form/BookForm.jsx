@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import DatePicker from './DatePicker';
 
-import states from '../../config/bookStates';
 import ISBNInput from './ISBNInput';
 import Button from '../common/Button';
 import { reset, setField } from '../../redux/reducers/editor.action';
