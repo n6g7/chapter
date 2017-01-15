@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
+import DatePicker from './DatePicker';
 
 import states from '../../config/bookStates';
 import ISBNInput from './ISBNInput';
@@ -86,22 +87,24 @@ class BookForm extends PureComponent {
       </div>
       <div className="item half">
         <label htmlFor="startDate">Start date</label>
-        <input
-          type="date"
+        <DatePicker
           id="startDate"
-          value={editorBook.get('startDate')}
-          placeholder="YYYY-MM-DD"
           onChange={this.onChange('startDate')}
+          selected={editorBook.get('startDate')}
+          startDate={editorBook.get('startDate')}
+          endDate={editorBook.get('endDate')}
+          selectsStart
         />
       </div>
       <div className="item half">
         <label htmlFor="endDate">End date</label>
-        <input
-          type="date"
+        <DatePicker
           id="endDate"
-          value={editorBook.get('endDate')}
-          placeholder="YYYY-MM-DD"
           onChange={this.onChange('endDate')}
+          selected={editorBook.get('endDate')}
+          startDate={editorBook.get('startDate')}
+          endDate={editorBook.get('endDate')}
+          selectsEnd
         />
       </div>
 

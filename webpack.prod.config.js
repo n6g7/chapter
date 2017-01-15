@@ -19,6 +19,10 @@ module.exports = {
         loader: 'json'
       },
       {
+        test: /\.css$/,
+        loader: 'style!css'
+      },
+      {
         test: /\.styl$/,
         exclude: /node_modules/,
         loader: 'style!css!stylus'
