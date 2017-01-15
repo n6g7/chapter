@@ -1,3 +1,15 @@
 machine:
   node:
     version: 6.1.0
+
+dependencies:
+  cache_directories:
+    - ~/.yarn
+  pre:
+    - npm install -g yarn
+  override:
+    - yarn install
+
+test:
+  override:
+    - yarn test
