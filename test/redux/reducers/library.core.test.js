@@ -1,7 +1,6 @@
-import {Map, fromJS} from 'immutable';
-import {expect} from 'chai';
+import { Map, fromJS } from 'immutable';
 
-import {addBook, updateBook, removeBook, importState} from '../../../src/redux/reducers/library.core';
+import { addBook, updateBook, removeBook, importState } from '../../../src/redux/reducers/library.core';
 
 describe('Library core logic', () => {
   describe('addBook', () => {
@@ -29,25 +28,25 @@ describe('Library core logic', () => {
       const nextState = addBook(state, newBook);
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(2);
+      expect(nextBooks.count()).toBe(2);
 
       const nextBook = nextBooks.get(1);
-      expect(nextBook).to.have.property('ISBN', '9780451417855');
-      expect(nextBook).to.have.property('title', 'Flatland');
-      expect(nextBook).to.have.property('startDate', '2015-02');
-      expect(nextBook).to.have.property('endDate', '2015-02');
-      expect(nextBook).to.have.property('state', 'read');
-      expect(nextBook).to.have.property('uuid');
+      expect(nextBook.get('ISBN')).toBe('9780451417855');
+      expect(nextBook.get('title')).toBe('Flatland');
+      expect(nextBook.get('startDate')).toBe('2015-02');
+      expect(nextBook.get('endDate')).toBe('2015-02');
+      expect(nextBook.get('state')).toBe('read');
+      expect(nextBook.get('uuid')).toBeDefined();
     });
 
     it('creates a book list when empty', () => {
       const state = Map();
       const nextState = addBook(state, newBook);
 
-      expect(nextState).to.have.deep.property(['books']);
+      expect(nextState.get('books')).toBeDefined();
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.count()).toBe(1);
     });
 
     it('adds a uuid to the book', () => {
@@ -59,13 +58,13 @@ describe('Library core logic', () => {
       const nextState = addBook(state, newBook);
 
       const books = nextState.getIn(['books']);
-      expect(books.count()).to.equal(1);
+      expect(books.count()).toBe(1);
 
       const book = books.get(0);
-      expect(book).to.have.property('uuid');
+      expect(book.get('uuid')).toBeDefined();
 
       const uuid = book.get('uuid');
-      expect(uuid).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
+      expect(uuid).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
     });
   });
 
@@ -93,15 +92,15 @@ describe('Library core logic', () => {
       }));
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(1);
+      expect(nextBooks.count()).toBe(1);
 
       const nextBook = nextBooks.get(0);
-      expect(nextBook).to.have.property('ISBN', '456');
-      expect(nextBook).to.have.property('title', 'Yo');
-      expect(nextBook).to.have.property('startDate', 'now');
-      expect(nextBook).to.have.property('endDate', 'later');
-      expect(nextBook).to.have.property('state', 'reading');
-      expect(nextBook).to.have.property('uuid', 'abc');
+      expect(nextBook.get('ISBN')).toBe('456');
+      expect(nextBook.get('title')).toBe('Yo');
+      expect(nextBook.get('startDate')).toBe('now');
+      expect(nextBook.get('endDate')).toBe('later');
+      expect(nextBook.get('state')).toBe('reading');
+      expect(nextBook.get('uuid')).toBe('abc');
     });
 
     it('updates a book without changing its position', () => {
@@ -143,15 +142,15 @@ describe('Library core logic', () => {
       }));
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(3);
+      expect(nextBooks.count()).toBe(3);
 
       const nextBook = nextBooks.get(1);
-      expect(nextBook).to.have.property('ISBN', '10');
-      expect(nextBook).to.have.property('title', 'Yo');
-      expect(nextBook).to.have.property('startDate', 'now');
-      expect(nextBook).to.have.property('endDate', 'later');
-      expect(nextBook).to.have.property('state', 'reading');
-      expect(nextBook).to.have.property('uuid', 'def');
+      expect(nextBook.get('ISBN')).toBe('10');
+      expect(nextBook.get('title')).toBe('Yo');
+      expect(nextBook.get('startDate')).toBe('now');
+      expect(nextBook.get('endDate')).toBe('later');
+      expect(nextBook.get('state')).toBe('reading');
+      expect(nextBook.get('uuid')).toBe('def');
     });
 
     it('updates a book\'s extra data', () => {
@@ -197,15 +196,15 @@ describe('Library core logic', () => {
       }));
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(3);
+      expect(nextBooks.count()).toBe(3);
 
       const nextBook = nextBooks.get(2);
-      expect(nextBook).to.have.property('uuid', 'ghi');
-      expect(nextBook).to.have.property('ISBN', '789');
-      expect(nextBook).to.have.property('extra');
+      expect(nextBook.get('uuid')).toBe('ghi');
+      expect(nextBook.get('ISBN')).toBe('789');
+      expect(nextBook.get('extra')).toBeDefined();
       const extra = nextBook.get('extra');
-      expect(extra).to.have.property('coverUrl', 'http://books.google.co.uk/books/content?id=j6uuCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api');
-      expect(extra).to.have.property('coverColour', '#98BBB5');
+      expect(extra.get('coverUrl')).toBe('http://books.google.co.uk/books/content?id=j6uuCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api');
+      expect(extra.get('coverColour')).toBe('#98BBB5');
     });
   });
 
@@ -222,7 +221,7 @@ describe('Library core logic', () => {
       const nextState = removeBook(state, book);
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(0);
+      expect(nextBooks.count()).toBe(0);
     });
 
     it('removes a book from a multi-books collection', () => {
@@ -245,10 +244,10 @@ describe('Library core logic', () => {
       const nextState = removeBook(state, book);
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(2);
+      expect(nextBooks.count()).toBe(2);
 
-      expect(nextBooks.getIn(['0', 'uuid'])).to.equal(789);
-      expect(nextBooks.getIn(['1', 'uuid'])).to.equal(456);
+      expect(nextBooks.getIn(['0', 'uuid'])).toBe(789);
+      expect(nextBooks.getIn(['1', 'uuid'])).toBe(456);
     });
 
     it('doesn\'t chnage an empty collection', () => {
@@ -262,7 +261,7 @@ describe('Library core logic', () => {
       });
       const nextState = removeBook(state, book);
 
-      expect(nextState).to.equal(state);
+      expect(nextState).toBe(state);
     });
   });
 
@@ -286,8 +285,8 @@ describe('Library core logic', () => {
       const nextState = importState(state, importedState);
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(1);
-      expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
+      expect(nextBooks.count()).toBe(1);
+      expect(nextBooks.getIn([0, 'isbn'])).toBe(456);
     });
 
     it('generates UUIDs', () => {
@@ -309,8 +308,8 @@ describe('Library core logic', () => {
       const nextState = importState(state, importedState);
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(1);
-      expect(nextBooks.getIn([0, 'uuid'])).to.not.be.null;
+      expect(nextBooks.count()).toBe(1);
+      expect(nextBooks.getIn([0, 'uuid'])).not.toBeNull();
     });
 
     it('accepts partial states', () => {
@@ -332,8 +331,8 @@ describe('Library core logic', () => {
       const nextState = importState(state, importedState);
 
       const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).to.equal(1);
-      expect(nextBooks.getIn([0, 'isbn'])).to.equal(456);
+      expect(nextBooks.count()).toBe(1);
+      expect(nextBooks.getIn([0, 'isbn'])).toBe(456);
     });
   });
 });

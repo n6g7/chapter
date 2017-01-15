@@ -1,7 +1,6 @@
-import {Map} from 'immutable';
-import {expect} from 'chai';
+import { Map } from 'immutable';
 
-import {getBookData, getMainColour} from '../../src/services/apis';
+import { getBookData, getMainColour } from '../../src/services/apis';
 
 describe('APIs service', () => {
   describe('getBookData', () => {
@@ -12,13 +11,13 @@ describe('APIs service', () => {
     it('returns a promise', () => {
       const result = getBookData(book);
 
-      expect(result).to.be.an.instanceof(Promise);
+      expect(result).toBeInstanceOf(Promise);
     });
 
     it('returns volumeInfo data', () => {
-      const result = getBookData(book);
-
-      expect(result).to.eventually.have.property('title');
+      return getBookData(book).then(res => {
+        expect(res.title).toBeDefined();
+      });
     });
   });
 
@@ -28,13 +27,13 @@ describe('APIs service', () => {
     it('returns a promise', () => {
       const result = getMainColour(url);
 
-      expect(result).to.be.an.instanceof(Promise);
+      expect(result).toBeInstanceOf(Promise);
     });
 
     it('returns a hex colour string', () => {
-      const result = getMainColour(url);
-
-      expect(result).to.eventually.match(/^#[0-9a-z]{6}$/);
+      return getMainColour(url).then(res => {
+        expect(res).toMatch(/^#[0-9a-fA-F]{6}$/);
+      });
     });
   });
 });

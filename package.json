@@ -7,7 +7,8 @@
     "build": "webpack --config webpack.prod.config.js",
     "dev": "webpack-dev-server",
     "pretest": "eslint src test --ext js,jsx",
-    "test": "snyk test && mocha --compilers js:babel-core/register --require ./test/helper.js --recursive"
+    "snyk": "snyk test",
+    "test": "jest"
   },
   "keywords": [
     "book",
@@ -43,17 +44,14 @@
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.3.0",
-    "chai-immutable": "astorije/chai-immutable",
     "chokidar": "^1.6.1",
     "css-loader": "^0.23.1",
     "eslint": "^2.10.2",
     "eslint-plugin-react": "^5.1.1",
     "file-loader": "^0.9.0",
     "img-loader": "^1.3.1",
+    "jest": "^18.1.0",
     "json-loader": "^0.5.4",
-    "mocha": "^2.4.5",
     "react-hot-loader": "^1.3.0",
     "snyk": "^1.14.3",
     "style-loader": "^0.13.1",
@@ -74,7 +72,7 @@
     "env": {
       "browser": true,
       "node": true,
-      "mocha": true
+      "jest": true
     },
     "extends": [
       "eslint:recommended",
@@ -94,6 +92,11 @@
     "plugins": [
       "react"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "Config": "./test/__mocks__/config.js"
+    }
   },
   "repository": {
     "url": "git@github.com:n6g7/chapter.git",

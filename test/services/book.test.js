@@ -1,6 +1,4 @@
-import {Map} from 'immutable';
-import {expect} from 'chai';
-
+import { Map } from 'immutable';
 import { newBook } from '../../src/services/book';
 
 describe('Book service', () => {
@@ -8,19 +6,19 @@ describe('Book service', () => {
     it('returns a immutable map', () => {
       const result = newBook();
 
-      expect(result).to.be.an.instanceof(Map);
+      expect(result).toBeInstanceOf(Map);
     });
 
     it('returns a book with a default status', () => {
       const result = newBook();
 
-      expect(result).to.have.property('state', 'stock');
+      expect(result.get('state')).toBe('stock');
     });
 
     it('enable status override', () => {
       const result = newBook('loool');
 
-      expect(result).to.have.property('state', 'loool');
+      expect(result.get('state')).toBe('loool');
     });
   });
 });
