@@ -28,8 +28,24 @@ function transform(state, map=transformationMap) {
   });
 }
 
+function sortBooks(state) {
+  state.library.books.sort((a, b) => {
+    const sa = a.startDate;
+    const sb = b.startDate;
+
+    if (sa == null) return 1;
+    if (sb == null) return -1;
+
+    if (sa.isBefore(sb)) return 1;
+    if (sb.isBefore(sa)) return -1;
+    return 0;
+  });
+
+  return state;
+}
+
 export default persistState('', {
-  deserialize: json => transform(JSON.parse(json)),
+  deserialize: json => sortBooks(transform(JSON.parse(json))),
   merge: (initialState, persistedState) => {
     initialState = initialState || fromJS({});
     persistedState = fromJS(persistedState);

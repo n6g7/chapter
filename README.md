@@ -30,7 +30,7 @@ yarn install
  - [X] Autofill book data from ISBN
  - [X] Hide "from to" on stock books
  - [X] New state: wishlist
- - [ ] Sort books by read date
+ - [X] Sort books by read date
  - [ ] Books timeline
  - [ ] Add a favicon
  - [ ] Default book image
