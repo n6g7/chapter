@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Sidebar from './common/Sidebar';
 import './App.styl';
@@ -17,13 +16,4 @@ App.propTypes = {
   children: React.PropTypes.object,
 };
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = {};
-
-const AppContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
-
-export default AppContainer;
+export default App;

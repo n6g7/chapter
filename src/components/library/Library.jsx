@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Map} from 'immutable';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
+import { updateBook } from '../../redux/reducers/library.action';
 import Shelf from './Shelf';
 
 import './Library.styl'
@@ -37,4 +39,17 @@ Library.propTypes = {
   updateBook: React.PropTypes.func.isRequired
 };
 
-export default DragDropContext(HTML5Backend)(Library);
+const mapStateToProps = state => ({
+  library: state.get('library')
+});
+
+const mapDispatchToProps = {
+  updateBook
+};
+
+export const LibraryContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Library);
+
+export default DragDropContext(HTML5Backend)(LibraryContainer);
