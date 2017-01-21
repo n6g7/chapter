@@ -1,4 +1,6 @@
 import { applyMiddleware } from 'redux';
+import { browserHistory } from 'react-router';
+import { routerMiddleware } from 'react-router-redux';
 import { getBookData, getMainColour } from '../../services/apis';
 import { types } from '../reducers/editor';
 import { setField, setCoverField } from '../reducers/editor.action';
@@ -33,5 +35,6 @@ export const bookData = store => next => action => {
 };
 
 export default applyMiddleware(
+  routerMiddleware(browserHistory),
   bookData
 );

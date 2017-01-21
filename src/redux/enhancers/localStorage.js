@@ -14,6 +14,9 @@ const transformationMap = {
       endDate: b.endDate ? moment(b.endDate) : null,
       startDate: b.startDate ? moment(b.startDate) : null
     }))
+  },
+  routing: {
+    locationBeforeTransitions: () => null
   }
 };
 
