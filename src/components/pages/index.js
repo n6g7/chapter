@@ -1,4 +1,4 @@
 export { EditBookContainer as EditBook } from './EditBook';
-export { LibraryContainer as Library } from './Library';
+export { HomeContainer as Home } from './Home';
 export { NewBookContainer as NewBook } from './NewBook';
 export { ViewBookContainer as ViewBook } from './ViewBook';
