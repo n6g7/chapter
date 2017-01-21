@@ -15,8 +15,4 @@ Home.propTypes = {
   children: React.PropTypes.element,
 };
 
-Home.contextTypes = {
-  router: React.PropTypes.object
-};
-
 export default Home;

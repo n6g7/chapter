@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { goBack, push } from 'react-router-redux';
 import { Map } from 'immutable';
 
 import BookDrawer from '../drawer/BookDrawer';
@@ -15,7 +16,7 @@ class NewBook extends React.PureComponent {
 
   save(book) {
     this.props.addBook(book);
-    this.context.router.push('/');
+    this.props.push('/');
   }
 
   render() {
@@ -25,7 +26,7 @@ class NewBook extends React.PureComponent {
       <header>
         <h2>Add a book</h2>
         <aside>
-          <a href="#">Cancel</a>
+          <a href="#" onClick={this.props.goBack}>Cancel</a>
         </aside>
       </header>
 
@@ -37,11 +38,9 @@ class NewBook extends React.PureComponent {
 NewBook.propTypes = {
   addBook: React.PropTypes.func.isRequired,
   editorBook: React.PropTypes.instanceOf(Map),
-  state: React.PropTypes.string
-};
-
-NewBook.contextTypes = {
-  router: React.PropTypes.object
+  state: React.PropTypes.string,
+  push: React.PropTypes.func.isRequired,
+  goBack: React.PropTypes.func.isRequired,
 };
 
 export default NewBook;
@@ -52,7 +51,9 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = {
-  addBook
+  addBook,
+  push,
+  goBack,
 };
 
 export const NewBookContainer = connect(

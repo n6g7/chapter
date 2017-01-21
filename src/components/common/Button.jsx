@@ -1,33 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import './Button.styl';
 
 class Button extends React.PureComponent {
-  onClick() {
-    const { click, link } = this.props;
-    const { router } = this.context;
-
-    if (click) return click();
-    else if (link) return router.push(link);
-  }
-
-  render() {
-    const { children, inline, type } = this.props;
+  renderSimpleButton() {
+    const { children, inline, type, onClick } = this.props;
     const classes = inline ? 'inline' : '';
 
     return <button
       className={classes}
-      onClick={this.onClick.bind(this)}
+      onClick={onClick}
       type={type}
     >
       { children }
     </button>;
   }
+
+  render() {
+    const { link } = this.props;
+    const button = this.renderSimpleButton();
+
+    return link
+      ? <Link to={link}>{ button }</Link>
+      : button;
+  }
 }
 
 Button.propTypes = {
   children: React.PropTypes.any,
-  click: React.PropTypes.func,
+  onClick: React.PropTypes.func,
   inline: React.PropTypes.bool,
   link: React.PropTypes.string,
   type: React.PropTypes.string
@@ -35,10 +37,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button'
-};
-
-Button.contextTypes = {
-  router: React.PropTypes.object
 };
 
 export default Button;

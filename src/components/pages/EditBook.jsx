@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { goBack, push } from 'react-router-redux';
 import { Map } from 'immutable';
 
 import BookDrawer from '../drawer/BookDrawer';
@@ -20,13 +21,13 @@ class EditBook extends React.PureComponent {
 
   save(book) {
     this.props.updateBook(book);
-    this.context.router.push('/');
+    this.props.push('/');
   }
 
   remove(book) {
     if (confirm('Are you sure?')) {
       this.props.removeBook(book);
-      this.context.router.push('/');
+      this.props.push('/');
     }
   }
 
@@ -39,7 +40,7 @@ class EditBook extends React.PureComponent {
           Edit a book
         </h2>
         <aside>
-          <a onClick={this.context.router.goBack}>
+          <a onClick={this.props.goBack}>
             Cancel
           </a>
         </aside>
@@ -53,7 +54,7 @@ class EditBook extends React.PureComponent {
           <img src={saveImg} alt="save" />
           Save book
         </Button>
-        <Button click={() => this.remove(book)}>
+        <Button onClick={() => this.remove(book)}>
           Delete book
         </Button>
       </BookFormContainer>
@@ -65,11 +66,9 @@ EditBook.propTypes = {
   editorBook: React.PropTypes.instanceOf(Map),
   updateBook: React.PropTypes.func,
   book: React.PropTypes.instanceOf(Map),
-  removeBook: React.PropTypes.func
-};
-
-EditBook.contextTypes = {
-  router: React.PropTypes.object
+  removeBook: React.PropTypes.func,
+  push: React.PropTypes.func.isRequired,
+  goBack: React.PropTypes.func.isRequired,
 };
 
 export default EditBook;
@@ -83,7 +82,9 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = {
   updateBook,
-  removeBook
+  removeBook,
+  push,
+  goBack,
 }
 
 export const EditBookContainer = connect(

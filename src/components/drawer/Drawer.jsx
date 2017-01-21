@@ -1,12 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Backdrop from './Backdrop';
 
 import './Drawer.styl';
 
 class Drawer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.onClickBackdrop = this.onClickBackdrop.bind(this);
+    this.onClickDrawer = this.onClickDrawer.bind(this);
+  }
+
   onClickBackdrop() {
-    this.context.router.push('/');
+    this.props.push('/');
   }
 
   onClickDrawer(event) {
@@ -14,8 +23,8 @@ class Drawer extends React.PureComponent {
   }
 
   render() {
-    return <Backdrop onClick={this.onClickBackdrop.bind(this)}>
-      <aside className="drawer" onClick={this.onClickDrawer.bind(this)}>
+    return <Backdrop onClick={this.onClickBackdrop}>
+      <aside className="drawer" onClick={this.onClickDrawer}>
         <div className="wrapper">
           {this.props.children}
         </div>
@@ -25,11 +34,19 @@ class Drawer extends React.PureComponent {
 }
 
 Drawer.propTypes = {
-  children: React.PropTypes.any
+  children: React.PropTypes.any,
+  push: React.PropTypes.func.isRequired,
 };
 
-Drawer.contextTypes = {
-  router: React.PropTypes.object
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+  push
 };
 
-export default Drawer;
+export const DrawerContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Drawer);
+
+export default DrawerContainer;
