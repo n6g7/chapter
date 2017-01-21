@@ -16,13 +16,14 @@ class DetailedCover extends React.PureComponent {
   render() {
     const { book, loading } = this.props;
     const colour = !loading ? book.getIn(['cover', 'colour']) : null;
+    const startDate = book.get('startDate');
 
     return <article className="detailedCover" style={{ backgroundColor: colour}}>
       {this.getImage()}
       <div className="description">
         <h3>{ book.get('title') }</h3>
         <p>{ book.get('author') }</p>
-        <p className="startDate">Starting date {book.get('startDate').format('DD/MM/YYYY')}</p>
+        { startDate && <p className="startDate">Starting date {startDate.format('DD/MM/YYYY')}</p> }
         <Progressbar progress={ book.get('progress') } />
       </div>
     </article>;
