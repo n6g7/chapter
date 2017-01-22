@@ -1,5 +1,7 @@
 # Chapter [![CircleCI](https://circleci.com/gh/n6g7/chapter/tree/master.svg?style=svg)](https://circleci.com/gh/n6g7/chapter/tree/master) [![bitHound Overall Score](https://www.bithound.io/github/n6g7/chapter/badges/score.svg)](https://www.bithound.io/github/n6g7/chapter)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/n6g7/chapter.svg)](https://greenkeeper.io/)
+
 ![Chapter screenshot](./screenshot.png)
 
 ## Install
