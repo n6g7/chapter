@@ -28,14 +28,17 @@ module.exports = {
         loader: 'style!css!stylus'
       },
       {
-        test: /\.png$/,
+        test: /\.(png|svg)$/,
         exclude: /node_modules/,
         loader: 'url!img'
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      "highcharts-more" : "highcharts/highcharts-more.src.js"
+    }
   },
   output: {
     path: __dirname + '/dist',

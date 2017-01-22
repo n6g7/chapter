@@ -8,6 +8,7 @@ import {
   EditBook,
   Home,
   NewBook,
+  Timeline,
   ViewBook
 } from './components/pages';
 
@@ -28,6 +29,7 @@ const router = store => {
           <Route path="view/:uuid" component={ViewBook} />
           <Route path="edit/:uuid" component={EditBook} />
         </Route>
+        <Route path="timeline" component={Timeline} />
       </Route>
     </Router>
   </Provider>;

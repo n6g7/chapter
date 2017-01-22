@@ -29,7 +29,7 @@ module.exports = Object.assign({}, baseConfig, {
         loader: 'style!css!stylus'
       },
       {
-        test: /\.png$/,
+        test: /\.(png|svg)$/,
         exclude: /node_modules/,
         loader: 'url!img'
       }

@@ -2815,6 +2815,10 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
+highcharts, highcharts@^5.0.0:
+  version v5.0.7
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-5.0.7.tgz#63ebeeee05acd56e3b2554b5b31a1224e1e05bf6"
+
 history@^3.0.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/history/-/history-3.2.1.tgz#71c7497f4e6090363d19a6713bb52a1bfcdd99aa"
@@ -5004,6 +5008,12 @@ react-dom@^15.4.2:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-highcharts:
+  version "11.5.0"
+  resolved "https://registry.yarnpkg.com/react-highcharts/-/react-highcharts-11.5.0.tgz#2812cdc56ef1057e59cbc9c4dbed79b72d8505ae"
+  dependencies:
+    highcharts "^5.0.0"
 
 react-hot-api@^0.4.5:
   version "0.4.7"
