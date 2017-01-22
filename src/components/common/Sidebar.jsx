@@ -4,12 +4,17 @@ import {Link} from 'react-router';
 import packageConfig from '../../../package.json';
 import './Sidebar.styl';
 
+import timeline from '../../images/timeline.svg';
+
 class Sidebar extends React.PureComponent {
   render() {
     return <aside className="sidebar">
-      <h1>Chapter</h1>
+      <h1>
+        <Link to="/">Chapter</Link>
+      </h1>
       <nav>
         <ul>
+          <li><Link to="timeline"><img src={timeline} /></Link></li>
           <li><Link to="new">+</Link></li>
         </ul>
         <a

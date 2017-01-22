@@ -31,7 +31,7 @@ yarn install
  - [X] Hide "from to" on stock books
  - [X] New state: wishlist
  - [X] Sort books by read date
- - [ ] Books timeline
+ - [X] Books timeline
  - [ ] Add a favicon
  - [ ] Default book image
  - [ ] Add book tags to filter them
