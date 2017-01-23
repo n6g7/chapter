@@ -45,7 +45,12 @@ module.exports = Object.assign({}, baseConfig, {
   ],
   externals: {
     config: JSON.stringify({
-      googleApiKey: 'AIzaSyCf1cp94cx0m09VuCeMcqpX_v3oy3V_yFI'
+      googleApiKey: 'AIzaSyCf1cp94cx0m09VuCeMcqpX_v3oy3V_yFI',
+      firebase: {
+        apiKey: "AIzaSyC2PVLteeEKm0YmFE6oizPiXTRiW8qyy8o",
+        authDomain: "bamboo-theorem-b8d0a.firebaseapp.com",
+        databaseURL: "https://bamboo-theorem-b8d0a.firebaseio.com",
+      }
     })
   }
 });
