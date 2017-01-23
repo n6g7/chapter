@@ -4,6 +4,7 @@ import { routerMiddleware } from 'react-router-redux';
 import { getBookData, getMainColour } from '../../services/apis';
 import { types } from '../reducers/editor';
 import { setField, setCoverField } from '../reducers/editor.action';
+import createSagaMiddleware from 'redux-saga';
 
 export const bookData = store => next => action => {
   const result = next(action);
@@ -34,7 +35,10 @@ export const bookData = store => next => action => {
   return result;
 };
 
+export const sagaMiddleware = createSagaMiddleware();
+
 export default applyMiddleware(
   routerMiddleware(browserHistory),
-  bookData
+  bookData,
+  sagaMiddleware
 );
