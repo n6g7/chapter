@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const baseConfig = require('./webpack.prod.config.js');
 
 module.exports = Object.assign({}, baseConfig, {
@@ -40,7 +41,8 @@ module.exports = Object.assign({}, baseConfig, {
     hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new DashboardPlugin()
   ],
   externals: {
     config: JSON.stringify({
