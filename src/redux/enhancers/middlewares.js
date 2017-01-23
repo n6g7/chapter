@@ -21,7 +21,7 @@ export const bookData = store => next => action => {
         store.dispatch(setField('title', data.title));
       }
 
-      const imageUrl = data.imageLinks.thumbnail;
+      const imageUrl = data.imageLinks.thumbnail.replace(/^http:/, 'https:');
       store.dispatch(setCoverField('image', imageUrl));
       return getMainColour(imageUrl);
     })

@@ -9,11 +9,22 @@ const transformationMap = {
     startDate: moment
   },
   library: {
-    books: books => books.map(b => ({
-      ...b,
-      endDate: b.endDate ? moment(b.endDate) : null,
-      startDate: b.startDate ? moment(b.startDate) : null
-    }))
+    books: books => books.map(b => {
+      const parsedBook = {
+        ...b,
+        endDate: b.endDate ? moment(b.endDate) : null,
+        startDate: b.startDate ? moment(b.startDate) : null
+      };
+
+      if (b.cover) {
+        parsedBook.cover = {
+          ...b.cover,
+          image: b.cover.image.replace(/^http:/, 'https:')
+        }
+      }
+
+      return parsedBook;
+    })
   },
   routing: {
     locationBeforeTransitions: () => null
