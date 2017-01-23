@@ -5,9 +5,8 @@ const baseConfig = require('./webpack.prod.config.js');
 module.exports = Object.assign({}, baseConfig, {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    baseConfig.entry
-  ],
+    'webpack/hot/only-dev-server'
+  ].concat(baseConfig.entry),
   module: {
     loaders: [
       {

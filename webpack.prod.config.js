@@ -1,11 +1,16 @@
 const environments = {
   production: {
-    googleApiKey: 'AIzaSyCGJLle1uZO6BzHvdYdwY7JEHuHoz8Av-s'
+    googleApiKey: 'AIzaSyCGJLle1uZO6BzHvdYdwY7JEHuHoz8Av-s',
+    firebase: {
+      apiKey: "AIzaSyC2PVLteeEKm0YmFE6oizPiXTRiW8qyy8o",
+      authDomain: "bamboo-theorem-b8d0a.firebaseapp.com",
+      databaseURL: "https://bamboo-theorem-b8d0a.firebaseio.com",
+    }
   }
 };
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.jsx'],
   module: {
     loaders: [
       {
