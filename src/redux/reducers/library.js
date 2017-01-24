@@ -4,7 +4,6 @@ import {
   addBook,
   updateBook,
   removeBook,
-  importState
 } from './library.core';
 
 const initialState = fromJS({
@@ -19,8 +18,6 @@ export default function(state = initialState, action) {
       return updateBook(state, action.book);
     case types.REMOVE_BOOK:
       return removeBook(state, action.book);
-    case types.IMPORT_STATE:
-      return importState(state, action.importedState);
   }
 
   return state;

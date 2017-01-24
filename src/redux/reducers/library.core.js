@@ -1,4 +1,4 @@
-import { List, fromJS } from 'immutable';
+import { List } from 'immutable';
 import uuid from 'uuid';
 
 export function addBook(state, book) {
@@ -29,17 +29,5 @@ export function removeBook(state, book) {
 
   return state.merge({
     books: books.delete(index)
-  });
-}
-
-export function importState(state, imported) {
-  const importedState = fromJS(imported);
-
-  return importedState.updateIn(['books'], books => {
-    return books.map(book => {
-      return book.merge({
-        uuid: uuid.v4()
-      });
-    });
   });
 }

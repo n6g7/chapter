@@ -1,6 +1,6 @@
 import { Map, fromJS } from 'immutable';
 
-import { addBook, updateBook, removeBook, importState } from '../../../src/redux/reducers/library.core';
+import { addBook, updateBook, removeBook } from '../../../src/redux/reducers/library.core';
 
 describe('Library core logic', () => {
   describe('addBook', () => {
@@ -262,77 +262,6 @@ describe('Library core logic', () => {
       const nextState = removeBook(state, book);
 
       expect(nextState).toBe(state);
-    });
-  });
-
-  describe('importState', () => {
-    it('imports books into the state', () => {
-      const state = fromJS({
-        books: [
-          {
-            isbn: 123
-          }
-        ]
-      });
-      const importedState = {
-        books: [
-          {
-            isbn: 456
-          }
-        ]
-      };
-
-      const nextState = importState(state, importedState);
-
-      const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).toBe(1);
-      expect(nextBooks.getIn([0, 'isbn'])).toBe(456);
-    });
-
-    it('generates UUIDs', () => {
-      const state = fromJS({
-        books: [
-          {
-            isbn: 123
-          }
-        ]
-      });
-      const importedState = {
-        books: [
-          {
-            isbn: 456
-          }
-        ]
-      };
-
-      const nextState = importState(state, importedState);
-
-      const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).toBe(1);
-      expect(nextBooks.getIn([0, 'uuid'])).not.toBeNull();
-    });
-
-    it('accepts partial states', () => {
-      const state = fromJS({
-        books: [
-          {
-            isbn: 123
-          }
-        ]
-      });
-      const importedState = {
-        books: [
-          {
-            isbn: 456
-          }
-        ]
-      };
-
-      const nextState = importState(state, importedState);
-
-      const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).toBe(1);
-      expect(nextBooks.getIn([0, 'isbn'])).toBe(456);
     });
   });
 });
