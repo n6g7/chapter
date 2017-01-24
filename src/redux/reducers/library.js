@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { types } from './library.action';
 import {
   addBook,
   updateBook,
@@ -6,17 +7,9 @@ import {
   importState
 } from './library.core';
 
-export const types = {
-  ADD_BOOK: 'ADD_BOOK',
-  UPDATE_BOOK: 'UPDATE_BOOK',
-  REMOVE_BOOK: 'REMOVE_BOOK',
-  IMPORT_STATE: 'IMPORT_STATE'
-};
-
 const initialState = fromJS({
   books: []
 });
-
 
 export default function(state = initialState, action) {
   switch(action.type) {

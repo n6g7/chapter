@@ -1,4 +1,9 @@
-import { types } from './library';
+export const types = {
+  ADD_BOOK: 'ADD_BOOK',
+  UPDATE_BOOK: 'UPDATE_BOOK',
+  REMOVE_BOOK: 'REMOVE_BOOK',
+  IMPORT_STATE: 'IMPORT_STATE'
+};
 
 export const addBook = (book) => ({
   type: types.ADD_BOOK,
