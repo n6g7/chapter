@@ -1,4 +1,3 @@
-import { List } from 'immutable';
 import uuid from 'uuid';
 
 export function addBook(state, book) {
@@ -6,11 +5,7 @@ export function addBook(state, book) {
     book = book.set('uuid', uuid.v4());
   }
 
-  const books = state.getIn(['books'], List()).push(book);
-
-  return state.merge({
-    books
-  });
+  return state.update('books', books => books.push(book));
 }
 
 export function updateBook(state, book) {
@@ -18,16 +13,12 @@ export function updateBook(state, book) {
   const books = state.getIn(['books']);
   const index = books.findKey(bk => bk.get('uuid') === uuid);
 
-  return state.merge({
-    books: books.set(index, book)
-  });
+  return state.set('books', books.set(index, book));
 }
 
 export function removeBook(state, book) {
   const books = state.getIn(['books']);
   const index = books.findKey(bk => bk === book);
 
-  return state.merge({
-    books: books.delete(index)
-  });
+  return state.set('books', books.delete(index));
 }

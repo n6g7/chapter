@@ -39,21 +39,9 @@ describe('Library core logic', () => {
       expect(nextBook.get('uuid')).toBeDefined();
     });
 
-    it('creates a book list when empty', () => {
-      const state = Map();
-      const nextState = addBook(state, newBook);
-
-      expect(nextState.get('books')).toBeDefined();
-
-      const nextBooks = nextState.getIn(['books']);
-      expect(nextBooks.count()).toBe(1);
-    });
-
     it('adds a uuid to the book', () => {
       const state = fromJS({
-        library: {
-          books: []
-        }
+        books: []
       });
       const nextState = addBook(state, newBook);
 
