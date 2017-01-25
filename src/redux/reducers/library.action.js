@@ -4,7 +4,11 @@ export const types = {
     SUCCESS: 'ADD_BOOK.SUCCESS',
     FAILURE: 'ADD_BOOK.FAILURE',
   },
-  UPDATE_BOOK: 'UPDATE_BOOK',
+  UPDATE_BOOK: {
+    REQUEST: 'UPDATE_BOOK.REQUEST',
+    SUCCESS: 'UPDATE_BOOK.SUCCESS',
+    FAILURE: 'UPDATE_BOOK.FAILURE',
+  },
   REMOVE_BOOK: 'REMOVE_BOOK',
 };
 
@@ -21,9 +25,17 @@ export const addBookFailure = error => ({
   error
 });
 
-export const updateBook = (book) => ({
-  type: types.UPDATE_BOOK,
+export const updateBook = book => ({
+  type: types.UPDATE_BOOK.REQUEST,
   book
+});
+export const updateBookSuccess = book => ({
+  type: types.UPDATE_BOOK.SUCCESS,
+  book
+});
+export const updateBookFailure = error => ({
+  type: types.UPDATE_BOOK.FAILURE,
+  error
 });
 
 export const removeBook = (book) => ({

@@ -1,5 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { types, addBookSuccess, addBookFailure } from '../reducers/library.action';
+import {
+  types,
+  addBookSuccess,
+  addBookFailure,
+  updateBookSuccess,
+  updateBookFailure,
+} from '../reducers/library.action';
 import { book as bookApi } from '../../firebase';
 
 const transform = book => ({
@@ -26,6 +32,17 @@ function* createBookSaga({ book }) {
   }
 }
 
+function* updateBookSaga({ book }) {
+  try {
+    yield call(bookApi.update, book.get('bid'), transform(book));
+    yield put(updateBookSuccess(book));
+  }
+  catch (error) {
+    yield put(updateBookFailure(error));
+  }
+}
+
 export function* watchBook() {
   yield takeEvery(types.ADD_BOOK.REQUEST, createBookSaga);
+  yield takeEvery(types.UPDATE_BOOK.REQUEST, updateBookSaga);
 }
