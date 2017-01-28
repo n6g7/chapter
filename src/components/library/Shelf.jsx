@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import capitalize from 'lodash/capitalize';
 import { List } from 'immutable';
 import { DropTarget } from 'react-dnd';
-import {Link} from 'react-router';
-import Button from '../common/Button';
+import { Link } from 'react-router';
 import BookList from './BookList';
+
+import { updateBook } from '../../redux/reducers/library.action';
 import ItemTypes from '../../config/dragDropTypes';
 
 import './Shelf.styl'
@@ -28,23 +30,26 @@ function collect(connect, monitor) {
 
 class BookShelf extends React.PureComponent {
   render() {
-    const { canDrop, connectDropTarget, type, detailed } = this.props;
+    const {
+      books,
+      canDrop,
+      connectDropTarget,
+      type,
+      detailed
+    } = this.props;
     const sectionName = capitalize(type);
 
     let classes = ['shelf', type];
     if (canDrop) classes.push('hover');
 
-    let inner = <p className="announce">
-      Whoops, nothing here yet. Do you want to <Button link={`/new/${type}`} inline={true}>Add a book</Button> ?
-    </p>;
+    let inner = null;
 
-    if (this.props.hideWhenEmpty && this.props.books.isEmpty()) {
-      inner = null;
+    if (this.props.hideWhenEmpty && books.isEmpty()) {
       classes.push('hide');
     }
-    else if (!this.props.books.isEmpty()) {
+    else if (!books.isEmpty()){
       inner = <BookList
-        books={this.props.books}
+        books={books}
         detailed={detailed}
       />;
     }
@@ -54,7 +59,7 @@ class BookShelf extends React.PureComponent {
         <h2>{sectionName}</h2>
         <nav>
           <ul>
-            <li>{this.props.books.count()} books</li>
+            <li>{books.count()} books</li>
             <li><Link to={`/new/${type}`}>+ Add a book</Link></li>
           </ul>
         </nav>
@@ -66,12 +71,30 @@ class BookShelf extends React.PureComponent {
 
 BookShelf.propTypes = {
   books: React.PropTypes.instanceOf(List),
-  hideWhenEmpty: React.PropTypes.bool,
+  hideWhenEmpty: React.PropTypes.bool.isRequired,
   type: React.PropTypes.string,
   updateBook: React.PropTypes.func,
   connectDropTarget: React.PropTypes.func.isRequired,
   canDrop: React.PropTypes.bool.isRequired,
-  detailed: React.PropTypes.bool
+  detailed: React.PropTypes.bool.isRequired,
 };
 
-export default DropTarget(ItemTypes.BOOK, shelfTarget, collect)(BookShelf);
+BookShelf.defaultProps = {
+  detailed: false,
+  hideWhenEmpty: false,
+};
+
+const DropBookShelf = DropTarget(ItemTypes.BOOK, shelfTarget, collect)(BookShelf);
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+  updateBook
+};
+
+const BookShelfContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DropBookShelf);
+
+export default BookShelfContainer;

@@ -1,51 +1,53 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Map} from 'immutable';
+import { List, Map } from 'immutable';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import { updateBook } from '../../redux/reducers/library.action';
 import Shelf from './Shelf';
 
 import './Library.styl'
 
 class Library extends React.PureComponent {
   render() {
-    const { library, updateBook } = this.props;
+    const { library } = this.props;
 
     const books = library.get('books');
 
     const booksByState = books.groupBy(book => book.get('state'));
 
     return <main className="library">
-      { booksByState.get('reading') &&
-        <Shelf type="reading" books={booksByState.get('reading')} hideWhenEmpty={true} detailed={true} updateBook={updateBook} />
-      }
-      { booksByState.get('stock') &&
-        <Shelf type="stock" books={booksByState.get('stock')} updateBook={updateBook} />
-      }
-      { booksByState.get('read') &&
-        <Shelf type="read" books={booksByState.get('read')} updateBook={updateBook} />
-      }
-      { booksByState.get('wishlist') &&
-        <Shelf type="wishlist" books={booksByState.get('wishlist')} updateBook={updateBook} />
-      }
+      <Shelf
+        books={booksByState.get('reading', List())}
+        detailed
+        hideWhenEmpty
+        type="reading"
+      />
+      <Shelf
+        books={booksByState.get('stock', List())}
+        type="stock"
+      />
+      <Shelf
+        books={booksByState.get('read', List())}
+        type="read"
+      />
+      <Shelf
+        books={booksByState.get('wishlist', List())}
+        type="wishlist"
+      />
     </main>;
   }
 }
 
 Library.propTypes = {
   library: React.PropTypes.instanceOf(Map),
-  updateBook: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   library: state.get('library')
 });
 
-const mapDispatchToProps = {
-  updateBook
-};
+const mapDispatchToProps = {};
 
 export const LibraryContainer = connect(
   mapStateToProps,
