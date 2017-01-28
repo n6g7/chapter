@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
     case types.UPDATE_BOOK.SUCCESS:
       return updateBook(state, action.book).set('loading', false);
     case types.LOAD_BOOKS.SUCCESS:
-      return state.set('books', action.books);
+      return state.set('books', action.books).set('loading', false);
 
     case types.REMOVE_BOOK:
       return removeBook(state, action.book);

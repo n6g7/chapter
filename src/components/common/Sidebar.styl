@@ -13,17 +13,32 @@ aside.sidebar
   top 0
   width sidebarWidth
 
-  h1
-    margin 0 (sidebarWidth/2) 0 0
-    font-size 3rem
-    height sidebarWidth
-    line-height sidebarWidth
-    transform rotate(-90deg)
-    transform-origin 100% 50%
+  header
+    align-items: center
+    display: flex
+    padding: 20px 0 0
+    flex-flow: column nowrap
+    width: sidebarWidth
 
-    a
-      color: inherit
-      display: block
+    h1
+      height=120px
+
+      margin 0
+      font-size 3rem
+      height height
+      line-height height
+      text-align: center
+      transform rotate(-90deg)
+      transform-origin 50% 50%
+
+      a
+        color: inherit
+        display: block
+
+    .loader
+      font-size: 0.8em
+      margin-top: 20px
+      opacity: 0.5
 
   nav
     ul

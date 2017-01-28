@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
     case types.SAVE_USER.SUCCESS:
     case types.LOGIN.FAILURE:
     case types.SAVE_USER.FAILURE:
-      return state.set('loading', true);
+      return state.set('loading', false);
   }
 
   return state;

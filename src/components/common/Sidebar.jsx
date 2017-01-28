@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
 
+import Loader from './Loader';
 import { login } from '../../redux/reducers/user.action';
 import packageConfig from '../../../package.json';
 import './Sidebar.styl';
@@ -12,9 +13,12 @@ import timeline from '../../images/timeline.svg';
 class Sidebar extends React.PureComponent {
   render() {
     return <aside className="sidebar">
-      <h1>
-        <Link to="/">Chapter</Link>
-      </h1>
+      <header>
+        <h1>
+          <Link to="/">Chapter</Link>
+        </h1>
+        { this.props.loading && <Loader small white/> }
+      </header>
       <nav>
         <ul>
           <li><Link onClick={this.props.login}><img src={fingerprint} /></Link></li>
@@ -32,10 +36,13 @@ class Sidebar extends React.PureComponent {
 }
 
 Sidebar.propTypes = {
+  loading: React.PropTypes.bool.isRequired,
   login: React.PropTypes.func.isRequired,
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  loading: state.getIn(['library', 'loading']) || state.getIn(['user', 'loading']),
+});
 const mapDispatchToProps = {
   login
 };
