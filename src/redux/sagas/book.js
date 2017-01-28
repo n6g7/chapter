@@ -7,24 +7,11 @@ import {
   updateBookFailure,
 } from '../reducers/library.action';
 import { book as bookApi } from '../../firebase';
-
-const transform = book => ({
-  author: book.get('author'),
-  cover: {
-    colour: book.getIn(['cover', 'colour']),
-    image: book.getIn(['cover', 'image'])
-  },
-  endDate: book.get('endDate'),
-  ISBN: book.get('ISBN'),
-  progress: book.get('progress'),
-  startDate: book.get('startDate'),
-  state: book.get('state'),
-  title: book.get('title')
-});
+import { book as bookTransformer } from '../../services/transformers';
 
 function* createBookSaga({ book }) {
   try {
-    const result = yield call(bookApi.create, transform(book));
+    const result = yield call(bookApi.create, bookTransformer.serialize(book));
     yield put(addBookSuccess(book.set('bid', result.key)));
   }
   catch (error) {
@@ -34,7 +21,7 @@ function* createBookSaga({ book }) {
 
 function* updateBookSaga({ book }) {
   try {
-    yield call(bookApi.update, book.get('bid'), transform(book));
+    yield call(bookApi.update, book.get('bid'), bookTransformer.serialize(book));
     yield put(updateBookSuccess(book));
   }
   catch (error) {
