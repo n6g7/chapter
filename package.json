@@ -97,7 +97,10 @@
     },
     "plugins": [
       "react"
-    ]
+    ],
+    "rules": {
+      "no-constant-condition": "off"
+    }
   },
   "jest": {
     "moduleNameMapper": {

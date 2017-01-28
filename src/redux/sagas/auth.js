@@ -1,11 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { types, loginSuccess, loginFailure, saveUser } from '../reducers/user.action';
+import {
+  types,
+  loginSuccess,
+  loginFailure,
+  logoutSuccess,
+  saveUser
+} from '../reducers/user.action';
 import { auth } from '../../firebase';
 
 export function* login() {
   try {
     const user = yield call(auth.login);
-    yield put(loginSuccess(user));
     yield put(saveUser(user));
   }
   catch (error) {
@@ -13,6 +18,23 @@ export function* login() {
   }
 }
 
+export function* listenForChange() {
+  const channel = auth.authChannel();
+
+  while(true) {
+    try {
+      const user = yield call(channel);
+
+      if (user) yield put(loginSuccess(user));
+      else yield put(logoutSuccess());
+    }
+    catch(error) {
+      console.error(error);
+    }
+  }
+}
+
 export function* watchLogin() {
   yield takeEvery(types.LOGIN.REQUEST, login);
+  yield listenForChange();
 }
