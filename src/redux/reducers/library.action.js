@@ -9,6 +9,11 @@ export const types = {
     SUCCESS: 'UPDATE_BOOK.SUCCESS',
     FAILURE: 'UPDATE_BOOK.FAILURE',
   },
+  LOAD_BOOKS: {
+    REQUEST: 'LOAD_BOOKS.REQUEST',
+    SUCCESS: 'LOAD_BOOKS.SUCCESS',
+    FAILURE: 'LOAD_BOOKS.FAILURE',
+  },
   REMOVE_BOOK: 'REMOVE_BOOK',
 };
 
@@ -35,6 +40,18 @@ export const updateBookSuccess = book => ({
 });
 export const updateBookFailure = error => ({
   type: types.UPDATE_BOOK.FAILURE,
+  error
+});
+
+export const loadBooks = () => ({
+  type: types.LOAD_BOOKS.REQUEST
+});
+export const loadBooksSuccess = books => ({
+  type: types.LOAD_BOOKS.SUCCESS,
+  books
+});
+export const loadBooksFailure = error => ({
+  type: types.LOAD_BOOKS.FAILURE,
   error
 });
 
