@@ -6,7 +6,7 @@ const getUid = () => firebase.auth().currentUser.uid;
 
 export default {
   list() {
-    return database.ref(`books/${getUid()}`).once('value');
+    return database.ref(`books/${getUid()}`).once('value').then(s => s.val());
   },
 
   create(data) {
