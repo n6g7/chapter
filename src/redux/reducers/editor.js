@@ -9,6 +9,7 @@ export const types = {
 
 const initialState = fromJS({
   author: '',
+  bid: '',
   cover: {
     colour: '',
     image: ''
@@ -19,7 +20,6 @@ const initialState = fromJS({
   startDate: '',
   state: states.stock,
   title: '',
-  bid: ''
 });
 
 

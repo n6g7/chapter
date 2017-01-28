@@ -1,12 +1,14 @@
 import { fromJS } from 'immutable';
 import moment from 'moment';
 
+import { removeUndefinedValues } from './tools';
+
 export default {
   serialize(book) {
     const startMoment = book.get('startDate');
     const endMoment = book.get('endDate');
 
-    return {
+    return removeUndefinedValues({
       author: book.get('author'),
       cover: {
         colour: book.getIn(['cover', 'colour']),
@@ -18,7 +20,13 @@ export default {
       startDate: startMoment ? startMoment.toString() : null,
       state: book.get('state'),
       title: book.get('title')
-    };
+    });
+  },
+
+  serializeList(books) {
+    return books
+      .map(this.serialize)
+      .toJS();
   },
 
   parse(bid, book) {

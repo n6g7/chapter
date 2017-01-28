@@ -13,7 +13,8 @@ const transformationMap = {
       const parsedBook = {
         ...b,
         endDate: b.endDate ? moment(b.endDate) : null,
-        startDate: b.startDate ? moment(b.startDate) : null
+        startDate: b.startDate ? moment(b.startDate) : null,
+        progress: b.progress || 0,
       };
 
       if (b.cover) {
