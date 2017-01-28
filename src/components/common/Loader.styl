@@ -1,22 +1,17 @@
-.loader
-  align-items center
-  display flex
-  flex-flow row nowrap
-  height 100%
-  justify-content center
-  margin 0
-  padding 0
+make-loader(size, width)
+  padding-top: 2 * size
 
   span
+
     &, &::after, &::before
-      animation cssload-upDown2 1.3s ease infinite
-      animation-delay 0.33s
-      animation-direction alternate
-      background alpha(#000000, 0.2)
-      height 70px
-      margin-bottom 60px
-      position relative
-      width 6px
+      animation: cssload-upDown2 1.3s ease infinite
+      animation-delay: 0.33s
+      animation-direction: alternate
+      background: alpha(#000000, 0.2)
+      height: 5 * size
+      margin-bottom: 2 * size
+      position: relative
+      width: width
 
     &::after, &::before
       animation cssload-upDown 1.3s ease infinite
@@ -25,11 +20,37 @@
       position absolute
 
     &::before
-      left -14px
+      left: - size
 
     &::after
-      animation-delay 0.65s
-      left 14px
+      animation-delay: 0.65s
+      left: size
+
+.loader
+  align-items center
+  display flex
+  flex-flow column nowrap
+  height 100%
+  justify-content center
+  margin 0
+  padding 0
+
+  make-loader(14px, 6px)
+
+  &.small
+    make-loader(7px, 3px)
+
+    span
+      &
+        animation-name: cssload-upDown2-small
+
+      &::before, &::after
+        animation-name: cssload-upDown-small
+
+  &.white
+    span
+      &, &::before, &::after
+        background: white
 
 @keyframes cssload-upDown
   from
@@ -42,3 +63,15 @@
     transform translateY(21px)
   to
     transform translateY(-14px)
+
+@keyframes cssload-upDown-small
+  from
+    transform translateY(7px)
+  to
+    transform translateY(-7px)
+
+@keyframes cssload-upDown2-small
+  from
+    transform translateY(11px)
+  to
+    transform translateY(-7px)
