@@ -26,8 +26,8 @@ const router = store => {
         <Route path="/" component={Home}>
           <IndexRoute />
           <Route path="new(/:type)" component={NewBook} />
-          <Route path="view/:uuid" component={ViewBook} />
-          <Route path="edit/:uuid" component={EditBook} />
+          <Route path="view/:bid" component={ViewBook} />
+          <Route path="edit/:bid" component={EditBook} />
         </Route>
         <Route path="timeline" component={Timeline} />
       </Route>

@@ -8,7 +8,7 @@ import Cover from '../book/DraggableCover';
 
 class BookList extends React.PureComponent {
   goTo(book) {
-    this.props.push(`/view/${book.get('uuid')}`);
+    this.props.push(`/view/${book.get('bid')}`);
   }
 
   renderCover(book) {
@@ -22,7 +22,7 @@ class BookList extends React.PureComponent {
   render() {
     return <ul>
       {this.props.books.map(book =>
-        <li key={book.get('uuid')} onClick={() => this.goTo(book)}>
+        <li key={book.get('bid')} onClick={() => this.goTo(book)}>
           {this.renderCover(book)}
         </li>
       )}

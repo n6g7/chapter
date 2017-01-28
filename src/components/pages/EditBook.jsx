@@ -76,7 +76,7 @@ export default EditBook;
 const mapStateToProps = (state, props) => ({
   book: state
     .getIn(['library', 'books'])
-    .find(book => book.get('uuid') === props.params.uuid),
+    .find(book => book.get('bid') === props.params.bid),
   editorBook: state.get('editor')
 });
 

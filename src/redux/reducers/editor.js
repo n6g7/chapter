@@ -19,7 +19,7 @@ const initialState = fromJS({
   startDate: '',
   state: states.stock,
   title: '',
-  uuid: ''
+  bid: ''
 });
 
 

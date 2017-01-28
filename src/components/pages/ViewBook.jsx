@@ -34,7 +34,7 @@ class ViewBook extends React.PureComponent {
         </p>
       }
       <nav>
-        <Button link={`/edit/${book.get('uuid')}`}>
+        <Button link={`/edit/${book.get('bid')}`}>
           <img src={editImg} alt="edit" />
           <span>Edit</span>
         </Button>
@@ -52,7 +52,7 @@ export default ViewBook;
 const mapStateToProps = (state, props) => ({
   book: state
     .getIn(['library', 'books'])
-    .find(book => book.get('uuid') === props.params.uuid)
+    .find(book => book.get('bid') === props.params.bid)
 });
 
 export const ViewBookContainer = connect(
