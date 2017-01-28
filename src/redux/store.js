@@ -1,12 +1,11 @@
 import { createStore, compose } from 'redux';
 
 import reducers from './reducers';
-import { localStorage, middlewares } from './enhancers';
+import { middlewares } from './enhancers';
 import { sagaMiddleware } from './enhancers/middlewares';
 import rootSaga from './sagas';
 
 const enhancers = compose(
-  localStorage,
   middlewares,
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
