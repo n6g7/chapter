@@ -9,7 +9,8 @@ describe('Library core logic', () => {
       title: 'Flatland',
       startDate: '2015-02',
       endDate: '2015-02',
-      state: 'read'
+      state: 'read',
+      bid: 'abc',
     });
 
     it('adds a book to the library', () => {
@@ -21,7 +22,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'aaa'
+            bid: 'aaa'
           }
         ]
       });
@@ -36,23 +37,7 @@ describe('Library core logic', () => {
       expect(nextBook.get('startDate')).toBe('2015-02');
       expect(nextBook.get('endDate')).toBe('2015-02');
       expect(nextBook.get('state')).toBe('read');
-      expect(nextBook.get('uuid')).toBeDefined();
-    });
-
-    it('adds a uuid to the book', () => {
-      const state = fromJS({
-        books: []
-      });
-      const nextState = addBook(state, newBook);
-
-      const books = nextState.getIn(['books']);
-      expect(books.count()).toBe(1);
-
-      const book = books.get(0);
-      expect(book.get('uuid')).toBeDefined();
-
-      const uuid = book.get('uuid');
-      expect(uuid).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
+      expect(nextBook.get('bid')).toBeDefined();
     });
   });
 
@@ -66,7 +51,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'abc'
+            bid: 'abc'
           }
         ]
       });
@@ -76,7 +61,7 @@ describe('Library core logic', () => {
         startDate: 'now',
         endDate: 'later',
         state: 'reading',
-        uuid: 'abc'
+        bid: 'abc'
       }));
 
       const nextBooks = nextState.getIn(['books']);
@@ -88,7 +73,7 @@ describe('Library core logic', () => {
       expect(nextBook.get('startDate')).toBe('now');
       expect(nextBook.get('endDate')).toBe('later');
       expect(nextBook.get('state')).toBe('reading');
-      expect(nextBook.get('uuid')).toBe('abc');
+      expect(nextBook.get('bid')).toBe('abc');
     });
 
     it('updates a book without changing its position', () => {
@@ -100,7 +85,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'abc'
+            bid: 'abc'
           },
           {
             ISBN: '456',
@@ -108,7 +93,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'def'
+            bid: 'def'
           },
           {
             ISBN: '789',
@@ -116,7 +101,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'ghi'
+            bid: 'ghi'
           }
         ]
       });
@@ -126,7 +111,7 @@ describe('Library core logic', () => {
         startDate: 'now',
         endDate: 'later',
         state: 'reading',
-        uuid: 'def'
+        bid: 'def'
       }));
 
       const nextBooks = nextState.getIn(['books']);
@@ -138,7 +123,7 @@ describe('Library core logic', () => {
       expect(nextBook.get('startDate')).toBe('now');
       expect(nextBook.get('endDate')).toBe('later');
       expect(nextBook.get('state')).toBe('reading');
-      expect(nextBook.get('uuid')).toBe('def');
+      expect(nextBook.get('bid')).toBe('def');
     });
 
     it('updates a book\'s extra data', () => {
@@ -150,7 +135,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'abc'
+            bid: 'abc'
           },
           {
             ISBN: '456',
@@ -158,7 +143,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'def'
+            bid: 'def'
           },
           {
             ISBN: '789',
@@ -166,7 +151,7 @@ describe('Library core logic', () => {
             startDate: '2016',
             endDate: '2016-04-17',
             state: 'read',
-            uuid: 'ghi'
+            bid: 'ghi'
           }
         ]
       });
@@ -180,14 +165,14 @@ describe('Library core logic', () => {
           coverUrl: 'http://books.google.co.uk/books/content?id=j6uuCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
           coverColour: '#98BBB5'
         },
-        uuid: 'ghi'
+        bid: 'ghi'
       }));
 
       const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).toBe(3);
 
       const nextBook = nextBooks.get(2);
-      expect(nextBook.get('uuid')).toBe('ghi');
+      expect(nextBook.get('bid')).toBe('ghi');
       expect(nextBook.get('ISBN')).toBe('789');
       expect(nextBook.get('extra')).toBeDefined();
       const extra = nextBook.get('extra');
@@ -201,7 +186,7 @@ describe('Library core logic', () => {
       const book = Map({
         ISBN: 'abc',
         title: 'def',
-        uuid: 123
+        bid: 123
       });
       const state = fromJS({
         books: [ book ]
@@ -216,16 +201,16 @@ describe('Library core logic', () => {
       const book = Map({
         ISBN: 'abc',
         title: 'def',
-        uuid: 123
+        bid: 123
       });
       const state = fromJS({
         books: [
           {
-            uuid: 789
+            bid: 789
           },
           book,
           {
-            uuid: 456
+            bid: 456
           }
         ]
       });
@@ -234,15 +219,15 @@ describe('Library core logic', () => {
       const nextBooks = nextState.getIn(['books']);
       expect(nextBooks.count()).toBe(2);
 
-      expect(nextBooks.getIn(['0', 'uuid'])).toBe(789);
-      expect(nextBooks.getIn(['1', 'uuid'])).toBe(456);
+      expect(nextBooks.getIn(['0', 'bid'])).toBe(789);
+      expect(nextBooks.getIn(['1', 'bid'])).toBe(456);
     });
 
     it('doesn\'t chnage an empty collection', () => {
       const book = Map({
         ISBN: 'abc',
         title: 'def',
-        uuid: 123
+        bid: 123
       });
       const state = fromJS({
         books: []
