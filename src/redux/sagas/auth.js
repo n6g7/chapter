@@ -6,6 +6,7 @@ import {
   logoutSuccess,
   saveUser
 } from '../reducers/user.action';
+import { notifyError } from '../reducers/notifications.action';
 import { auth } from '../../firebase';
 
 export function* login() {
@@ -14,6 +15,7 @@ export function* login() {
   }
   catch (error) {
     yield put(loginFailure(error));
+    yield put(notifyError('Error during login', error.message));
   }
 }
 
@@ -31,7 +33,7 @@ export function* listenForChange() {
       else yield put(logoutSuccess());
     }
     catch(error) {
-      console.error(error);
+      yield put(notifyError('Error during login', error.message));
     }
   }
 }

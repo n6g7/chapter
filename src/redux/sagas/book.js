@@ -10,6 +10,7 @@ import {
   loadBooksFailure,
 } from '../reducers/library.action';
 import { types as userTypes } from '../reducers/user.action';
+import { notifyError } from '../reducers/notifications.action';
 import { book as bookApi } from '../../firebase';
 import { book as bookTransformer } from '../../services/transformers';
 
@@ -20,6 +21,7 @@ function* createBookSaga({ book }) {
   }
   catch (error) {
     yield put(addBookFailure(error));
+    yield put(notifyError('Error while creating book', error.message));
   }
 }
 
@@ -30,6 +32,7 @@ function* updateBookSaga({ book }) {
   }
   catch (error) {
     yield put(updateBookFailure(error));
+    yield put(notifyError('Error while updating book', error.message));
   }
 }
 
@@ -40,6 +43,7 @@ function* loadBooksSaga() {
   }
   catch (error) {
     yield put(loadBooksFailure(error));
+    yield put(notifyError('Error while loading books', error.message));
   }
 }
 

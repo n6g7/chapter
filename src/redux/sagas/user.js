@@ -4,6 +4,7 @@ import {
   saveUserSuccess,
   saveUserFailure
 } from '../reducers/user.action';
+import { notifyError } from '../reducers/notifications.action';
 import { user } from '../../firebase';
 
 function* saveUser(action) {
@@ -15,6 +16,7 @@ function* saveUser(action) {
   }
   catch (error) {
     yield put(saveUserFailure(error));
+    yield put(notifyError('Error while saving user data', error.message));
   }
 }
 
