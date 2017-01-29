@@ -10,8 +10,7 @@ import { auth } from '../../firebase';
 
 export function* login() {
   try {
-    const user = yield call(auth.login);
-    yield put(saveUser(user));
+    yield call(auth.login);
   }
   catch (error) {
     yield put(loginFailure(error));
@@ -25,7 +24,10 @@ export function* listenForChange() {
     try {
       const user = yield call(channel);
 
-      if (user) yield put(loginSuccess(user));
+      if (user) {
+        yield put(loginSuccess(user));
+        yield put(saveUser(user));
+      }
       else yield put(logoutSuccess());
     }
     catch(error) {
