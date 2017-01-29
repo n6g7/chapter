@@ -6,7 +6,7 @@ import DatePicker from './DatePicker';
 import ISBNInput from './ISBNInput';
 import Button from '../common/Button';
 import { reset, setField } from '../../redux/reducers/editor.action';
-import saveImg from '../../images/save.png';
+import saveImg from '../../images/save.svg';
 import './BookForm.styl';
 import Progressbar from '../common/Progressbar';
 

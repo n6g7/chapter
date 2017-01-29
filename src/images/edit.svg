@@ -1,0 +1,24 @@
+<svg
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  version="1.1"
+  x="0px"
+  y="0px"
+  viewBox="0 0 100 100">
+  <g transform="translate(0,-952.36218)" fill="#ffffff">
+    <path
+      d="m 59.344491,964.72481 a 2.0002002,2.0002002 0 0 0 -1.0014,0.85065 l -34.0075,58.90264 a 2.0002002,2.0002002 0 0 0 -0.2359,1.2926 l 1.9114,12.6876 a 2.0002002,2.0002002 0 0 0 2.7093,1.5387 l 11.9214,-4.6502 a 2.0002002,2.0002002 0 0 0 1.0316,-0.8587 l 33.9773,-58.89457 a 2.0002002,2.0002002 0 0 0 -0.736,-2.74685 l -13.855,-7.99912 a 2.0002002,2.0002002 0 0 0 -1.7152,-0.12275 z m 1.4569,4.59189 10.4022,5.98022 -32.6595,56.56788 -8.9315,3.4932 -1.4626,-9.4432 32.6514,-56.5981 z"
+      style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
+      fill-opacity="1"
+      stroke="none"
+      marker="none"
+      visibility="visible"
+      display="inline"
+      overflow="visible"></path>
+  </g>
+</svg>

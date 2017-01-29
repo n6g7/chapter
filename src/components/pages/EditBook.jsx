@@ -6,7 +6,7 @@ import { Map } from 'immutable';
 import BookDrawer from '../drawer/BookDrawer';
 import { BookFormContainer } from '../form/BookForm';
 import Button from '../common/Button';
-import saveImg from '../../images/save.png';
+import saveImg from '../../images/save.svg';
 import {
   updateBook,
   removeBook
