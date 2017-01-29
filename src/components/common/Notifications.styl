@@ -1,0 +1,49 @@
+@import '../vars.styl';
+
+screenOffset = 10px
+width = 200px
+
+notifColor(color)
+  lightColor = lighten(color, 40%)
+  angled(lightColor, 44px)
+  background: lightColor
+  color: darken(color, 50%)
+
+.notifications
+  align-items: center
+  background: alpha(black, 20%)
+  bottom: 0
+  display: flex
+  flex-flow: row nowrap
+  left: sidebarWidth
+  min-height: 64px
+  padding: screenOffset
+  position: fixed
+  right: 0
+  transition: 1s
+  transition-delay: .5s
+  z-index: 100
+
+  &.hidden
+    transform: translateY(100%)
+
+  .notification
+    margin-right: screenOffset
+    min-width: (width/2)
+    padding: 5px
+    position: relative
+
+    h4, p
+      margin: 0
+
+    &.error
+      notifColor(#e74c3c)
+
+    &.warning
+      notifColor(#f1c40f)
+
+    &.info
+      notifColor(#3498db)
+
+    &.success
+      notifColor(#2ecc71)
