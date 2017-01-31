@@ -5,8 +5,8 @@ import './Button.styl';
 
 class Button extends React.PureComponent {
   renderSimpleButton() {
-    const { children, inline, type, onClick } = this.props;
-    const classes = inline ? 'inline' : '';
+    const { children, type, onClick } = this.props;
+    const classes = '';
 
     return <button
       className={classes}
@@ -30,7 +30,6 @@ class Button extends React.PureComponent {
 Button.propTypes = {
   children: React.PropTypes.any,
   onClick: React.PropTypes.func,
-  inline: React.PropTypes.bool,
   link: React.PropTypes.string,
   type: React.PropTypes.string
 };
