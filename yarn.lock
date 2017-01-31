@@ -6728,9 +6728,9 @@ webpack-core@~0.6.9:
     source-list-map "~0.1.7"
     source-map "~0.4.1"
 
-webpack-dashboard@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/webpack-dashboard/-/webpack-dashboard-0.2.1.tgz#87e1be50ff055d055b796a2c54381f32af2f55b9"
+webpack-dashboard@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/webpack-dashboard/-/webpack-dashboard-0.3.0.tgz#d0fe182a0976a8ff0ea01b0507f29a034cd60a1c"
   dependencies:
     blessed "^0.1.81"
     commander "^2.9.0"
