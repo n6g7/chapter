@@ -1,6 +1,6 @@
 @import '../vars.styl';
 
-screenOffset = 10px
+spacing = 10px
 width = 200px
 
 notifColor(color)
@@ -17,7 +17,7 @@ notifColor(color)
   flex-flow: row nowrap
   left: sidebarWidth
   min-height: 64px
-  padding: screenOffset
+  padding: spacing
   position: fixed
   right: 0
   transition: 1s
@@ -28,7 +28,8 @@ notifColor(color)
     transform: translateY(100%)
 
   .notification
-    margin-right: screenOffset
+    cursor: pointer
+    margin-right: spacing
     min-width: (width/2)
     padding: 5px
     position: relative
