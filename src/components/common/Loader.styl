@@ -1,7 +1,9 @@
 make-loader(size, width)
-  padding-top: 2 * size
+  min-width: 15*width
 
   span
+    margin-left: 3*width
+    margin-right: 7*width
 
     &, &::after, &::before
       animation: cssload-upDown2 1.3s ease infinite
@@ -29,7 +31,7 @@ make-loader(size, width)
 .loader
   align-items center
   display flex
-  flex-flow column nowrap
+  flex-flow row nowrap
   height 100%
   justify-content center
   margin 0
@@ -38,7 +40,7 @@ make-loader(size, width)
   make-loader(14px, 6px)
 
   &.small
-    make-loader(7px, 3px)
+    make-loader(5px, 2px)
 
     span
       &
