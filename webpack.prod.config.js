@@ -1,3 +1,5 @@
+const path = require('path');
+
 const environments = {
   production: {
     googleApiKey: 'AIzaSyCGJLle1uZO6BzHvdYdwY7JEHuHoz8Av-s',
@@ -10,39 +12,43 @@ const environments = {
 };
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.jsx'],
+  context: path.resolve(__dirname, 'src'),
+  entry: ['babel-polyfill', './index.jsx'],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
-      },
-      {
-        test: /\.json$/,
-        exclude: /node_modules/,
-        loader: 'json'
+        use: [
+          'babel-loader'
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        use: [
+          'style-loader', 'css-loader'
+        ]
       },
       {
         test: /\.styl$/,
         exclude: /node_modules/,
-        loader: 'style!css!stylus'
+        use: [
+          'style-loader', 'css-loader', 'stylus-loader'
+        ]
       },
       {
         test: /\.(png|svg)$/,
         exclude: /node_modules/,
-        loader: 'url!img'
+        use: [
+          'url-loader', 'img-loader'
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
-      "highcharts-more" : "highcharts/highcharts-more.src.js"
+      'highcharts-more' : 'highcharts/highcharts-more.src.js'
     }
   },
   output: {
