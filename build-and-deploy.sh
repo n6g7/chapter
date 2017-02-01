@@ -2,7 +2,7 @@
 
 # Build
 git checkout master
-NODE_ENV=production npm run build
+NODE_ENV=production yarn build
 
 # Deploy
 firebase deploy
