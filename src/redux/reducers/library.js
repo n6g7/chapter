@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import { types } from './library.action';
+import { types as userTypes } from './user.action';
 import {
   addBook,
   updateBook,
@@ -31,6 +32,9 @@ export default function(state = initialState, action) {
 
     case types.REMOVE_BOOK:
       return removeBook(state, action.book);
+
+    case userTypes.LOGOUT.SUCCESS:
+      return initialState;
   }
 
   return state;

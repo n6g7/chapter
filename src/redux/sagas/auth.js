@@ -4,6 +4,7 @@ import {
   loginSuccess,
   loginFailure,
   logoutSuccess,
+  logoutFailure,
   saveUser
 } from '../reducers/user.action';
 import { notifyError } from '../reducers/notifications.action';
@@ -16,6 +17,16 @@ export function* login() {
   catch (error) {
     yield put(loginFailure(error));
     yield put(notifyError('Error during login', error.message));
+  }
+}
+
+export function* logout() {
+  try {
+    yield call(auth.logout);
+  }
+  catch (error) {
+    yield put(logoutFailure(error));
+    yield put(notifyError('Error during logout', error.message));
   }
 }
 
@@ -33,12 +44,13 @@ export function* listenForChange() {
       else yield put(logoutSuccess());
     }
     catch(error) {
-      yield put(notifyError('Error during login', error.message));
+      yield put(notifyError('Error during login/logout', error.message));
     }
   }
 }
 
 export function* watchLogin() {
   yield takeEvery(types.LOGIN.REQUEST, login);
+  yield takeEvery(types.LOGOUT.REQUEST, logout);
   yield listenForChange();
 }

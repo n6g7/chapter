@@ -12,6 +12,7 @@ const initialState = fromJS({
 export default function(state = initialState, action) {
   switch(action.type) {
     case types.LOGIN.REQUEST:
+    case types.LOGOUT.REQUEST:
     case types.SAVE_USER.REQUEST:
       return state.set('loading', true);
     case types.LOGIN.SUCCESS:
@@ -24,8 +25,11 @@ export default function(state = initialState, action) {
       });
     case types.SAVE_USER.SUCCESS:
     case types.LOGIN.FAILURE:
+    case types.LOGOUT.FAILURE:
     case types.SAVE_USER.FAILURE:
       return state.set('loading', false);
+    case types.LOGOUT.SUCCESS:
+      return initialState;
   }
 
   return state;
