@@ -2,40 +2,47 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
 
+import Button from './Button';
 import Loader from './Loader';
 import { login } from '../../redux/reducers/user.action';
 import packageConfig from '../../../package.json';
-import './Sidebar.styl';
+import './Header.styl';
 
 import fingerprint from '../../images/fingerprint.svg';
 import timeline from '../../images/timeline.svg';
 
-class Sidebar extends React.PureComponent {
+class Header extends React.PureComponent {
   render() {
-    return <aside className="sidebar">
-      <header>
+    return <header className="head">
+      <div className="title">
         <h1>
           <Link to="/">Chapter</Link>
         </h1>
-        { this.props.loading && <Loader small white/> }
-      </header>
-      <nav>
-        <ul>
-          <li><Link onClick={this.props.login}><img src={fingerprint} /></Link></li>
-          <li><Link to="timeline"><img src={timeline} /></Link></li>
-          <li><Link to="new">+</Link></li>
-        </ul>
         <a
           href={packageConfig.homepage}
           target="blank"
           title="gh://n6g7/chapter"
         >v{packageConfig.version}</a>
+      </div>
+      { this.props.loading && <Loader small white/> }
+      <nav>
+        <ul>
+          <li>
+            <Button onClick={this.props.login} icon={fingerprint} small>Login</Button>
+          </li>
+          <li>
+            <Button link="timeline" icon={timeline} small/>
+          </li>
+          <li>
+            <Button link="new" small>Add a book</Button>
+          </li>
+        </ul>
       </nav>
-    </aside>
+    </header>
   }
 }
 
-Sidebar.propTypes = {
+Header.propTypes = {
   loading: React.PropTypes.bool.isRequired,
   login: React.PropTypes.func.isRequired,
 };
@@ -47,9 +54,9 @@ const mapDispatchToProps = {
   login
 };
 
-const SidebarContainer = connect(
+const HeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar);
+)(Header);
 
-export default SidebarContainer;
+export default HeaderContainer;

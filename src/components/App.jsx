@@ -1,15 +1,15 @@
 import React from 'react';
 
 import Notifications from './common/Notifications';
-import Sidebar from './common/Sidebar';
+import Header from './common/Header';
 import './App.styl';
 
 class App extends React.PureComponent {
   render() {
     return <div className="chapter">
-      <Sidebar/>
-      {this.props.children}
+      <Header/>
       <Notifications/>
+      {this.props.children}
     </div>;
   }
 }
