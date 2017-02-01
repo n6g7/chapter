@@ -2,21 +2,34 @@
 
 buttonHeight = 60px
 
-button
+buttonHeightMixin(height, font-size)
+  angled(cyan, height)
+  font-size: font-size
+  line-height: height
+  height: height
+
+  img
+    height: (3*height/4)
+
+    &.icon
+      margin-right: (height/6)
+
+button, a.btn
+  buttonHeightMixin(buttonHeight, 1.6rem)
+
+  align-items: center
   background cyan
   border none
   color white
-  line-height buttonHeight
-  font-size 1.6rem
-  position relative
-  height buttonHeight
-  text-align center
+  display: flex
+  flex-flow: row nowrap
+  justify-content: center
+  margin: 0 5px
+  padding: 0 5px
   transition 0.1s
 
-  img
-    height: (buttonHeight / 2)
-    margin-right 10px
-    vertical-align middle
+  &:hover
+    cursor: pointer
 
-  a > &
-    width: 100%
+  &.small
+    buttonHeightMixin(buttonHeight/2, 1.2rem)

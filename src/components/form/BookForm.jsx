@@ -104,8 +104,7 @@ class BookForm extends PureComponent {
       <nav>
         { children
           ? children
-          : <Button type="submit">
-              <img src={saveImg} alt="save" />
+          : <Button type="submit" icon={saveImg}>
               Save book
             </Button>
         }

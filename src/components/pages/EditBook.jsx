@@ -50,8 +50,7 @@ class EditBook extends React.PureComponent {
         initialBook={book}
         onSubmit={this.save}
       >
-        <Button type="submit">
-          <img src={saveImg} alt="save" />
+        <Button type="submit" icon={saveImg}>
           Save book
         </Button>
         <Button onClick={() => this.remove(book)}>

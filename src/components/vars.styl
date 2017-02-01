@@ -32,6 +32,8 @@ angled-content(color, height)
   width 0
 
 angled-before(color, height)
+  position: relative
+
   &::before
     angled-content(color, height)
     border-bottom height solid color
@@ -39,6 +41,8 @@ angled-before(color, height)
     right 100%
 
 angled-after(color, height)
+  position: relative
+
   &::after
     angled-content(color, height)
     left 100%
