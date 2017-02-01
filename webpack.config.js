@@ -8,30 +8,33 @@ module.exports = Object.assign({}, baseConfig, {
     'webpack/hot/only-dev-server'
   ].concat(baseConfig.entry),
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'react-hot!babel'
-      },
-      {
-        test: /\.json$/,
-        exclude: /node_modules/,
-        loader: 'json'
+        use: [
+          'react-hot-loader', 'babel-loader'
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        use: [
+          'style-loader', 'css-loader'
+        ]
       },
       {
         test: /\.styl$/,
         exclude: /node_modules/,
-        loader: 'style!css!stylus'
+        use: [
+          'style-loader', 'css-loader', 'stylus-loader'
+        ]
       },
       {
         test: /\.(png|svg)$/,
         exclude: /node_modules/,
-        loader: 'url!img'
+        use: [
+          'url-loader', 'img-loader'
+        ]
       }
     ]
   },
