@@ -30,7 +30,7 @@ yarn install
  - [X] New state: wishlist
  - [X] Sort books by read date
  - [X] Books timeline
+ - [X] Default book image
  - [ ] Add a favicon
- - [ ] Default book image
  - [ ] Add book tags to filter them
  - [ ] Mobile app to scan barcodes and automatically add books to the library

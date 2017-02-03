@@ -1,21 +1,23 @@
 import React from 'react';
 import {Map} from 'immutable';
-import Loader from '../common/Loader';
 import Progressbar from '../common/Progressbar';
 
+import bookImage from '../../images/book.svg';
 import './DetailedCover.styl';
 
 class DetailedCover extends React.PureComponent {
   getImage() {
-    const { book, loading } = this.props;
+    const { book } = this.props;
     const url = book.getIn(['cover', 'image']);
 
-    return loading ? <Loader /> : <img src={url} alt={book.get('title')}/>;
+    return url
+      ? <img src={url} alt={book.get('title')}/>
+      : <img src={bookImage} alt={book.get('title')}/>;
   }
 
   render() {
-    const { book, loading } = this.props;
-    const colour = !loading ? book.getIn(['cover', 'colour']) : null;
+    const { book } = this.props;
+    const colour = book.getIn(['cover', 'colour']);
     const startDate = book.get('startDate');
 
     return <article className="detailedCover" style={{ backgroundColor: colour}}>
@@ -32,7 +34,6 @@ class DetailedCover extends React.PureComponent {
 
 DetailedCover.propTypes = {
   book: React.PropTypes.instanceOf(Map).isRequired,
-  loading: React.PropTypes.bool
 };
 
 export default DetailedCover;

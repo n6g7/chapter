@@ -1,6 +1,7 @@
 import React from 'react';
 import {Map} from 'immutable';
 
+import bookImage from '../../images/book.svg';
 import './Cover.styl';
 
 class Cover extends React.PureComponent {
@@ -10,7 +11,7 @@ class Cover extends React.PureComponent {
 
     return url
       ? <img src={url} alt={book.get('title')}/>
-      : <img alt={book.get('title')}/>;
+      : <img src={bookImage} alt={book.get('title')}/>;
   }
 
   render() {
