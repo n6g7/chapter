@@ -31,6 +31,6 @@ yarn install
  - [X] Sort books by read date
  - [X] Books timeline
  - [X] Default book image
- - [ ] Add a favicon
+ - [X] Add a favicon
  - [ ] Add book tags to filter them
  - [ ] Mobile app to scan barcodes and automatically add books to the library
