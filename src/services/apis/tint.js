@@ -1,6 +1,6 @@
 import HttpClient from './client';
 
-const TINT_API = 'https://tint.gnab.fr/tint';
+export const TINT_API = 'https://tint.gnab.fr/tint';
 const WHITE_THRESHOLD = 240;
 
 const averageGray = rgb => {

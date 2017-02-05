@@ -102,7 +102,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "Config": "./test/__mocks__/config.js"
+      "config": "<rootDir>./test/config.js"
     }
   },
   "repository": {

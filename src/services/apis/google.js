@@ -1,7 +1,7 @@
 import config from 'config';
 import HttpClient from './client';
 
-const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
+export const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes';
 
 function getBookData(book) {
   const isbn = book.get('ISBN');
@@ -10,7 +10,9 @@ function getBookData(book) {
   if (!isbn || (isbn.length != 10 && isbn.length != 13))
     return Promise.reject(null);
 
-  return HttpClient.get(`${GOOGLE_API}?q=isbn:${isbn}&key=${config.googleApiKey}`)
+  const url = `${GOOGLE_API}?q=isbn:${isbn}&key=${config.googleApiKey}`;
+
+  return HttpClient.get(url)
     .then(data => data.totalItems > 0 ? data.items[0].volumeInfo : null)
 }
 
