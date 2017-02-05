@@ -1,3 +1,4 @@
+import Color from 'color';
 import { applyMiddleware } from 'redux';
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
@@ -27,7 +28,8 @@ export const bookData = store => next => action => {
       return tint.getMainColour(imageUrl);
     })
     .then(colour => {
-      store.dispatch(setCoverField('colour', colour));
+      const darkened = Color(colour).darken(0.3).rgb().hex();
+      store.dispatch(setCoverField('colour', darkened));
     })
     .catch(() => {});
   }
