@@ -7,6 +7,11 @@ import BookDrawer from '../drawer/BookDrawer';
 import { BookFormContainer } from '../form/BookForm';
 import { addBook } from '../../redux/reducers/library.action';
 
+const newBook = state => Map({
+  progress: 0,
+  state,
+});
+
 class NewBook extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -29,7 +34,10 @@ class NewBook extends React.PureComponent {
         </aside>
       </header>
 
-      <BookFormContainer onSubmit={this.save}/>
+      <BookFormContainer
+        initialBook={newBook(this.props.state)}
+        onSubmit={this.save}
+      />
     </BookDrawer>;
   }
 }
