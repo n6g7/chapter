@@ -49,7 +49,7 @@ class Button extends React.PureComponent {
 }
 
 Button.propTypes = {
-  children: React.PropTypes.any,
+  children: React.PropTypes.string,
   icon: React.PropTypes.string,
   onClick: React.PropTypes.func,
   link: React.PropTypes.string,

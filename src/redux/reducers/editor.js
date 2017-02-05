@@ -14,10 +14,10 @@ const initialState = fromJS({
     colour: '',
     image: ''
   },
-  endDate: '',
+  endDate: null,
   ISBN: '',
   progress: 0,
-  startDate: '',
+  startDate: null,
   state: states.stock,
   title: '',
 });
@@ -30,7 +30,7 @@ export default function(state = initialState, action) {
     case types.SET_COVER_FIELD:
       return state.setIn(['cover', action.field], action.value);
     case types.RESET:
-      return action.book ? action.book : initialState;
+      return initialState.merge(action.book);
   }
 
   return state;
