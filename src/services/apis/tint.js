@@ -1,7 +1,7 @@
 import HttpClient from './client';
 
 export const TINT_API = 'https://tint.gnab.fr/tint';
-const WHITE_THRESHOLD = 240;
+const WHITE_THRESHOLD = 245;
 
 const averageGray = rgb => {
   const channels = rgb.split(',').map(s => parseInt(s));

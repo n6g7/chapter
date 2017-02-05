@@ -28,7 +28,7 @@ export const bookData = store => next => action => {
       return tint.getMainColour(imageUrl);
     })
     .then(colour => {
-      const darkened = Color(colour).darken(0.3).rgb().hex();
+      const darkened = Color(colour).darken(0.2).rgb().hex();
       store.dispatch(setCoverField('colour', darkened));
     })
     .catch(() => {});
