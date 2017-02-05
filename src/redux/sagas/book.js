@@ -11,7 +11,7 @@ import {
 } from '../reducers/library.action';
 import { types as userTypes } from '../reducers/user.action';
 import { notifyError } from '../reducers/notifications.action';
-import { book as bookApi } from '../../firebase';
+import { book as bookApi } from '../../services/firebase';
 import { book as bookTransformer } from '../../services/transformers';
 
 function* createBookSaga({ book }) {

@@ -5,7 +5,7 @@ import {
   saveUserFailure
 } from '../reducers/user.action';
 import { notifyError } from '../reducers/notifications.action';
-import { user } from '../../firebase';
+import { user } from '../../services/firebase';
 
 function* saveUser(action) {
   const { email, displayName } = action.user;

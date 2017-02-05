@@ -8,7 +8,7 @@ import {
   saveUser
 } from '../reducers/user.action';
 import { notifyError } from '../reducers/notifications.action';
-import { auth } from '../../firebase';
+import { auth } from '../../services/firebase';
 
 export function* login() {
   try {
