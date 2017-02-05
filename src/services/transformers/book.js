@@ -14,10 +14,10 @@ export default {
         colour: book.getIn(['cover', 'colour']),
         image: book.getIn(['cover', 'image'])
       },
-      endDate: endMoment ? endMoment.toString() : null,
+      endDate: endMoment ? endMoment.toString() : undefined,
       ISBN: book.get('ISBN'),
       progress: book.get('progress'),
-      startDate: startMoment ? startMoment.toString() : null,
+      startDate: startMoment ? startMoment.toString() : undefined,
       state: book.get('state'),
       title: book.get('title')
     });
