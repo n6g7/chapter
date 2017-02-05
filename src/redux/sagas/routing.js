@@ -10,6 +10,6 @@ export function* routing() {
   yield [
     takeEvery(libraryTypes.ADD_BOOK.SUCCESS, redirectTo('/')),
     takeEvery(libraryTypes.UPDATE_BOOK.SUCCESS, redirectTo('/')),
-    takeEvery(libraryTypes.REMOVE_BOOK, redirectTo('/')),
+    takeEvery(libraryTypes.REMOVE_BOOK.SUCCESS, redirectTo('/')),
   ]
 }

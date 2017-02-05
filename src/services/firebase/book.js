@@ -17,5 +17,9 @@ export default {
 
   update(bid, data) {
     return database.ref(`books/${getUid()}/${bid}`).set(data);
+  },
+
+  delete(bid) {
+    return database.ref(`books/${getUid()}/${bid}`).remove();
   }
 };

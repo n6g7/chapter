@@ -14,7 +14,11 @@ export const types = {
     SUCCESS: 'LOAD_BOOKS.SUCCESS',
     FAILURE: 'LOAD_BOOKS.FAILURE',
   },
-  REMOVE_BOOK: 'REMOVE_BOOK',
+  REMOVE_BOOK: {
+    REQUEST: 'REMOVE_BOOK.REQUEST',
+    SUCCESS: 'REMOVE_BOOK.SUCCESS',
+    FAILURE: 'REMOVE_BOOK.FAILURE',
+  },
 };
 
 export const addBook = book => ({
@@ -56,6 +60,14 @@ export const loadBooksFailure = error => ({
 });
 
 export const removeBook = (book) => ({
-  type: types.REMOVE_BOOK,
+  type: types.REMOVE_BOOK.REQUEST,
   book
+});
+export const removeBookSuccess = (book) => ({
+  type: types.REMOVE_BOOK.SUCCESS,
+  book
+});
+export const removeBookFailure = (error) => ({
+  type: types.REMOVE_BOOK.FAILURE,
+  error
 });

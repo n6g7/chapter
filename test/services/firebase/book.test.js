@@ -8,6 +8,7 @@ jest.mock('../../../src/services/firebase/firebase', () => {
   const onceFailure = () => Promise.resolve({
     exists: () => false,
   });
+  const removeSuccess = () => Promise.resolve({});
   const pushSuccess = () => Promise.resolve({});
   const setSuccess = () => Promise.resolve({});
 
@@ -17,10 +18,12 @@ jest.mock('../../../src/services/firebase/firebase', () => {
     .mockImplementationOnce(onceSuccess)
     .mockImplementationOnce(onceFailure);
   const push = jest.fn(pushSuccess);
+  const remove = jest.fn(removeSuccess);
   const set = jest.fn(setSuccess);
   const ref = jest.fn(() => ({
     once,
     push,
+    remove,
     set
   }));
 
@@ -36,6 +39,7 @@ jest.mock('../../../src/services/firebase/firebase', () => {
     ref,
     once,
     push,
+    remove,
     set
   }
 });
@@ -104,6 +108,21 @@ describe('Firebase Book API', () => {
       bookApi.update('abc', bookData);
       expect(firebase.ref).toHaveBeenCalledWith('books/1/abc');
       expect(firebase.set).toHaveBeenCalledWith(bookData);
+    });
+
+  });
+
+  describe('delete(bid)', () => {
+
+    it('returns a promise', () => {
+      const result = bookApi.delete('abc');
+      expect(result).toBeInstanceOf(Promise);
+    });
+
+    it('calls remove()', () => {
+      bookApi.delete('abc');
+      expect(firebase.ref).toHaveBeenCalledWith('books/1/abc');
+      expect(firebase.remove).toHaveBeenCalled();
     });
 
   });

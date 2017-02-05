@@ -8,6 +8,8 @@ import {
   loadBooks,
   loadBooksSuccess,
   loadBooksFailure,
+  removeBookSuccess,
+  removeBookFailure,
 } from '../reducers/library.action';
 import { types as userTypes } from '../reducers/user.action';
 import { notifyError } from '../reducers/notifications.action';
@@ -36,6 +38,17 @@ function* updateBookSaga({ book }) {
   }
 }
 
+function* deleteBookSaga({ book }) {
+  try {
+    yield call(bookApi.delete, book.get('bid'));
+    yield put(removeBookSuccess(book));
+  }
+  catch (error) {
+    yield put(removeBookFailure(error));
+    yield put(notifyError('Error while deleting book', error.message));
+  }
+}
+
 function* loadBooksSaga() {
   try {
     const list = yield call(bookApi.list);
@@ -51,6 +64,7 @@ export function* watchBook() {
   yield takeEvery(types.ADD_BOOK.REQUEST, createBookSaga);
   yield takeEvery(types.UPDATE_BOOK.REQUEST, updateBookSaga);
   yield takeEvery(types.LOAD_BOOKS.REQUEST, loadBooksSaga);
+  yield takeEvery(types.REMOVE_BOOK.REQUEST, deleteBookSaga);
 
   // Load books on login
   yield takeEvery(userTypes.LOGIN.SUCCESS, function*() {
