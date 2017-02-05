@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import { push } from 'react-router-redux';
+import { Link } from 'react-router';
 
 import DetailedCover from '../book/DetailedCover';
 import Cover from '../book/DraggableCover';
 
 class BookList extends React.PureComponent {
-  goTo(book) {
-    this.props.push(`/view/${book.get('bid')}`);
-  }
-
   renderCover(book) {
     const { detailed } = this.props;
 
@@ -22,8 +18,10 @@ class BookList extends React.PureComponent {
   render() {
     return <ul>
       {this.props.books.map(book =>
-        <li key={book.get('bid')} onClick={() => this.goTo(book)}>
-          {this.renderCover(book)}
+        <li key={book.get('bid')}>
+          <Link to={`/view/${book.get('bid')}`}>
+            {this.renderCover(book)}
+          </Link>
         </li>
       )}
     </ul>;
@@ -33,14 +31,11 @@ class BookList extends React.PureComponent {
 BookList.propTypes = {
   books: React.PropTypes.instanceOf(List),
   detailed: React.PropTypes.bool,
-  push: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {
-  push
-};
+const mapDispatchToProps = {};
 
 export const BookListContainer = connect(
   mapStateToProps,
