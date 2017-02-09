@@ -5,7 +5,9 @@ const initialState = fromJS({
   email: '',
   loading: false,
   loggedIn: false,
-  name: '',
+  firstName: '',
+  lastName: '',
+  photo: '',
   uid: '',
 });
 
@@ -20,7 +22,9 @@ export default function(state = initialState, action) {
         email: action.user.email,
         loading: false,
         loggedIn: true,
-        name: action.user.displayName,
+        firstName: action.user.displayName.split(' ', 2)[0],
+        lastName: action.user.displayName.split(' ', 2)[1],
+        photo: action.user.photoURL,
         uid: action.user.uid,
       });
     case types.SAVE_USER.SUCCESS:

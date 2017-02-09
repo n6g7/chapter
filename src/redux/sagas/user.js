@@ -8,10 +8,17 @@ import { notifyError } from '../reducers/notifications.action';
 import { user } from '../../services/firebase';
 
 function* saveUser(action) {
-  const { email, displayName } = action.user;
+  const { email, displayName, photoURL } = action.user;
+
+  const [ firstName, lastName ] = displayName.split(' ', 2);
 
   try {
-    yield call(user.save, action.user.uid, { email, name: displayName });
+    yield call(user.save, action.user.uid, {
+      email,
+      firstName,
+      lastName,
+      photo: photoURL,
+    });
     yield put(saveUserSuccess());
   }
   catch (error) {
