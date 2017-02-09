@@ -1,0 +1,98 @@
+@import '../vars.styl';
+
+spacing = 20px
+
+.chapter > aside
+  align-items: flex-start
+  background blueDark
+  bottom: 0
+  color white
+  display flex
+  flex-flow column nowrap
+  justify-content space-between
+  left: 0
+  padding: spacing
+  position fixed
+  top: 0
+  width: sidebarWidth
+  z-index: 100
+
+  header
+    h1
+      color: alpha(white, 0.5)
+      margin: 0 0 spacing
+      font-size 3rem
+      text-align: center
+
+      a
+        color: inherit
+        display: block
+
+    nav
+      ul
+        list-style: none
+        margin: 0
+        padding: 0
+
+        li
+          height: 2*spacing
+          line-height: 2*spacing
+
+          &.active
+            opacity: 0.5
+
+          a
+            align-items: center
+            color: inherit
+            display: flex
+            flex-flow: row nowrap
+
+            &:hover
+              opacity: 0.9
+
+          img
+            height: spacing
+            margin-right: (spacing / 2)
+
+  .loader
+    opacity: 0.5
+
+  footer
+    nav
+      align-items flex-start
+      display flex
+      flex-flow column nowrap
+      list-style none
+      margin 0
+      padding 0
+
+      .profile
+        align-items: center
+        display: flex
+        flex-flow: row nowrap
+        height: 2*spacing
+
+        img
+          clip-path: polygon(0% 0%, 100% 0%, ((1 - tan(angle)) * 100%) 100%, 0% 100%);
+          height: 2*spacing
+          margin-right: (spacing/2)
+
+      button
+        height: 2*spacing
+        justify-content: flex-start
+        line-height: 2*spacing
+        margin-top: 10px
+        width: 100%
+
+        img
+          height: spacing
+
+    a
+      color white
+      display block
+      margin 5px 0 -10px
+      opacity 0.3
+      text-align center
+
+      &:hover
+        text-decoration underline

@@ -1,35 +1,33 @@
 @import '../vars.styl';
 
-buttonHeight = 60px
+buttonHeight = 40px
 
 buttonHeightMixin(height, font-size)
-  angled(cyan, height)
+  angled-after(alpha(white, 0.15), height)
   font-size: font-size
   line-height: height
   height: height
+  padding: 0 (height/4)
 
   img
-    height: (3*height/4)
+    height: (height/2)
 
     &.icon
-      margin-right: (height/6)
+      margin-right: (height/4)
 
 button, a.btn
-  buttonHeightMixin(buttonHeight, 1.6rem)
+  buttonHeightMixin(buttonHeight, 1.5rem)
 
   align-items: center
-  background cyan
-  border none
-  color white
+  background: alpha(white, 0.15)
+  border: none
+  color: white
+  cursor: pointer
   display: flex
   flex-flow: row nowrap
   justify-content: center
-  margin: 0 5px
-  padding: 0 5px
-  transition 0.1s
+  margin: 0 5px 0 0
+  transition: 0.1s
 
   &:hover
-    cursor: pointer
-
-  &.small
-    buttonHeightMixin(buttonHeight/2, 1.2rem)
+    opacity: 0.9

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Notifications from './common/Notifications';
-import Header from './common/Header';
+import Sidebar from './common/Sidebar';
 import './App.styl';
 
 class App extends React.PureComponent {
   render() {
     return <div className="chapter">
-      <Header/>
+      <Sidebar/>
       <Notifications/>
       {this.props.children}
     </div>;

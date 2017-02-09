@@ -12,20 +12,20 @@ notifColor(color)
 .notifications
   align-items: center
   background: alpha(black, 20%)
+  bottom: 0
   display: flex
   flex-flow: row nowrap
-  left: 0
+  left: sidebarWidth
   min-height: 64px
   padding: spacing (2*spacing)
   position: fixed
   right: 0
   transition: 1s
   transition-delay: .5s
-  top: headerHeight
   z-index: 90
 
   &.hidden
-    transform: translateY(-100%)
+    transform: translateY(100%)
 
   .notification
     cursor: pointer
