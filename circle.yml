@@ -9,7 +9,10 @@ dependencies:
     - npm install -g yarn
   override:
     - yarn install
+    - yarn global add coveralls
 
 test:
   override:
-    - yarn test
+    - yarn test -- --coverage
+  post:
+    - cat coverage/lcov.info | coveralls

@@ -102,6 +102,18 @@
     }
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/**/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 3,
+        "functions": 3,
+        "lines": 3,
+        "statements": 3
+      }
+    },
     "moduleNameMapper": {
       "config": "<rootDir>./test/config.js"
     }
