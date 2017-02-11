@@ -3,7 +3,7 @@
 spacing = 20px
 
 .chapter > aside
-  align-items: flex-start
+  align-items: stretch
   background blueDark
   bottom: 0
   color white
@@ -18,6 +18,10 @@ spacing = 20px
   z-index: 100
 
   header
+    align-items: flex-start
+    display: flex
+    flex-flow: column nowrap
+
     h1
       color: alpha(white, 0.5)
       margin: 0 0 spacing
