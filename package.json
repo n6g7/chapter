@@ -102,6 +102,9 @@
     }
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
     "moduleNameMapper": {
       "config": "<rootDir>./test/config.js"
     }
