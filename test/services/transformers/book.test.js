@@ -84,7 +84,7 @@ describe('Book transformer', () => {
 
   describe('parseList', () => {
 
-    it('parses a list of book', () => {
+    it('parses a list of books', () => {
       const result = transformer.parseList({
         abc: bookData,
         def: bookData,
@@ -105,7 +105,7 @@ describe('Book transformer', () => {
       ]));
     });
 
-    it('sorts the book by startDate', () => {
+    it('sorts the books by startDate', () => {
       const result = transformer.parseList({
         abc: {
           ...bookData,
@@ -133,5 +133,59 @@ describe('Book transformer', () => {
       ]));
     });
 
+    it('sorts books without startDate at the end', () => {
+      const result = transformer.parseList({
+        abc: {
+          ...bookData,
+        },
+        def: {
+          ...bookData,
+          startDate: '2017-01-01',
+        },
+      });
+
+      expect(result).toEqual(fromJS([
+        {
+          ...bookData,
+          bid: 'def',
+          endDate: null,
+          startDate: moment('2017-01-01'),
+        },
+        {
+          ...bookData,
+          bid: 'abc',
+          endDate: null,
+          startDate: null,
+        }
+      ]));
+    });
+
+    it('sorts books with identical startDate', () => {
+      const result = transformer.parseList({
+        abc: {
+          ...bookData,
+          startDate: '2017-01-01',
+        },
+        def: {
+          ...bookData,
+          startDate: '2017-01-01',
+        },
+      });
+
+      expect(result).toEqual(fromJS([
+        {
+          ...bookData,
+          bid: 'abc',
+          endDate: null,
+          startDate: moment('2017-01-01'),
+        },
+        {
+          ...bookData,
+          bid: 'def',
+          endDate: null,
+          startDate: moment('2017-01-01'),
+        }
+      ]));
+    });
   });
 });

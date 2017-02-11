@@ -42,14 +42,15 @@ export default {
     return fromJS(Object.keys(list).map(
       bid => this.parse(bid, list[bid])
     )).sort((a, b) => {
-      const sa = a.startDate;
-      const sb = b.startDate;
+      const sa = a.get('startDate');
+      const sb = b.get('startDate');
 
       if (sa == null) return 1;
       if (sb == null) return -1;
 
-      if (sa.isBefore(sb)) return 1;
-      if (sb.isBefore(sa)) return -1;
+      if (sa.isBefore(sb)) return -1;
+      if (sb.isBefore(sa)) return 1;
+
       return 0;
     });
   }
