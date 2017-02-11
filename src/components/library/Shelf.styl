@@ -1,53 +1,57 @@
 @import '../vars.styl';
 
-book-space = 15px
-header-opacity = 0.8
-shelf-padding = 40px
+book-spacing = 10px
+vertical-spacing = 20px
 
 section.shelf
+  display: flex
+  flex-flow: row nowrap
+  padding: 30px vertical-spacing
   position: relative
   width 100%
 
-  header
-    align-items center
-    background: alpha(white, header-opacity)
-    display flex
-    flex-flow row nowrap
-    justify-content flex-start
-    margin-top: (shelf-padding / 2)
-    padding: (shelf-padding / 2) shelf-padding (shelf-padding / 2)
-    position: sticky
-    top: 0
-    z-index: 50
+  nav
+    align-items: center
+    display: flex
+    flex-flow: column nowrap
+    justify-content: space-between
+    margin-right: vertical-spacing
+    width: vertical-spacing
 
     h2
-      margin-right 20px
+      color: alpha(#2c3e50, 0.5)
+      font-size: 1.5rem
+      transform: rotate(180deg)
+      writing-mode: vertical-lr
 
-    nav ul
-      display flex
-      flex-flow row nowrap
-      list-style none
-      margin 0
-      padding 0
+    span
+      color: alpha(#2c3e50, 0.5)
+      flex-grow: 1
+      margin: (vertical-spacing/2) 0
+      text-align: right
+      transform: rotate(180deg)
+      writing-mode: vertical-lr
 
-      li
-        margin-right: book-space
+    a img
+      height: vertical-spacing
+      width: vertical-spacing
 
-  & > ul
-    display flex
-    flex-flow row wrap
-    list-style none
-    margin 0 shelf-padding shelf-padding
-    padding 0
+  ul
+    display: flex
+    flex-flow: row wrap
+    list-style: none
+    margin: 0 0 (- book-spacing)
+    padding: 0
 
     li
-      margin 0 book-space book-space 0
+      margin-bottom: book-spacing
+      margin-right: book-spacing
+
+      &:last-child
+        margin-right: 0
 
   &:nth-child(odd)
-    background lightGray
-
-    header
-      background: alpha(lightGray, header-opacity)
+    background: lightGray
 
   &.hide
-    display none
+    display: none

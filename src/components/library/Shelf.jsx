@@ -8,6 +8,7 @@ import BookList from './BookList';
 
 import { updateBook } from '../../redux/reducers/library.action';
 import ItemTypes from '../../config/dragDropTypes';
+import addBook from '../../images/add-book-blue.svg';
 
 import './Shelf.styl'
 
@@ -29,11 +30,10 @@ function collect(connect, monitor) {
 }
 
 class BookShelf extends React.PureComponent {
-  render() {
+  renderShelf() {
     const {
       books,
       canDrop,
-      connectDropTarget,
       type,
       detailed
     } = this.props;
@@ -54,18 +54,20 @@ class BookShelf extends React.PureComponent {
       />;
     }
 
-    return connectDropTarget(<section className={classes.join(' ')}>
-      <header>
+    return <section className={classes.join(' ')}>
+      <nav>
         <h2>{sectionName}</h2>
-        <nav>
-          <ul>
-            <li>{books.count()} books</li>
-            <li><Link to={`/new/${type}`}>+ Add a book</Link></li>
-          </ul>
-        </nav>
-      </header>
+        <span>({ books.count() })</span>
+        <Link to={`/new/${type}`}>
+          <img src={addBook} />
+        </Link>
+      </nav>
       {inner}
-    </section>);
+    </section>;
+  }
+
+  render() {
+    return this.props.connectDropTarget(this.renderShelf());
   }
 }
 
