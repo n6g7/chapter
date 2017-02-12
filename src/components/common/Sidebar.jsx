@@ -16,11 +16,8 @@ import wishlist from '../../images/wishlist.svg';
 
 class Sidebar extends React.PureComponent {
   renderLink(link, icon, label) {
-    const { path } = this.props;
-    const classes = path.startsWith(link) ? 'active' : '';
-
-    return <li className={classes}>
-      <Link to={link}>
+    return <li>
+      <Link to={link} activeClassName="active">
         <img src={icon} />
         { label }
       </Link>
@@ -72,7 +69,6 @@ Sidebar.propTypes = {
   login: React.PropTypes.func.isRequired,
   logout: React.PropTypes.func.isRequired,
   firstName: React.PropTypes.string,
-  path: React.PropTypes.string.isRequired,
   photo: React.PropTypes.string,
 };
 
@@ -80,7 +76,6 @@ const mapStateToProps = state => ({
   loading: state.getIn(['library', 'loading']) || state.getIn(['user', 'loading']),
   loggedIn: state.getIn(['user', 'loggedIn']),
   firstName: state.getIn(['user', 'firstName']),
-  path: state.getIn(['routing', 'locationBeforeTransitions']).pathname,
   photo: state.getIn(['user', 'photo']),
 });
 const mapDispatchToProps = {
