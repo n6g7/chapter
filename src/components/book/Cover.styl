@@ -1,14 +1,63 @@
 @import '../vars.styl';
 
-article.cover
-  align-items center
-  background: darken(white, 10%)
-  display flex
-  height coverHeight
-  justify-content center
-  width coverWidth
+coverBackgroundColour = #aed6f1
+coverForegroundColour = #3498db
+
+cover(height, width)
+  align-items: center
+  background: coverBackgroundColour
+  display: flex
+  flex-flow: row nowrap
+  height: height
+  justify-content: center
+  width: width
 
   img
-    height: coverImageHeight
-    object-fit: contain
-    width: coverImageWidth
+    coverImage()
+
+coverImage()
+  height: coverImageHeight
+  object-fit: contain
+  width: coverImageWidth
+
+  &:not([src])
+    background: coverForegroundColour
+
+article.cover
+  cover(coverHeight, coverWidth)
+
+  &.detailed
+    spacing = 30px
+
+    cover(detailedCoverHeight, detailedCoverWidth)
+    justify-content: flex-start
+
+    img
+      margin: 0 0 0 10px
+      transform: translateX(20px);
+      z-index: 10
+
+    .description
+      angled-before(blueDark, detailedCoverHeight)
+      background: blueDark
+      color: white
+      display: flex
+      flex-flow: column nowrap
+      flex-grow: 1
+      height: detailedCoverHeight
+      padding: spacing spacing spacing 50px
+      z-index: 5
+
+      h3
+        font-size 1.8rem
+
+      p
+        opacity 0.8
+
+      .startDate
+        margin-top: spacing
+        opacity: 0.4
+
+      .progressbar
+        align-items: flex-end
+        flex-grow: 1

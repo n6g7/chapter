@@ -3,24 +3,17 @@ import { connect } from 'react-redux';
 import { List } from 'immutable';
 import { Link } from 'react-router';
 
-import DetailedCover from '../book/DetailedCover';
 import Cover from '../book/DraggableCover';
 
 class BookList extends React.PureComponent {
-  renderCover(book) {
+  render() {
     const { detailed } = this.props;
 
-    return detailed ?
-      <DetailedCover book={book} />:
-      <Cover book={book} />;
-  }
-
-  render() {
     return <ul>
       {this.props.books.map(book =>
         <li key={book.get('bid')}>
           <Link to={`/view/${book.get('bid')}`}>
-            {this.renderCover(book)}
+            <Cover book={book} detailed={detailed}/>
           </Link>
         </li>
       )}
