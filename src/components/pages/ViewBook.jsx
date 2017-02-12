@@ -34,7 +34,7 @@ class ViewBook extends React.PureComponent {
         </p>
       }
       <nav>
-        <Button link={`/edit/${book.get('bid')}`} icon={editImg}>
+        <Button link={`/books/${book.get('bid')}/edit`} icon={editImg}>
           Edit
         </Button>
       </nav>

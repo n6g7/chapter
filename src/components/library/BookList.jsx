@@ -12,7 +12,7 @@ class BookList extends React.PureComponent {
     return <ul>
       {this.props.books.map(book =>
         <li key={book.get('bid')}>
-          <Link to={`/view/${book.get('bid')}`}>
+          <Link to={`books/${book.get('bid')}/view`}>
             <Cover book={book} detailed={detailed}/>
           </Link>
         </li>

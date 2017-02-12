@@ -58,7 +58,7 @@ class BookShelf extends React.PureComponent {
       <nav>
         <h2>{sectionName}</h2>
         <span>({ books.count() })</span>
-        <Link to={`/new/${type}`}>
+        <Link to={`book/new/${type}`}>
           <img src={addBook} />
         </Link>
       </nav>

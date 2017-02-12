@@ -52,7 +52,7 @@ class Sidebar extends React.PureComponent {
               { firstName }
             </div>
           }
-          <Button icon={addBook}>Add a book</Button>
+          <Button icon={addBook} link="/book/new">Add a book</Button>
           { !loggedIn && <Button icon={signOut} onClick={login}>Sign in</Button> }
           { loggedIn && <Button icon={signOut} onClick={logout}>Sign out</Button> }
         </nav>
