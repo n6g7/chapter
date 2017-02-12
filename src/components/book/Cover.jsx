@@ -10,8 +10,8 @@ class Cover extends React.PureComponent {
     const url = book.getIn(['cover', 'image']);
 
     return url
-      ? <img src={url} alt={book.get('title')}/>
-      : <img alt={book.get('title')}/>;
+      ? <img src={url} alt={book.get('title')} />
+      : <img alt={book.get('title')} />;
   }
 
   renderDescription() {
