@@ -10,37 +10,28 @@ import './Library.styl'
 
 class Library extends React.PureComponent {
   render() {
-    const { library } = this.props;
+    const { library, states } = this.props;
 
     const books = library.get('books');
 
     const booksByState = books.groupBy(book => book.get('state'));
 
     return <main className="library">
-      <Shelf
-        books={booksByState.get('reading', List())}
-        detailed
-        hideWhenEmpty
-        type="reading"
-      />
-      <Shelf
-        books={booksByState.get('stock', List())}
-        type="stock"
-      />
-      <Shelf
-        books={booksByState.get('read', List())}
-        type="read"
-      />
-      <Shelf
-        books={booksByState.get('wishlist', List())}
-        type="wishlist"
-      />
+      { states.map(state =>
+        <Shelf
+          books={booksByState.get(state, List())}
+          key={state}
+          detailed={state == 'reading'}
+          type={state}
+        />
+      )}
     </main>;
   }
 }
 
 Library.propTypes = {
   library: React.PropTypes.instanceOf(Map),
+  states: React.PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({

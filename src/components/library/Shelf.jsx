@@ -44,10 +44,7 @@ class BookShelf extends React.PureComponent {
 
     let inner = null;
 
-    if (this.props.hideWhenEmpty && books.isEmpty()) {
-      classes.push('hide');
-    }
-    else if (!books.isEmpty()){
+    if (!books.isEmpty()){
       inner = <BookList
         books={books}
         detailed={detailed}
@@ -73,7 +70,6 @@ class BookShelf extends React.PureComponent {
 
 BookShelf.propTypes = {
   books: React.PropTypes.instanceOf(List),
-  hideWhenEmpty: React.PropTypes.bool.isRequired,
   type: React.PropTypes.string,
   updateBook: React.PropTypes.func,
   connectDropTarget: React.PropTypes.func.isRequired,
@@ -83,7 +79,6 @@ BookShelf.propTypes = {
 
 BookShelf.defaultProps = {
   detailed: false,
-  hideWhenEmpty: false,
 };
 
 const DropBookShelf = DropTarget(ItemTypes.BOOK, shelfTarget, collect)(BookShelf);

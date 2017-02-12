@@ -9,7 +9,8 @@ import {
   Home,
   NewBook,
   Timeline,
-  ViewBook
+  ViewBook,
+  Wishlist,
 } from './components/pages';
 
 
@@ -29,6 +30,7 @@ const router = store => {
           <Route path="books/:bid/view" component={ViewBook} />
           <Route path="books/:bid/edit" component={EditBook} />
         </Route>
+        <Route path="wishlist" component={Wishlist} />
         <Route path="timeline" component={Timeline} />
       </Route>
     </Router>

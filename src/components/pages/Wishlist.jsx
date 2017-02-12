@@ -2,17 +2,17 @@ import React from 'react';
 
 import Library from '../library/Library';
 
-class Home extends React.PureComponent {
+class Wishlist extends React.PureComponent {
   render() {
     return <div>
-      <Library states={['reading', 'stock', 'read']}/>
+      <Library states={['wishlist']}/>
       { this.props.children }
     </div>;
   }
 }
 
-Home.propTypes = {
+Wishlist.propTypes = {
   children: React.PropTypes.element,
 };
 
-export default Home;
+export default Wishlist;
