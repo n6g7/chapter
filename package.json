@@ -60,7 +60,7 @@
     "snyk": "^1.24.4",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
-    "stylus-loader": "^2.4.0",
+    "stylus-loader": "^3.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-dashboard": "^0.3.0",
