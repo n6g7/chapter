@@ -1,18 +1,48 @@
-machine:
-  node:
-    version: 6.1.0
+version: 2
 
-dependencies:
-  cache_directories:
-    - ~/.yarn
-  pre:
-    - npm install -g yarn
-  override:
-    - yarn install
-    - yarn global add coveralls
+jobs:
+  build:
+    working_directory: ~/chapter
 
-test:
-  override:
-    - yarn test -- --coverage
-  post:
-    - cat coverage/lcov.info | coveralls
+    docker:
+      - image: node:8
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - chapter-{{ .Branch }}-{{ checksum "package.json" }}
+            - chapter-{{ .Branch }}
+            - chapter-master-{{ checksum "package.json" }}
+            - chapter-master
+
+      - run:
+          name: Install dependencies
+          command: yarn
+
+      - run:
+          name: Check yarn.lock is up to date
+          command: yarn check
+
+      - run:
+          name: Run tests
+          command: yarn test -- --coverage
+
+      - run:
+          name: Install coveralls
+          command: yarn global add coveralls
+
+      - run:
+          name: Send coverage to coveralls.io
+          command: |
+            if [ -z "$CIRCLE_PR_REPONAME" ];
+            then
+              cat coverage/lcov.info | coveralls;
+            fi
+
+      - save_cache:
+          key: chapter-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.yarn
+            - ~/chapter/node_modules
