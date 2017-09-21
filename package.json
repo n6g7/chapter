@@ -19,7 +19,7 @@
   "homepage": "https://github.com/n6g7/chapter",
   "license": "MIT",
   "dependencies": {
-    "color": "^1.0.3",
+    "color": "^2.0.0",
     "firebase": "^3.6.6",
     "highcharts": "^v5.0.7",
     "immutable": "^3.8.1",
