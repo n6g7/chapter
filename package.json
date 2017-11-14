@@ -21,7 +21,7 @@
   "dependencies": {
     "color": "^1.0.3",
     "firebase": "^3.6.6",
-    "highcharts": "^v5.0.7",
+    "highcharts": "^6.0.3",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
