@@ -1,0 +1,43 @@
+{
+  "rules": {
+    "books": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".validate": "root.child('users/'+$uid).exists()",
+
+        "$bid": {
+          ".write": "$uid === auth.uid",
+          ".validate": "!newData.exists() || newData.hasChildren(['author', 'ISBN', 'progress', 'state', 'title'])",
+
+          "author": { ".validate": "newData.isString()" },
+          "cover": {
+            "colour": { ".validate": "!newData.exists() || newData.isString()" },
+            "image": { ".validate": "!newData.exists() || newData.isString()" }
+          },
+          "endDate": { ".validate": "newData.isString()" },
+          "ISBN": { ".validate": "newData.isString()" },
+          "progress": { ".validate": "newData.isNumber()" },
+          "startDate": { ".validate": "newData.isString()" },
+          "state": { ".validate": "newData.isString()" },
+          "title": { ".validate": "newData.isString()" },
+
+          "$other": { ".validate": false }
+        }
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "(data.exists() && $uid === auth.uid) || !data.exists()",
+        ".validate": "newData.hasChildren(['email', 'firstName', 'lastName', 'photo'])",
+
+        "email": { ".validate": "newData.isString()" },
+        "firstName": { ".validate": "newData.isString()" },
+        "lastName": { ".validate": "newData.isString()" },
+        "photo": { ".validate": "newData.isString()" },
+
+        "$other": { ".validate": false }
+      }
+    },
+  }
+}

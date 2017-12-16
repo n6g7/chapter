@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "color": "^1.0.3",
-    "firebase": "^3.6.6",
+    "firebase": "^4.8.0",
     "highcharts": "^v5.0.7",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
