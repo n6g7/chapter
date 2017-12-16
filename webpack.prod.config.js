@@ -13,11 +13,11 @@ const environments = {
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  entry: ['babel-polyfill', './index.jsx'],
+  entry: ['babel-polyfill', './index.js'],
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [
           'babel-loader'
@@ -46,7 +46,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
     alias: {
       'highcharts-more': 'highcharts/highcharts-more.src.js'
     }

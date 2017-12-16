@@ -10,7 +10,7 @@ module.exports = Object.assign({}, baseConfig, {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [
           'react-hot-loader', 'babel-loader'
