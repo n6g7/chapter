@@ -1,5 +1,5 @@
 const ItemTypes = {
   BOOK: 'book'
-};
+}
 
-export default ItemTypes;
+export default ItemTypes

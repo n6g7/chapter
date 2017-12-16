@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import ReactHighcharts from 'react-highcharts';
-import HighchartsMore from 'highcharts-more';
+import ReactHighcharts from 'react-highcharts'
+import HighchartsMore from 'highcharts-more'
 
-HighchartsMore(ReactHighcharts.Highcharts);
+HighchartsMore(ReactHighcharts.Highcharts)
 
 class Timeline extends React.PureComponent {
-  buildConfig() {
-    const { books } = this.props;
+  buildConfig () {
+    const { books } = this.props
 
     return {
       chart: {
@@ -22,7 +22,7 @@ class Timeline extends React.PureComponent {
         text: 'Book timeline'
       },
       xAxis: {
-        categories: books.map(b => b.get('title')).toJS(),
+        categories: books.map(b => b.get('title')).toJS()
       },
       yAxis: {
         title: {
@@ -32,7 +32,7 @@ class Timeline extends React.PureComponent {
         dateTimeLabelFormats: {
           month: '%b %Y',
           year: '%b'
-        },
+        }
       },
       tooltip: {
         headerFormat: '<b>{point.key}</b><br>',
@@ -53,29 +53,29 @@ class Timeline extends React.PureComponent {
         name: 'Dates',
         data: books.map(b => [b.get('startDate').valueOf(), b.get('endDate').valueOf()]).toJS()
       }]
-    };
+    }
   }
 
-  render() {
+  render () {
     return <main>
-      <ReactHighcharts config={this.buildConfig()}/>
-    </main>;
+      <ReactHighcharts config={this.buildConfig()} />
+    </main>
   }
 }
 
 Timeline.propTypes = {
-  books: React.PropTypes.object.isRequired,
-};
+  books: React.PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({
   books: state.getIn(['library', 'books']).filter(b => b.get('startDate') !== null && b.get('endDate') !== null)
-});
+})
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
 const TimelineContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Timeline);
+)(Timeline)
 
-export default TimelineContainer;
+export default TimelineContainer

@@ -1,38 +1,38 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { List } from 'immutable';
-import { Link } from 'react-router';
+import React from 'react'
+import { connect } from 'react-redux'
+import { List } from 'immutable'
+import { Link } from 'react-router'
 
-import Cover from '../book/DraggableCover';
+import Cover from '../book/DraggableCover'
 
 class BookList extends React.PureComponent {
-  render() {
-    const { detailed } = this.props;
+  render () {
+    const { detailed } = this.props
 
     return <ul>
       {this.props.books.map(book =>
         <li key={book.get('bid')}>
           <Link to={`books/${book.get('bid')}/view`}>
-            <Cover book={book} detailed={detailed}/>
+            <Cover book={book} detailed={detailed} />
           </Link>
         </li>
       )}
-    </ul>;
+    </ul>
   }
 }
 
 BookList.propTypes = {
   books: React.PropTypes.instanceOf(List),
-  detailed: React.PropTypes.bool,
-};
+  detailed: React.PropTypes.bool
+}
 
-const mapStateToProps = () => ({});
+const mapStateToProps = () => ({})
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
 export const BookListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(BookList);
+)(BookList)
 
-export default BookListContainer;
+export default BookListContainer

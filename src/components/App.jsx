@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-import Notifications from './common/Notifications';
-import Sidebar from './common/Sidebar';
-import './App.styl';
+import Notifications from './common/Notifications'
+import Sidebar from './common/Sidebar'
+import './App.styl'
 
 class App extends React.PureComponent {
-  render() {
-    return <div className="chapter">
-      <Sidebar/>
-      <Notifications/>
+  render () {
+    return <div className='chapter'>
+      <Sidebar />
+      <Notifications />
       {this.props.children}
-    </div>;
+    </div>
   }
 }
 
 App.propTypes = {
-  children: React.PropTypes.object,
-};
+  children: React.PropTypes.object
+}
 
-export default App;
+export default App

@@ -1,15 +1,15 @@
-const path = require('path');
+const path = require('path')
 
 const environments = {
   production: {
     googleApiKey: 'AIzaSyCGJLle1uZO6BzHvdYdwY7JEHuHoz8Av-s',
     firebase: {
-      apiKey: "AIzaSyC2PVLteeEKm0YmFE6oizPiXTRiW8qyy8o",
-      authDomain: "bamboo-theorem-b8d0a.firebaseapp.com",
-      databaseURL: "https://bamboo-theorem-b8d0a.firebaseio.com",
+      apiKey: 'AIzaSyC2PVLteeEKm0YmFE6oizPiXTRiW8qyy8o',
+      authDomain: 'bamboo-theorem-b8d0a.firebaseapp.com',
+      databaseURL: 'https://bamboo-theorem-b8d0a.firebaseio.com'
     }
   }
-};
+}
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -48,11 +48,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      'highcharts-more' : 'highcharts/highcharts-more.src.js'
+      'highcharts-more': 'highcharts/highcharts-more.src.js'
     }
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },

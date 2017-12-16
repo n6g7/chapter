@@ -1,23 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from 'react'
+import { Link } from 'react-router'
 
-import './Button.styl';
+import './Button.styl'
 
 class Button extends React.PureComponent {
-  getClassName(base='') {
-    const { small } = this.props;
-    return `${base} ${small ? 'small' : ''}`;
+  getClassName (base = '') {
+    const { small } = this.props
+    return `${base} ${small ? 'small' : ''}`
   }
 
-  renderIcon() {
-    const { children, icon } = this.props;
-    const classes = `${children ? 'icon' : ''}`;
+  renderIcon () {
+    const { children, icon } = this.props
+    const classes = `${children ? 'icon' : ''}`
 
-    return icon ? <img className={classes} src={icon} /> : null;
+    return icon ? <img className={classes} src={icon} /> : null
   }
 
-  renderSimpleButton() {
-    const { children, type, onClick } = this.props;
+  renderSimpleButton () {
+    const { children, type, onClick } = this.props
 
     return <button
       className={this.getClassName()}
@@ -26,11 +26,11 @@ class Button extends React.PureComponent {
     >
       { this.renderIcon() }
       { children }
-    </button>;
+    </button>
   }
 
-  renderLink() {
-    const { children, link } = this.props;
+  renderLink () {
+    const { children, link } = this.props
 
     return <Link
       className={this.getClassName('btn')}
@@ -38,13 +38,13 @@ class Button extends React.PureComponent {
     >
       { this.renderIcon() }
       { children }
-    </Link>;
+    </Link>
   }
 
-  render() {
-    const { link } = this.props;
+  render () {
+    const { link } = this.props
 
-    return link ? this.renderLink() : this.renderSimpleButton();
+    return link ? this.renderLink() : this.renderSimpleButton()
   }
 }
 
@@ -55,11 +55,11 @@ Button.propTypes = {
   link: React.PropTypes.string,
   small: React.PropTypes.bool.isRequired,
   type: React.PropTypes.string
-};
+}
 
 Button.defaultProps = {
   small: false,
   type: 'button'
-};
+}
 
-export default Button;
+export default Button

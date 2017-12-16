@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import './Loader.styl';
+import './Loader.styl'
 
 class Loader extends React.PureComponent {
-  render() {
-    const { label, small, white } = this.props;
+  render () {
+    const { label, small, white } = this.props
 
     return <div className={`loader ${small ? 'small' : ''} ${white ? 'white' : ''}`}>
-      <span></span>
+      <span />
       { label }
     </div>
   }
@@ -16,13 +16,13 @@ class Loader extends React.PureComponent {
 Loader.propTypes = {
   label: React.PropTypes.string.isRequired,
   small: React.PropTypes.bool.isRequired,
-  white: React.PropTypes.bool.isRequired,
-};
+  white: React.PropTypes.bool.isRequired
+}
 
 Loader.defaultProps = {
   label: 'Loading',
   small: false,
-  white: false,
-};
+  white: false
+}
 
-export default Loader;
+export default Loader

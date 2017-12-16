@@ -1,36 +1,36 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { goBack } from 'react-router-redux';
-import { Map } from 'immutable';
+import React from 'react'
+import { connect } from 'react-redux'
+import { goBack } from 'react-router-redux'
+import { Map } from 'immutable'
 
-import BookDrawer from '../drawer/BookDrawer';
-import { BookFormContainer } from '../form/BookForm';
-import { addBook } from '../../redux/reducers/library.action';
+import BookDrawer from '../drawer/BookDrawer'
+import { BookFormContainer } from '../form/BookForm'
+import { addBook } from '../../redux/reducers/library.action'
 
 const newBook = state => Map({
   progress: 0,
-  state,
-});
+  state
+})
 
 class NewBook extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.save = this.save.bind(this);
+    this.save = this.save.bind(this)
   }
 
-  save(book) {
-    this.props.addBook(book);
+  save (book) {
+    this.props.addBook(book)
   }
 
-  render() {
-    const { editorBook } = this.props;
+  render () {
+    const { editorBook } = this.props
 
     return <BookDrawer book={editorBook}>
       <header>
         <h2>Add a book</h2>
         <aside>
-          <a href="#" onClick={this.props.goBack}>Cancel</a>
+          <a href='#' onClick={this.props.goBack}>Cancel</a>
         </aside>
       </header>
 
@@ -38,7 +38,7 @@ class NewBook extends React.PureComponent {
         initialBook={newBook(this.props.state)}
         onSubmit={this.save}
       />
-    </BookDrawer>;
+    </BookDrawer>
   }
 }
 
@@ -46,22 +46,22 @@ NewBook.propTypes = {
   addBook: React.PropTypes.func.isRequired,
   editorBook: React.PropTypes.instanceOf(Map),
   state: React.PropTypes.string,
-  goBack: React.PropTypes.func.isRequired,
-};
+  goBack: React.PropTypes.func.isRequired
+}
 
-export default NewBook;
+export default NewBook
 
 const mapStateToProps = (state, props) => ({
   editorBook: state.get('editor'),
   state: props.params.type
-});
+})
 
 const mapDispatchToProps = {
   addBook,
-  goBack,
-};
+  goBack
+}
 
 export const NewBookContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewBook);
+)(NewBook)

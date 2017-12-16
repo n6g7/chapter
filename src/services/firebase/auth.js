@@ -1,35 +1,35 @@
-import firebase from './firebase';
+import firebase from './firebase'
 
-const provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider()
 
 export default {
-  authChannel() {
-    const resolveQueue = [];
+  authChannel () {
+    const resolveQueue = []
 
     firebase.auth().onAuthStateChanged(
       user => {
-        while(resolveQueue.length) {
-          resolveQueue.shift().resolve(user);
+        while (resolveQueue.length) {
+          resolveQueue.shift().resolve(user)
         }
       },
       () => {
-        while(resolveQueue.length) {
-          resolveQueue.shift().reject();
+        while (resolveQueue.length) {
+          resolveQueue.shift().reject()
         }
       }
-    );
+    )
 
     return () => new Promise(
       (resolve, reject) => resolveQueue.push({ resolve, reject })
-    );
+    )
   },
-  login() {
+  login () {
     return firebase.auth()
       .signInWithPopup(provider)
-      .then(data => data.user);
+      .then(data => data.user)
   },
-  logout() {
+  logout () {
     return firebase.auth()
-      .signOut();
+      .signOut()
   }
 }

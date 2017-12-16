@@ -1,4 +1,4 @@
-import { removeUndefinedValues } from '../../../src/services/transformers/tools';
+import { removeUndefinedValues } from '../../../src/services/transformers/tools'
 
 describe('Transformers tools', () => {
   describe('removeUndefinedValues', () => {
@@ -10,14 +10,14 @@ describe('Transformers tools', () => {
           d: undefined,
           e: '2'
         }
-      });
+      })
 
       expect(result).toEqual({
         a: 1,
         c: {
           e: '2'
-        },
-      });
+        }
+      })
     })
-  });
-});
+  })
+})

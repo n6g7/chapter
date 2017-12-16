@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import Library from '../library/Library';
+import Library from '../library/Library'
 
 class Wishlist extends React.PureComponent {
-  render() {
+  render () {
     return <div>
-      <Library states={['wishlist']}/>
+      <Library states={['wishlist']} />
       { this.props.children }
-    </div>;
+    </div>
   }
 }
 
 Wishlist.propTypes = {
-  children: React.PropTypes.element,
-};
+  children: React.PropTypes.element
+}
 
-export default Wishlist;
+export default Wishlist

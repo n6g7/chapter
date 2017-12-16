@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react'
 
-import states from '../../../config/bookStates';
+import states from '../../../config/bookStates'
 
 class StateInput extends PureComponent {
-  render() {
-    const { onChange, value, ...props } = this.props;
+  render () {
+    const { onChange, value, ...props } = this.props
 
     return <select
-      id="state"
+      id='state'
       value={value}
       onChange={onChange}
       {...props}
@@ -15,13 +15,13 @@ class StateInput extends PureComponent {
       {Object.keys(states).map(key =>
         <option value={key} key={key}>{key}</option>
       )}
-    </select>;
+    </select>
   }
 }
 
 StateInput.propTypes = {
   value: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-};
+  onChange: React.PropTypes.func.isRequired
+}
 
-export default StateInput;
+export default StateInput

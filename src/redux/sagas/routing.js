@@ -1,15 +1,15 @@
-import { push } from 'react-router-redux';
-import { put, takeEvery } from 'redux-saga/effects';
-import { types as libraryTypes } from '../reducers/library.action';
+import { push } from 'react-router-redux'
+import { put, takeEvery } from 'redux-saga/effects'
+import { types as libraryTypes } from '../reducers/library.action'
 
-const redirectTo = path => function*() {
-  yield put(push(path));
+const redirectTo = path => function * () {
+  yield put(push(path))
 }
 
-export function* routing() {
+export function * routing () {
   yield [
     takeEvery(libraryTypes.ADD_BOOK.SUCCESS, redirectTo('/')),
     takeEvery(libraryTypes.UPDATE_BOOK.SUCCESS, redirectTo('/')),
-    takeEvery(libraryTypes.REMOVE_BOOK.SUCCESS, redirectTo('/')),
+    takeEvery(libraryTypes.REMOVE_BOOK.SUCCESS, redirectTo('/'))
   ]
 }

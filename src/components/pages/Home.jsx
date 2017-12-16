@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import Library from '../library/Library';
+import Library from '../library/Library'
 
 class Home extends React.PureComponent {
-  render() {
+  render () {
     return <div>
-      <Library states={['reading', 'stock', 'read']}/>
+      <Library states={['reading', 'stock', 'read']} />
       { this.props.children }
-    </div>;
+    </div>
   }
 }
 
 Home.propTypes = {
-  children: React.PropTypes.element,
-};
+  children: React.PropTypes.element
+}
 
-export default Home;
+export default Home

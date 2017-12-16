@@ -1,9 +1,9 @@
-import firebase from './firebase';
+import firebase from './firebase'
 
-const database = firebase.database();
+const database = firebase.database()
 
 export default {
-  save(uid, data) {
-    return database.ref(`users/${uid}`).set(data);
+  save (uid, data) {
+    return database.ref(`users/${uid}`).set(data)
   }
-};
+}

@@ -1,4 +1,4 @@
-import tint, { TINT_API } from '../../../src/services/apis/tint';
+import tint, { TINT_API } from '../../../src/services/apis/tint'
 
 jest.mock('../../../src/services/apis/client', () => {
   const successfulResponse = () => Promise.resolve({
@@ -25,44 +25,43 @@ jest.mock('../../../src/services/apis/client', () => {
         percent: '11.68%'
       }
     ]
-  });
+  })
 
   return {
     post: jest.fn(successfulResponse)
-  };
-});
+  }
+})
 
-const client = require('../../../src/services/apis/client');
+const client = require('../../../src/services/apis/client')
 
 describe('Tint API', () => {
   describe('getMainColour', () => {
-    const imageUrl = 'http://chaijs.com/img/chai-logo-small.png';
+    const imageUrl = 'http://chaijs.com/img/chai-logo-small.png'
 
     it('returns a promise', () => {
-      const result = tint.getMainColour(imageUrl);
-      expect(result).toBeInstanceOf(Promise);
-    });
+      const result = tint.getMainColour(imageUrl)
+      expect(result).toBeInstanceOf(Promise)
+    })
 
     it('calls HttpClient.post()', () => {
-      tint.getMainColour(imageUrl);
+      tint.getMainColour(imageUrl)
       expect(client.post).toHaveBeenCalledWith(TINT_API, {
         url: imageUrl
       })
-    });
+    })
 
     it('returns a hex colour string', () => {
       return tint.getMainColour(imageUrl)
       .then(res => {
-        expect(res).toMatch(/^#[0-9a-fA-F]{6}$/);
-      });
-    });
+        expect(res).toMatch(/^#[0-9a-fA-F]{6}$/)
+      })
+    })
 
     it('returns the first colour that is not too white', () => {
       return tint.getMainColour(imageUrl)
       .then(res => {
-        expect(res).toBe('#B8AAA2');
-      });
-    });
-
-  });
-});
+        expect(res).toBe('#B8AAA2')
+      })
+    })
+  })
+})

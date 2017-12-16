@@ -1,54 +1,54 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import capitalize from 'lodash/capitalize';
-import { List } from 'immutable';
-import { DropTarget } from 'react-dnd';
-import { Link } from 'react-router';
-import BookList from './BookList';
+import React from 'react'
+import { connect } from 'react-redux'
+import capitalize from 'lodash/capitalize'
+import { List } from 'immutable'
+import { DropTarget } from 'react-dnd'
+import { Link } from 'react-router'
+import BookList from './BookList'
 
-import { updateBook } from '../../redux/reducers/library.action';
-import ItemTypes from '../../config/dragDropTypes';
-import addBook from '../../images/add-book-blue.svg';
+import { updateBook } from '../../redux/reducers/library.action'
+import ItemTypes from '../../config/dragDropTypes'
+import addBook from '../../images/add-book-blue.svg'
 
 import './Shelf.styl'
 
 const shelfTarget = {
-  drop(props, monitor) {
-    const { book } = monitor.getItem();
-    props.updateBook(book.set('state', props.type));
+  drop (props, monitor) {
+    const { book } = monitor.getItem()
+    props.updateBook(book.set('state', props.type))
   },
-  canDrop() {
-    return true;
+  canDrop () {
+    return true
   }
-};
+}
 
-function collect(connect, monitor) {
+function collect (connect, monitor) {
   return {
     connectDropTarget: connect.dropTarget(),
     canDrop: monitor.canDrop()
-  };
+  }
 }
 
 class BookShelf extends React.PureComponent {
-  renderShelf() {
+  renderShelf () {
     const {
       books,
       canDrop,
       type,
       detailed
-    } = this.props;
-    const sectionName = capitalize(type);
+    } = this.props
+    const sectionName = capitalize(type)
 
-    let classes = ['shelf', type];
-    if (canDrop) classes.push('hover');
+    let classes = ['shelf', type]
+    if (canDrop) classes.push('hover')
 
-    let inner = null;
+    let inner = null
 
-    if (!books.isEmpty()){
+    if (!books.isEmpty()) {
       inner = <BookList
         books={books}
         detailed={detailed}
-      />;
+      />
     }
 
     return <section className={classes.join(' ')}>
@@ -60,11 +60,11 @@ class BookShelf extends React.PureComponent {
         </Link>
       </nav>
       {inner}
-    </section>;
+    </section>
   }
 
-  render() {
-    return this.props.connectDropTarget(this.renderShelf());
+  render () {
+    return this.props.connectDropTarget(this.renderShelf())
   }
 }
 
@@ -74,24 +74,24 @@ BookShelf.propTypes = {
   updateBook: React.PropTypes.func,
   connectDropTarget: React.PropTypes.func.isRequired,
   canDrop: React.PropTypes.bool.isRequired,
-  detailed: React.PropTypes.bool.isRequired,
-};
+  detailed: React.PropTypes.bool.isRequired
+}
 
 BookShelf.defaultProps = {
-  detailed: false,
-};
+  detailed: false
+}
 
-const DropBookShelf = DropTarget(ItemTypes.BOOK, shelfTarget, collect)(BookShelf);
+const DropBookShelf = DropTarget(ItemTypes.BOOK, shelfTarget, collect)(BookShelf)
 
-const mapStateToProps = () => ({});
+const mapStateToProps = () => ({})
 
 const mapDispatchToProps = {
   updateBook
-};
+}
 
 const BookShelfContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(DropBookShelf);
+)(DropBookShelf)
 
-export default BookShelfContainer;
+export default BookShelfContainer

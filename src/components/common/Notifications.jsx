@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { List } from 'immutable';
+import React from 'react'
+import { connect } from 'react-redux'
+import { List } from 'immutable'
 
-import { removeNotification } from '../../redux/reducers/notifications.action';
-import './Notifications.styl';
+import { removeNotification } from '../../redux/reducers/notifications.action'
+import './Notifications.styl'
 
 class Notifications extends React.PureComponent {
-  render() {
-    const { notifications, removeNotification } = this.props;
+  render () {
+    const { notifications, removeNotification } = this.props
 
     return <div className={`notifications ${notifications.isEmpty() ? 'hidden' : ''}`}>
       { notifications.map(notif =>
@@ -20,26 +20,26 @@ class Notifications extends React.PureComponent {
           { notif.get('text') && <p>{ notif.get('text')}</p> }
         </div>
       )}
-    </div>;
+    </div>
   }
 }
 
 Notifications.propTypes = {
   notifications: React.PropTypes.instanceOf(List),
-  removeNotification: React.PropTypes.func.isRequired,
-};
+  removeNotification: React.PropTypes.func.isRequired
+}
 
 const mapStateToProps = state => ({
-  notifications: state.get('notifications'),
-});
+  notifications: state.get('notifications')
+})
 
 const mapDispatchToProps = {
   removeNotification
-};
+}
 
 export const NotificationsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Notifications);
+)(Notifications)
 
-export default NotificationsContainer;
+export default NotificationsContainer

@@ -1,34 +1,34 @@
-import React from 'react';
+import React from 'react'
 
-import './Progressbar.styl';
+import './Progressbar.styl'
 
 class Progressbar extends React.PureComponent {
-  onChange(value) {
-    const { editable, onChange } = this.props;
+  onChange (value) {
+    const { editable, onChange } = this.props
 
-    if (!editable) return () => {};
+    if (!editable) return () => {}
 
-    return () => onChange(value);
+    return () => onChange(value)
   }
 
-  render() {
-    const { className, label, progress } = this.props;
+  render () {
+    const { className, label, progress } = this.props
 
     return <div className={`progressbar ${className}`}>
-      {[1,2,3,4].map(x => progress >= x ?
-        <div
-          className="step done"
+      {[1, 2, 3, 4].map(x => progress >= x
+        ? <div
+          className='step done'
           key={`progress-${x}`}
           onClick={this.onChange(x)}
-        />:
-        <div
-          className="step"
+        />
+        : <div
+          className='step'
           key={`progress-${x}`}
           onClick={this.onChange(x)}
         />
       )}
-      <span className="label">{ label }</span>
-    </div>;
+      <span className='label'>{ label }</span>
+    </div>
   }
 }
 
@@ -38,6 +38,6 @@ Progressbar.propTypes = {
   label: React.PropTypes.string,
   onChange: React.PropTypes.func,
   progress: React.PropTypes.number
-};
+}
 
-export default Progressbar;
+export default Progressbar

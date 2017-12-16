@@ -1,42 +1,42 @@
-import { fromJS } from 'immutable';
-import { types } from './library.action';
-import { types as userTypes } from './user.action';
+import { fromJS } from 'immutable'
+import { types } from './library.action'
+import { types as userTypes } from './user.action'
 import {
   addBook,
   updateBook,
-  removeBook,
-} from './library.core';
+  removeBook
+} from './library.core'
 
 const initialState = fromJS({
   books: [],
-  loading: false,
-});
+  loading: false
+})
 
-export default function(state = initialState, action) {
-  switch(action.type) {
+export default function (state = initialState, action) {
+  switch (action.type) {
     case types.ADD_BOOK.REQUEST:
     case types.UPDATE_BOOK.REQUEST:
     case types.LOAD_BOOKS.REQUEST:
     case types.REMOVE_BOOK.REQUEST:
-      return state.set('loading', true);
+      return state.set('loading', true)
     case types.ADD_BOOK.FAILURE:
     case types.UPDATE_BOOK.FAILURE:
     case types.LOAD_BOOKS.FAILURE:
     case types.REMOVE_BOOK.FAILURE:
-      return state.set('loading', false);
+      return state.set('loading', false)
 
     case types.ADD_BOOK.SUCCESS:
-      return addBook(state, action.book).set('loading', false);
+      return addBook(state, action.book).set('loading', false)
     case types.UPDATE_BOOK.SUCCESS:
-      return updateBook(state, action.book).set('loading', false);
+      return updateBook(state, action.book).set('loading', false)
     case types.LOAD_BOOKS.SUCCESS:
-      return state.set('books', action.books).set('loading', false);
+      return state.set('books', action.books).set('loading', false)
     case types.REMOVE_BOOK.SUCCESS:
-      return removeBook(state, action.book).set('loading', false);
+      return removeBook(state, action.book).set('loading', false)
 
     case userTypes.LOGOUT.SUCCESS:
-      return initialState;
+      return initialState
   }
 
-  return state;
+  return state
 }
