@@ -45,6 +45,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -54,8 +55,8 @@
     "dotenv-webpack": "^1.5.4",
     "file-loader": "^1.1.6",
     "img-loader": "^2.0.0",
-    "jest": "^18.1.0",
-    "snyk": "^1.24.4",
+    "jest": "^21.2.1",
+    "snyk": "^1.59.1",
     "standard": "^10.0.3",
     "style-loader": "^0.19.1",
     "stylus": "^0.54.5",
@@ -79,7 +80,10 @@
     },
     "setupFiles": [
       "./test/setup.js"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "standard": {
     "globals": [
