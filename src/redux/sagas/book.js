@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
 import {
   types,
   addBookSuccess,
@@ -13,13 +13,19 @@ import {
 } from '../reducers/library.action'
 import { types as userTypes } from '../reducers/user.action'
 import { notifyError } from '../reducers/notifications.action'
-import { book as bookApi } from '../../services/firebase'
 import { book as bookTransformer } from '../../services/transformers'
+import rsf from '../rsf'
 
 function * createBookSaga ({ book }) {
+  const uid = yield select(state => state.getIn(['user', 'uid']))
+
   try {
-    const result = yield call(bookApi.create, bookTransformer.serialize(book))
-    yield put(addBookSuccess(book.set('bid', result.key)))
+    const key = yield call(
+      rsf.database.create,
+      `books/${uid}`,
+      bookTransformer.serialize(book)
+    )
+    yield put(addBookSuccess(book.set('bid', key)))
   } catch (error) {
     yield put(addBookFailure(error))
     yield put(notifyError('Error while creating book', error.message))
@@ -27,8 +33,14 @@ function * createBookSaga ({ book }) {
 }
 
 function * updateBookSaga ({ book }) {
+  const uid = yield select(state => state.getIn(['user', 'uid']))
+
   try {
-    yield call(bookApi.update, book.get('bid'), bookTransformer.serialize(book))
+    yield call(
+      rsf.database.update,
+      `books/${uid}/${book.get('bid')}`,
+      bookTransformer.serialize(book)
+    )
     yield put(updateBookSuccess(book))
   } catch (error) {
     yield put(updateBookFailure(error))
@@ -37,8 +49,13 @@ function * updateBookSaga ({ book }) {
 }
 
 function * deleteBookSaga ({ book }) {
+  const uid = yield select(state => state.getIn(['user', 'uid']))
+
   try {
-    yield call(bookApi.delete, book.get('bid'))
+    yield call(
+      rsf.database.delete,
+      `books/${uid}/${book.get('bid')}`
+    )
     yield put(removeBookSuccess(book))
   } catch (error) {
     yield put(removeBookFailure(error))
@@ -47,8 +64,13 @@ function * deleteBookSaga ({ book }) {
 }
 
 function * loadBooksSaga () {
+  const uid = yield select(state => state.getIn(['user', 'uid']))
+
   try {
-    const list = yield call(bookApi.list)
+    const list = yield call(
+      rsf.database.read,
+      `books/${uid}`
+    )
     yield put(loadBooksSuccess(bookTransformer.parseList(list)))
   } catch (error) {
     yield put(loadBooksFailure(error))

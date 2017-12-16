@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, take, takeEvery } from 'redux-saga/effects'
 import {
   types,
   loginSuccess,
@@ -8,45 +8,43 @@ import {
   saveUser
 } from '../reducers/user.action'
 import { notifyError } from '../reducers/notifications.action'
-import { auth } from '../../services/firebase'
+import rsf, { authProvider } from '../rsf'
 
-export function * login () {
+function * loginSaga () {
   try {
-    yield call(auth.login)
+    yield call(rsf.auth.signInWithPopup, authProvider)
   } catch (error) {
     yield put(loginFailure(error))
     yield put(notifyError('Error during login', error.message))
   }
 }
 
-export function * logout () {
+function * logoutSaga () {
   try {
-    yield call(auth.logout)
+    yield call(rsf.auth.signOut)
   } catch (error) {
     yield put(logoutFailure(error))
     yield put(notifyError('Error during logout', error.message))
   }
 }
 
-export function * listenForChange () {
-  const channel = auth.authChannel()
+function * syncUserSaga () {
+  const channel = yield call(rsf.auth.channel)
 
   while (true) {
-    try {
-      const user = yield call(channel)
+    const { user } = yield take(channel)
 
-      if (user) {
-        yield put(loginSuccess(user))
-        yield put(saveUser(user))
-      } else yield put(logoutSuccess())
-    } catch (error) {
-      yield put(notifyError('Error during login/logout', error.message))
+    if (user) {
+      yield put(loginSuccess(user))
+      yield put(saveUser(user))
+    } else {
+      yield put(logoutSuccess())
     }
   }
 }
 
 export function * watchLogin () {
-  yield takeEvery(types.LOGIN.REQUEST, login)
-  yield takeEvery(types.LOGOUT.REQUEST, logout)
-  yield listenForChange()
+  yield takeEvery(types.LOGIN.REQUEST, loginSaga)
+  yield takeEvery(types.LOGOUT.REQUEST, logoutSaga)
+  yield syncUserSaga()
 }

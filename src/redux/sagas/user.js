@@ -5,7 +5,7 @@ import {
   saveUserFailure
 } from '../reducers/user.action'
 import { notifyError } from '../reducers/notifications.action'
-import { user } from '../../services/firebase'
+import rsf from '../rsf'
 
 function * saveUser (action) {
   const { email, displayName, photoURL } = action.user
@@ -13,12 +13,16 @@ function * saveUser (action) {
   const [ firstName, lastName ] = displayName.split(' ', 2)
 
   try {
-    yield call(user.save, action.user.uid, {
-      email,
-      firstName,
-      lastName,
-      photo: photoURL
-    })
+    yield call(
+      rsf.database.update,
+      `users/${action.user.uid}`,
+      {
+        email,
+        firstName,
+        lastName,
+        photo: photoURL
+      }
+    )
     yield put(saveUserSuccess())
   } catch (error) {
     yield put(saveUserFailure(error))
