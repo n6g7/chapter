@@ -1,19 +1,26 @@
-const webpack = require('webpack')
-const DashboardPlugin = require('webpack-dashboard/plugin')
-const baseConfig = require('./webpack.prod.config.js')
+const path = require('path')
+const Dotenv = require('dotenv-webpack')
 
-module.exports = Object.assign({}, baseConfig, {
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server'
-  ].concat(baseConfig.entry),
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
+  entry: ['babel-polyfill', './index.js'],
+  resolve: {
+    alias: {
+      'highcharts-more': 'highcharts/highcharts-more.src.js'
+    }
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-          'react-hot-loader', 'babel-loader'
+          'babel-loader'
         ]
       },
       {
@@ -40,20 +47,9 @@ module.exports = Object.assign({}, baseConfig, {
   },
   devServer: {
     contentBase: './dist',
-    hot: true
+    historyApiFallback: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin()
-  ],
-  externals: {
-    config: JSON.stringify({
-      googleApiKey: 'AIzaSyCf1cp94cx0m09VuCeMcqpX_v3oy3V_yFI',
-      firebase: {
-        apiKey: 'AIzaSyC2PVLteeEKm0YmFE6oizPiXTRiW8qyy8o',
-        authDomain: 'bamboo-theorem-b8d0a.firebaseapp.com',
-        databaseURL: 'https://bamboo-theorem-b8d0a.firebaseio.com'
-      }
-    })
-  }
-})
+    new Dotenv()
+  ]
+}

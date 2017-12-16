@@ -1,6 +1,5 @@
 import { Map } from 'immutable'
 import google, { GOOGLE_API } from '../../../src/services/apis/google'
-import config from '../../config'
 
 jest.mock('../../../src/services/apis/client', () => {
   const successfulResponse = () => Promise.resolve({
@@ -43,7 +42,7 @@ describe('Google books API', () => {
 
     it('calls HttpClient.get()', () => {
       google.getBookData(book)
-      expect(client.get).toHaveBeenCalledWith(`${GOOGLE_API}?q=isbn:${book.get('ISBN')}&key=${config.googleApiKey}`)
+      expect(client.get).toHaveBeenCalledWith(`${GOOGLE_API}?q=isbn:${book.get('ISBN')}&key=${process.env.GOOGLE_API_KEY}`)
     })
 
     it('returns volumeInfo data from the first item', () => {
