@@ -1,4 +1,8 @@
-import { types } from './editor'
+export const types = {
+  SET_FIELD: 'SET_EDITOR_FIELD',
+  SET_COVER_FIELD: 'SET_EDITOR_COVER_FIELD',
+  RESET: 'RESET_EDITOR'
+}
 
 export const setField = (field, value) => ({
   type: types.SET_FIELD,

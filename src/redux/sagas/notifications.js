@@ -3,7 +3,7 @@ import { put, takeEvery } from 'redux-saga/effects'
 import {
   types,
   removeNotification
-} from '../reducers/notifications.action'
+} from '@actions/notifications'
 
 export function * removeNotificationSaga ({ uuid }) {
   yield delay(5000)

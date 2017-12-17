@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable'
-import { types } from './library.action'
-import { types as userTypes } from './user.action'
+
+import { types } from '@actions/library'
+import { types as userTypes } from '@actions/user'
 import {
   addBook,
   updateBook,

@@ -3,8 +3,7 @@ import { applyMiddleware } from 'redux'
 import { browserHistory } from 'react-router'
 import { routerMiddleware } from 'react-router-redux'
 import { google, tint } from '../../services/apis'
-import { types } from '../reducers/editor'
-import { setField, setCoverField } from '../reducers/editor.action'
+import { setField, setCoverField, types } from '@actions/editor'
 import createSagaMiddleware from 'redux-saga'
 
 export const bookData = store => next => action => {

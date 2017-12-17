@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 import Button from './Button'
 import Loader from './Loader'
-import { login, logout } from '../../redux/reducers/user.action'
+import { login, logout } from '@actions/user'
 import packageConfig from '../../../package.json'
 import './Sidebar.styl'
 

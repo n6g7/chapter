@@ -1,11 +1,7 @@
 import { fromJS } from 'immutable'
-import states from '../../config/bookStates'
 
-export const types = {
-  SET_FIELD: 'SET_EDITOR_FIELD',
-  SET_COVER_FIELD: 'SET_EDITOR_COVER_FIELD',
-  RESET: 'RESET_EDITOR'
-}
+import { types } from '@actions/editor'
+import states from '@config/bookStates'
 
 const initialState = fromJS({
   author: '',

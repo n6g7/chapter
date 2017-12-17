@@ -6,7 +6,7 @@ import { DropTarget } from 'react-dnd'
 import { Link } from 'react-router'
 import BookList from './BookList'
 
-import { updateBook } from '../../redux/reducers/library.action'
+import { updateBook } from '@actions/library'
 import ItemTypes from '../../config/dragDropTypes'
 import addBook from '../../images/add-book-blue.svg'
 

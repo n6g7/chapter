@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable'
-import { types } from './user.action'
+
+import { types } from '@actions/user'
 
 const initialState = fromJS({
   email: '',

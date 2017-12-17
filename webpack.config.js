@@ -6,7 +6,8 @@ module.exports = {
   entry: ['babel-polyfill', './index.js'],
   resolve: {
     alias: {
-      'highcharts-more': 'highcharts/highcharts-more.src.js'
+      'highcharts-more': 'highcharts/highcharts-more.src.js',
+      '@actions': path.resolve(__dirname, 'src/redux/actions')
     }
   },
   output: {

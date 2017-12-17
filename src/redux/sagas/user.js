@@ -3,8 +3,8 @@ import {
   types,
   saveUserSuccess,
   saveUserFailure
-} from '../reducers/user.action'
-import { notifyError } from '../reducers/notifications.action'
+} from '@actions/user'
+import { notifyError } from '@actions/notifications'
 import rsf from '../rsf'
 
 function * saveUser (action) {

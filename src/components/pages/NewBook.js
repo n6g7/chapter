@@ -5,7 +5,7 @@ import { Map } from 'immutable'
 
 import BookDrawer from '../drawer/BookDrawer'
 import { BookFormContainer } from '../form/BookForm'
-import { addBook } from '../../redux/reducers/library.action'
+import { addBook } from '@actions/library'
 
 const newBook = state => Map({
   progress: 0,

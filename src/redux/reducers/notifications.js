@@ -1,5 +1,6 @@
 import { fromJS, Map } from 'immutable'
-import { types } from './notifications.action'
+
+import { types } from '@actions/notifications'
 
 const initialState = fromJS([])
 

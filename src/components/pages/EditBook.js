@@ -10,7 +10,7 @@ import saveImg from '../../images/save.svg'
 import {
   updateBook,
   removeBook
-} from '../../redux/reducers/library.action'
+} from '@actions/library'
 
 class EditBook extends React.PureComponent {
   constructor (props) {

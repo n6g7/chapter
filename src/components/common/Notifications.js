@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { List } from 'immutable'
 
-import { removeNotification } from '../../redux/reducers/notifications.action'
+import { removeNotification } from '@actions/notifications'
 import './Notifications.styl'
 
 class Notifications extends React.PureComponent {
