@@ -8,11 +8,11 @@ import { login, logout } from '@actions/user'
 import packageConfig from '../../../package.json'
 import './Sidebar.styl'
 
-import addBook from '../../images/add-book.svg'
-import books from '../../images/books.svg'
-import signOut from '../../images/sign-out.svg'
-import timeline from '../../images/timeline.svg'
-import wishlist from '../../images/wishlist.svg'
+import addBook from '@assets/add-book.svg'
+import books from '@assets/books.svg'
+import signOut from '@assets/sign-out.svg'
+import timeline from '@assets/timeline.svg'
+import wishlist from '@assets/wishlist.svg'
 
 class Sidebar extends React.PureComponent {
   renderLink (link, icon, label) {

@@ -6,7 +6,7 @@ import DatePicker from './DatePicker'
 import ISBNInput from './ISBNInput'
 import Button from '../common/Button'
 import { reset, setField } from '@actions/editor'
-import saveImg from '../../images/save.svg'
+import saveImg from '@assets/save.svg'
 import './BookForm.styl'
 import Progressbar from '../common/Progressbar'
 

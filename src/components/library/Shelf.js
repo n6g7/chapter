@@ -8,7 +8,7 @@ import BookList from './BookList'
 
 import { updateBook } from '@actions/library'
 import ItemTypes from '../../config/dragDropTypes'
-import addBook from '../../images/add-book-blue.svg'
+import addBook from '@assets/add-book-blue.svg'
 
 import './Shelf.styl'
 

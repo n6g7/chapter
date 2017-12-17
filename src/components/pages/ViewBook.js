@@ -6,7 +6,7 @@ import Button from '../common/Button'
 import BookDrawer from '../drawer/BookDrawer'
 import Progressbar from '../common/Progressbar'
 
-import editImg from '../../images/edit.svg'
+import editImg from '@assets/edit.svg'
 
 class ViewBook extends React.PureComponent {
   render () {
