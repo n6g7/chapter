@@ -8,6 +8,7 @@ import {
   EditBook,
   Home,
   NewBook,
+  Takt,
   Timeline,
   ViewBook,
   Wishlist
@@ -31,6 +32,7 @@ const router = store => {
         </Route>
         <Route path='wishlist' component={Wishlist} />
         <Route path='timeline' component={Timeline} />
+        <Route path='takt' component={Takt} />
       </Route>
     </Router>
   </Provider>

@@ -9,6 +9,7 @@ module.exports = {
       'highcharts-more': 'highcharts/highcharts-more.src.js',
       '@actions': path.resolve(__dirname, 'src/redux/actions'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@selectors': path.resolve(__dirname, 'src/redux/selectors'),
       '@services': path.resolve(__dirname, 'src/services')
     }
   },

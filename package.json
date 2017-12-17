@@ -19,12 +19,18 @@
   "homepage": "https://github.com/n6g7/chapter",
   "license": "MIT",
   "dependencies": {
+    "@vx/axis": "^0.0.147",
+    "@vx/gradient": "^0.0.143",
+    "@vx/group": "^0.0.143",
+    "@vx/scale": "^0.0.143",
+    "@vx/shape": "^0.0.147",
     "color": "^1.0.3",
     "firebase": "^4.8.0",
     "highcharts": "^v5.0.7",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
+    "prop-types": "^15.6.0",
     "react": "^15.4.2",
     "react-datepicker": "^0.39.0",
     "react-dnd": "^2.1.4",
@@ -40,6 +46,7 @@
     "redux-localstorage": "^0.4.1",
     "redux-saga": "^0.16.0",
     "redux-saga-firebase": "^0.7.1",
+    "reselect": "^3.0.1",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
