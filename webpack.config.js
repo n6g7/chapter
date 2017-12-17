@@ -8,7 +8,8 @@ module.exports = {
     alias: {
       'highcharts-more': 'highcharts/highcharts-more.src.js',
       '@actions': path.resolve(__dirname, 'src/redux/actions'),
-      '@assets': path.resolve(__dirname, 'src/assets')
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@services': path.resolve(__dirname, 'src/services')
     }
   },
   output: {

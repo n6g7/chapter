@@ -13,7 +13,7 @@ import {
 } from '@actions/library'
 import { types as userTypes } from '@actions/user'
 import { notifyError } from '@actions/notifications'
-import { book as bookTransformer } from '../../services/transformers'
+import { book as bookTransformer } from '@services/transformers'
 import rsf from '../rsf'
 
 function * createBookSaga ({ book }) {

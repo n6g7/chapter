@@ -2,7 +2,7 @@ import Color from 'color'
 import { applyMiddleware } from 'redux'
 import { browserHistory } from 'react-router'
 import { routerMiddleware } from 'react-router-redux'
-import { google, tint } from '../../services/apis'
+import { google, tint } from '@services/apis'
 import { setField, setCoverField, types } from '@actions/editor'
 import createSagaMiddleware from 'redux-saga'
 
