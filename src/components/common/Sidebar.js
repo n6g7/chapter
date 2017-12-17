@@ -35,6 +35,7 @@ class Sidebar extends React.PureComponent {
             { this.renderLink('/', books, 'Books') }
             { this.renderLink('wishlist', wishlist, 'Wishlist') }
             { this.renderLink('timeline', timeline, 'Timeline') }
+            { this.renderLink('takt', timeline, 'Takt') }
           </ul>
         </nav>
       </header>
