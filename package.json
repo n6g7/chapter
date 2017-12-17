@@ -78,14 +78,6 @@
       "src/**/*.js",
       "!src/**/index.js"
     ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 3,
-        "functions": 3,
-        "lines": 3,
-        "statements": 3
-      }
-    },
     "setupFiles": [
       "./test/setup.js"
     ],

@@ -101,19 +101,7 @@ class Takt extends React.PureComponent {
       <label htmlFor='goal'>Goal</label>
       <input type='number' id='goal' value={goal} onChange={this.setGoal} />
 
-      <svg
-        width={width}
-        height={height}
-        onMouseMove={data => event =>
-          this.handleTooltip({
-            event,
-            data,
-            x,
-            xScale,
-            yScale
-          })}
-        onMouseLeave={data => event => hideTooltip()}
-      >
+      <svg width={width} height={height}>
         <GradientOrangeRed id='standardGradient' />
         <GradientTealBlue id='actualGradient' />
 
