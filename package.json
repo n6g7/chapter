@@ -63,7 +63,7 @@
     "dotenv-webpack": "^1.5.4",
     "file-loader": "^1.1.6",
     "img-loader": "^2.0.0",
-    "jest": "^21.2.1",
+    "jest": "^22.1.4",
     "snyk": "^1.59.1",
     "standard": "^10.0.3",
     "style-loader": "^0.19.1",
