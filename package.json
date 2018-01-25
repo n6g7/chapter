@@ -24,7 +24,7 @@
     "@vx/group": "^0.0.143",
     "@vx/scale": "^0.0.143",
     "@vx/shape": "^0.0.147",
-    "color": "^1.0.3",
+    "color": "^3.0.0",
     "firebase": "^4.8.0",
     "highcharts": "^v5.0.7",
     "immutable": "^3.8.1",
