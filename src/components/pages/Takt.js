@@ -53,10 +53,11 @@ class Takt extends React.PureComponent {
     const { books } = this.props
     const { goal } = this.state
     const now = moment()
+    const currentYear = new Date().getFullYear()
 
     return new Array(13).fill(null).map((_, i) => {
       const date = moment({
-        year: 2017 + Math.floor(i / 12),
+        year: currentYear + Math.floor(i / 12),
         months: i % 12,
         day: 1
       })
