@@ -23,7 +23,7 @@
     "@vx/gradient": "^0.0.143",
     "@vx/group": "^0.0.143",
     "@vx/scale": "^0.0.143",
-    "@vx/shape": "^0.0.147",
+    "@vx/shape": "^0.0.164",
     "color": "^1.0.3",
     "firebase": "^4.8.0",
     "highcharts": "^v5.0.7",
