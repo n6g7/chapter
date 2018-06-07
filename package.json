@@ -21,7 +21,7 @@
   "dependencies": {
     "@vx/axis": "^0.0.147",
     "@vx/gradient": "^0.0.143",
-    "@vx/group": "^0.0.143",
+    "@vx/group": "^0.0.165-beta.1",
     "@vx/scale": "^0.0.143",
     "@vx/shape": "^0.0.147",
     "color": "^1.0.3",
