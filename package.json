@@ -46,7 +46,7 @@
     "redux-localstorage": "^0.4.1",
     "redux-saga": "^0.16.0",
     "redux-saga-firebase": "^0.7.1",
-    "reselect": "^3.0.1",
+    "reselect": "^4.0.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
