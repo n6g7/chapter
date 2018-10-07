@@ -136,11 +136,11 @@
   version "0.0.143"
   resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.143.tgz#7b6dfa611175ee1b74e3c392072589a79dadf265"
 
-"@vx/scale@^0.0.143":
-  version "0.0.143"
-  resolved "https://registry.yarnpkg.com/@vx/scale/-/scale-0.0.143.tgz#4a13ab93f4d59cb487d6278b55606f2460091d0b"
+"@vx/scale@^0.0.178":
+  version "0.0.178"
+  resolved "https://registry.yarnpkg.com/@vx/scale/-/scale-0.0.178.tgz#54eff2a87c3441501b29a35eb4078d4e8f19b8d4"
   dependencies:
-    d3-scale "^1.0.5"
+    d3-scale "^2.0.0"
 
 "@vx/shape@0.0.147", "@vx/shape@^0.0.147":
   version "0.0.147"
@@ -2244,13 +2244,12 @@ d3-path@1:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.5.tgz#241eb1849bd9e9e8021c0d0a799f8a0e8e441764"
 
-d3-scale@^1.0.5:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.7.tgz#fa90324b3ea8a776422bd0472afab0b252a0945d"
+d3-scale@^2.0.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-2.1.2.tgz#4e932b7b60182aee9073ede8764c98423e5f9a94"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "1"
-    d3-color "1"
     d3-format "1"
     d3-interpolate "1"
     d3-time "1"
