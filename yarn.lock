@@ -126,9 +126,16 @@
     classnames "^2.2.5"
     prop-types "^15.5.7"
 
-"@vx/group@0.0.143", "@vx/group@^0.0.143":
+"@vx/group@0.0.143":
   version "0.0.143"
   resolved "https://registry.yarnpkg.com/@vx/group/-/group-0.0.143.tgz#38dbd3fa2740d573c6fdfc691ebc15e85d3eb01b"
+  dependencies:
+    classnames "^2.2.5"
+
+"@vx/group@^0.0.182":
+  version "0.0.182"
+  resolved "https://registry.yarnpkg.com/@vx/group/-/group-0.0.182.tgz#991ca37c4a0116cf071d0ebef6a6189ad64c79ec"
+  integrity sha512-T9LzQlNPmPDI8A6j3J7T5914xeeaZaVVgDh4NQa0H0BL7G/kHL94XAa4GbG618W6jbsyxoqmyGUqny1LO99S0w==
   dependencies:
     classnames "^2.2.5"
 
