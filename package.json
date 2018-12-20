@@ -61,7 +61,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.7",
     "dotenv-webpack": "^1.5.4",
-    "file-loader": "^1.1.6",
+    "file-loader": "^3.0.0",
     "img-loader": "^2.0.0",
     "jest": "^21.2.1",
     "snyk": "^1.59.1",
