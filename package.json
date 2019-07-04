@@ -34,7 +34,7 @@
     "react": "^15.4.2",
     "react-datepicker": "^0.39.0",
     "react-dnd": "^9.0.1",
-    "react-dnd-html5-backend": "^2.1.2",
+    "react-dnd-html5-backend": "^9.0.0",
     "react-dom": "^15.4.2",
     "react-highcharts": "^11.5.0",
     "react-input-mask": "^0.7.5",
