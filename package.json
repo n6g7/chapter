@@ -19,7 +19,7 @@
   "homepage": "https://github.com/n6g7/chapter",
   "license": "MIT",
   "dependencies": {
-    "@vx/axis": "^0.0.147",
+    "@vx/axis": "^0.0.190",
     "@vx/gradient": "^0.0.143",
     "@vx/group": "^0.0.143",
     "@vx/scale": "^0.0.143",
