@@ -65,7 +65,7 @@
     "img-loader": "^2.0.0",
     "jest": "^21.2.1",
     "snyk": "^1.59.1",
-    "standard": "^10.0.3",
+    "standard": "^14.2.0",
     "style-loader": "^0.19.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
