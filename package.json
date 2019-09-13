@@ -70,7 +70,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0",
+    "webpack": "^4.40.2",
     "webpack-dev-server": "^2.9.7"
   },
   "jest": {
