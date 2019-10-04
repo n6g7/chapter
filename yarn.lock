@@ -119,9 +119,10 @@
   dependencies:
     d3-shape "^1.0.6"
 
-"@vx/gradient@^0.0.143":
-  version "0.0.143"
-  resolved "https://registry.yarnpkg.com/@vx/gradient/-/gradient-0.0.143.tgz#9ce212db8f9add9221c8eb142c5ac1026d13cab9"
+"@vx/gradient@^0.0.192":
+  version "0.0.192"
+  resolved "https://registry.yarnpkg.com/@vx/gradient/-/gradient-0.0.192.tgz#7cec20a08c04cc6eaa6e10d0986b373bbbce91e3"
+  integrity sha512-F5Rv+ijSQMZlj9QSo5e0WNNi9A1ximcnXIW8JHCp0+Z1h5OR7CvuTna/qe9eEw6Zu3O3FWesS1+oWTozBuUWKg==
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.5.7"
