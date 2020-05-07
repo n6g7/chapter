@@ -8,7 +8,9 @@
     "dev": "webpack-dev-server",
     "pretest": "standard",
     "snyk": "snyk test",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "keywords": [
     "book",
@@ -47,7 +49,8 @@
     "redux-saga": "^0.16.0",
     "redux-saga-firebase": "^0.7.1",
     "reselect": "^3.0.1",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "snyk": "^1.319.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -64,7 +67,6 @@
     "file-loader": "^1.1.6",
     "img-loader": "^2.0.0",
     "jest": "^21.2.1",
-    "snyk": "^1.59.1",
     "standard": "^10.0.3",
     "style-loader": "^0.19.1",
     "stylus": "^0.54.5",
@@ -101,5 +103,6 @@
   "repository": {
     "url": "git@github.com:n6g7/chapter.git",
     "type": "git"
-  }
+  },
+  "snyk": true
 }
